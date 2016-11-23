@@ -9,7 +9,7 @@ public class Caipu {
     private String Material;//材料
     private String Total;//赞的人数
     private int img;//主图
-
+//
     public Caipu(Long id, String name, String material, String total, int img
     ) {
         this.id = id;
