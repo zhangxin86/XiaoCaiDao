@@ -3,7 +3,7 @@ package ruanjian.xin.xiaocaidao.domain;
 /**
  * Created by Administrator on 2016/11/22.
  */
-public class Caipu {
+public class Caipu {//经典菜谱
     private Long id;
     private String Name;
     private String Material;//材料
