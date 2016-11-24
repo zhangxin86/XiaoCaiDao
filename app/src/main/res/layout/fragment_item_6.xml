@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/fragment_one_list_iv5"
+        android:layout_width="80dp"
+        android:layout_height="90dp"
+        android:src="@drawable/ic9"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="90dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp">
+    <TextView
+        android:paddingTop="10dp"
+        android:paddingLeft="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="回复："
+        android:textSize="20dp"
+        android:textColor="#000000" />
+        <TextView
+            android:paddingTop="14dp"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:text="楼主好人！"
+            android:textSize="16dp"
+            android:textColor="#000000"
+            android:id="@+id/fragment_one_list_tv6"/>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+    <TextView
+        android:paddingLeft="40dp"
+        android:text="原帖："
+        android:layout_width="wrap_content"
+        android:layout_height="20dp" />
+        <TextView
+            android:id="@+id/fragment_one_list_tv6_1"
+
+            android:text="推荐家用小妙招"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+        </LinearLayout>
+        <LinearLayout
+           android:layout_marginLeft="210dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="评论："/>
+        <TextView
+            android:id="@+id/fragment_one_list_tv6_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 55"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
