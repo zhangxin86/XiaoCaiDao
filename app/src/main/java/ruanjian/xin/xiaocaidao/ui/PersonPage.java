@@ -2,7 +2,6 @@ package ruanjian.xin.xiaocaidao.ui;
 
 import android.app.Fragment;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +10,9 @@ import android.widget.TextView;
 
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.ui.personal.Main1;
+import ruanjian.xin.xiaocaidao.ui.personal.Main2;
+import ruanjian.xin.xiaocaidao.ui.personal.Main3;
+import ruanjian.xin.xiaocaidao.ui.personal.Main4;
 
 public class PersonPage extends Fragment {
 
@@ -36,24 +38,24 @@ public class PersonPage extends Fragment {
                             intent.setClass(getActivity(),Main1.class);
                             startActivity(intent);
                             break;
-/*
+
                         case R.id.activity_tv2:
                             Intent intent1 = new Intent();
-                            intent1.setClass(PersonPage.this,Main2.class);
+                            intent1.setClass(getActivity(),Main2.class);
                             startActivity(intent1);
                             break;
                         case R.id.activity_tv3:
                             Intent intent2 = new Intent();
-                            intent2.setClass(PersonPage.this,Main3.class);
+                            intent2.setClass(getActivity(),Main3.class);
                             startActivity(intent2);
                             break;
 
                         case R.id.activity_tv4:
                             Intent intent3 = new Intent();
-                            intent3.setClass(PersonPage.this,Main4.class);
+                            intent3.setClass(getActivity(),Main4.class);
                             startActivity(intent3);
                             break;
-*/
+
                         default:
                     }
                 }
