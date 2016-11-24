@@ -48,7 +48,7 @@ public class Client extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_client);
+        setContentView(R.layout.activity_first);
 
         findView();
         setListener();
