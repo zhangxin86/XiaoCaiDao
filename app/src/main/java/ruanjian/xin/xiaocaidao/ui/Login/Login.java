@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import ruanjian.xin.xiaocaidao.Client;
 import ruanjian.xin.xiaocaidao.R;
 
 /**
@@ -47,20 +48,20 @@ public class Login extends Activity {
                 //获取当前输入的用户名和密码
                 username=etusername.getText().toString().trim();
                 pwd=etpwd.getText().toString().trim();
-                SharedPreferences.Editor editor =login_sp.edit();
-                int result=mUserDataManager.findUserByNameAndPwd(username,pwd);
-                if (result == 1){//返回1说明用户名和密码均正确
+                //SharedPreferences.Editor editor =login_sp.edit();
+//                int result=mUserDataManager.findUserByNameAndPwd(username,pwd);
+//                if (result == 1){//返回1说明用户名和密码均正确
                     //保存用户名和密码
-                    editor.putString("USER_NAME", username);
-                    editor.putString("PASSWORD", pwd);
-                    editor.commit();
+//                    editor.putString("USER_NAME", username);
+//                    editor.putString("PASSWORD", pwd);
+//                    editor.commit();
 
-                    Intent intent=new Intent(Login.this,success.class);
+                    Intent intent=new Intent(Login.this,Client.class);
                     startActivity(intent);
                     finish();
-                }else if (result == 0){
-                    Toast.makeText(getApplicationContext(),"登陆失败！", Toast.LENGTH_SHORT).show();
-                }
+//                }else if (result == 0){
+//                    Toast.makeText(getApplicationContext(),"登陆失败！", Toast.LENGTH_SHORT).show();
+//                }
 
             }
         });
