@@ -91,6 +91,7 @@
             android:layout_below="@+id/menu_img1"
             android:id="@+id/jianjie1"
             android:text="简介"
+            android:textColor="#A0522D"
             android:textSize="20sp"/>
         <TextView
             android:layout_width="wrap_content"
@@ -110,7 +111,8 @@
             android:layout_below="@+id/jianjie2"
             android:id="@+id/yongliao1"
             android:textSize="20sp"
-            android:text="用料"/>
+            android:text="用料"
+            android:textColor="#A0522D"/>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -139,7 +141,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/lll"
-            android:id="@+id/ll3">
+            android:id="@+id/ll2">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -155,6 +157,20 @@
                 android:text="茄汁2汤匙"
                 android:id="@+id/fuliao"/>
 
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll2"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="步骤"
+                android:textColor="#A0522D"
+                android:paddingLeft="30dp"
+                android:paddingTop="10dp"
+                android:textSize="20sp"/>
         </LinearLayout>
     </RelativeLayout>
 
