@@ -76,12 +76,12 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
 
     @Override
     public void onRefresh(){//刷新方法
-        new Thread(new Runnable() {
+        new Thread(     new Runnable() {
             @Override
             public void run() {
                 try {
                     Thread.sleep(1000);
-                    cp.add(new Caipu(0l,"茄汁莲藕排骨","排骨，莲藕，茄汁，盐","5000人赞过",R.drawable.ic));
+                    cp.add(0,(new Caipu(0l,"茄汁莲藕排骨","排骨，莲藕，茄汁，盐","5000人赞过",R.drawable.ic)));
                     mHandler.sendEmptyMessage(REFRESH_COMPLETE);
                 } catch (InterruptedException e) {
                     // TODO Auto-generated catch block
@@ -91,10 +91,10 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
         }).start();
     }
     private void getData() {//数据样例
-        cp.add(new Caipu(0l,"茄汁莲藕排骨","排骨，莲藕，茄汁，盐","5431人赞过",R.drawable.ic));
-        cp.add(new Caipu(0l,"茄汁莲藕排骨","排骨，莲藕，茄汁，盐","5431人赞过",R.drawable.ic));
-        cp.add(new Caipu(0l,"茄汁莲藕排骨","排骨，莲藕，茄汁，盐","5431人赞过",R.drawable.ic));
-        cp.add(new Caipu(0l,"茄汁莲藕排骨","排骨，莲藕，茄汁，盐","5431人赞过",R.drawable.ic));
-        cp.add(new Caipu(0l,"茄汁莲藕排骨","排骨，莲藕，茄汁，盐","5431人赞过",R.drawable.ic));
+        cp.add(new Caipu(1l,"茄汁莲藕排骨","排骨，莲藕，茄汁，盐","5431人赞过",R.drawable.ic));
+        cp.add(new Caipu(2l,"茄汁莲藕排骨","排骨，莲藕，茄汁，盐","5431人赞过",R.drawable.ic));
+        cp.add(new Caipu(3l,"茄汁莲藕排骨","排骨，莲藕，茄汁，盐","5431人赞过",R.drawable.ic));
+        cp.add(new Caipu(4l,"茄汁莲藕排骨","排骨，莲藕，茄汁，盐","5431人赞过",R.drawable.ic));
+        cp.add(new Caipu(5l,"茄汁莲藕排骨","排骨，莲藕，茄汁，盐","5431人赞过",R.drawable.ic));
     }
 }
