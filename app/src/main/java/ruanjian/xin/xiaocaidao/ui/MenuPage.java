@@ -6,10 +6,12 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.zip.Inflater;
@@ -47,7 +49,7 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
         getView(v);
         getData();
         setAdapter();
-
+        onClick();
         return v;
 
 
@@ -57,7 +59,9 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                Toast.makeText(getActivity(),"dianjile"+position,Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getActivity(),MenuDetail.class);
+                startActivity(i);
                 //需链接到内容页
             }
         });

@@ -2,6 +2,8 @@ package ruanjian.xin.xiaocaidao;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -187,5 +189,11 @@ public class Client extends AppCompatActivity {
                     break;
             }
         }
+    }
+    //当经典菜谱内容页退出后，返回result_ok,调用setMenuPage页，实现返回的效果
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        if(resultCode==RESULT_OK)
+            setMenuPage();
+        super.onActivityResult(requestCode,resultCode,data);
     }
 }

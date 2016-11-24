@@ -19,6 +19,7 @@
         <activity android:name=".ui.MenuPage" />
         <activity android:name=".ui.FriendPage" />
         <activity android:name=".ui.PersonPage" />
+        <activity android:name=".ui.MenuDetail"/>
     </application>
 
 </manifest>
