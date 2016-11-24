@@ -26,6 +26,15 @@
         <activity android:name=".ui.MenuPage" />
         <activity android:name=".ui.FriendPage" />
         <activity android:name=".ui.PersonPage" />
+        <activity android:name=".ui.personal.Main1"/>
+        <activity android:name=".ui.personal.Main2"/>
+        <activity android:name=".ui.personal.Main3"/>
+        <activity android:name=".ui.personal.Main4"/>
+        <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>
