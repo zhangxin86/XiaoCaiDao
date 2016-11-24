@@ -15,10 +15,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.Login.Sign_in"></activity>
-
-        <activity android:name=".ui.Login.success"></activity>
+        <!--登陆注册相关页-->
+        <activity android:name=".ui.Login.Sign_in"/>
+        <activity android:name=".ui.Login.success"/>
         <activity android:name=".ui.Login.Login"/>
+        <!--Client主框架-->
+        <activity android:name=".Client"/>
+        <!--Tab相关页-->
         <activity android:name=".ui.MainPage" />
         <activity android:name=".ui.MenuPage" />
         <activity android:name=".ui.FriendPage" />
