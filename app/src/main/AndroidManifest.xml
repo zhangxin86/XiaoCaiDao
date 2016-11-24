@@ -8,13 +8,17 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Client" android:windowSoftInputMode="adjustPan">
+        <activity android:name=".ui.Login.First" android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.Login.Sign_in"></activity>
+
+        <activity android:name=".ui.Login.success"></activity>
+        <activity android:name=".ui.Login.Login"/>
         <activity android:name=".ui.MainPage" />
         <activity android:name=".ui.MenuPage" />
         <activity android:name=".ui.FriendPage" />
