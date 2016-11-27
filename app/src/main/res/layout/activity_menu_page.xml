@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ruanjian.xin.xiaocaidao.ui.MenuPage">
     <ruanjian.xin.xiaocaidao.adapter.BaiDuRefreshListView
-        android:id="@+id/lv"
+        android:id="@+id/lvBaiduRefresh"
         android:layout_width="match_parent"
         android:layout_height="fill_parent" />
 </RelativeLayout>
