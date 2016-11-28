@@ -102,7 +102,7 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
             public void run() {
                 try {
                     Thread.sleep(1000);
-                    cp.add(new Caipu("茄汁莲藕排骨","排骨，莲藕，茄汁，盐","http://pic13.nipic.com/20110312/1263154_111916318000_2.jpg"));
+
                     mHandler.sendEmptyMessage(REFRESH_COMPLETE);
                 } catch (InterruptedException e) {
                     // TODO Auto-generated catch block
@@ -171,7 +171,7 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> map = new HashMap<>();
                 map.put("key","90e8a667333aa3c83bbfdcabbd0fa620");
-                map.put("menu","红烧肉");
+                map.put("menu","菜");
                 return map;
             }
         };

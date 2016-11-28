@@ -62,7 +62,7 @@ public class XiangqingPage extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_xiangqing_page);
+        setContentView(R.layout.activity_menudetail);
 
         tvName = (TextView) findViewById(R.id.tv_menuName);
         tvTags = (TextView)findViewById(R.id.tv_tags);

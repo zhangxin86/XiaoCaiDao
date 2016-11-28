@@ -60,7 +60,7 @@ public class LvAdapter extends BaseAdapter {
             inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if(view == null)
-            view = inflater.inflate(R.layout.layout_list,null);
+            view = inflater.inflate(R.layout.lv_back01,null);
         if (imageLoader == null)
             imageLoader = ApplicationController.getInstance().getImageLoader();
 
