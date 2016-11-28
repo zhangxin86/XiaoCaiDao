@@ -4,36 +4,49 @@ package ruanjian.xin.xiaocaidao.adapter;
  * Created by Administrator on 2016/11/22.
  */
 import java.util.ArrayList;
-import java.util.List;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
+
+import ruanjian.xin.xiaocaidao.Controller.ApplicationController;
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.domain.Caipu;
 
 public class LvAdapter extends BaseAdapter {
-    private ArrayList<Caipu> caipu=new ArrayList<Caipu>();
+    private ArrayList<Caipu> caipus=new ArrayList<Caipu>();
     private Context context;
+    private LayoutInflater inflater;
+    private ImageLoader imageLoader;
 
-    public LvAdapter(ArrayList<Caipu> caipu, Context context) {
-        this.caipu = caipu;
+    private NetworkImageView caipuImage;
+    private TextView caipuName,caipuCailiao,movieRating;
+
+    public LvAdapter(){
+        super();
+    }
+
+    public LvAdapter(ArrayList<Caipu> caipus, Context context) {
+        this.caipus = caipus;
         this.context = context;
     }
 
     @Override
     public int getCount() {
-        return caipu.size();
+        return caipus.size();
 
     }
 
     @Override
     public Object getItem(int position) {
-        return caipu.get(position);
+        return caipus.get(position);
     }
 
     @Override
@@ -43,17 +56,23 @@ public class LvAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        view = LayoutInflater.from(context).inflate(R.layout.layout_list,null);
+        if (inflater == null)
+            inflater = (LayoutInflater) context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        if(view == null)
+            view = inflater.inflate(R.layout.lv_back01,null);
+        if (imageLoader == null)
+            imageLoader = ApplicationController.getInstance().getImageLoader();
 
-        ImageView img=(ImageView) view.findViewById(R.id.img);
-        img.setImageResource(caipu.get(i).getImg());
-        TextView TvName = (TextView) view.findViewById(R.id.TvName);
-        TvName.setText(caipu.get(i).getName());
-        TextView Mt= (TextView) view.findViewById(R.id.Mt);
-        Mt.setText(caipu.get(i).getMaterial());
-        TextView Total = (TextView) view.findViewById(R.id.dianzan);
-        Total.setText(caipu.get(i).getTotal());
+        caipuName = (TextView)view.findViewById(R.id.tvcaipuName);
+        caipuCailiao = (TextView)view.findViewById(R.id.tvCailiao);
+        caipuImage = (NetworkImageView)view.findViewById(R.id.netimg);
+
+        caipuImage.setImageUrl(caipus.get(i).getImgURL(),imageLoader);
+        caipuCailiao.setText("材料："+(CharSequence)caipus.get(i).getMaterial());
+        caipuName.setText((CharSequence)caipus.get(i).getName());
 
         return view;
+
     }
 }

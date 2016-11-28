@@ -324,7 +324,7 @@
             <ListView
                 android:id="@+id/Lvactivity_main_pageComment"
                 android:layout_width="match_parent"
-                android:layout_height="1240dp"
+                android:layout_height="5000dp"
                 android:dividerHeight="5dp"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp">
