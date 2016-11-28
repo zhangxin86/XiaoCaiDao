@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/btn2"
             android:text="关注"/>
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
