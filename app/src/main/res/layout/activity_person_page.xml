@@ -16,7 +16,7 @@
         android:layout_height="200dp"
         tools:background="@android:color/holo_orange_dark"
         android:layout_weight="0.42">
-        <ImageView
+        <ruanjian.xin.xiaocaidao.domain.XCRoundImageView
             android:src="@drawable/person1"
             android:layout_width="80dp"
             android:layout_height="80dp"
