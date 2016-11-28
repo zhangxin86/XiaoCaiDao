@@ -59,7 +59,6 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(),"dianjile"+position,Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(getActivity(),MenuDetail.class);
                 startActivity(i);
                 //需链接到内容页

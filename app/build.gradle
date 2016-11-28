@@ -29,4 +29,5 @@ dependencies {
     //使用的view
     compile 'com.jude:rollviewpager:1.2.9'
     compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
 }
