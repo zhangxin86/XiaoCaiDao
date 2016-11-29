@@ -2,16 +2,14 @@ package ruanjian.xin.xiaocaidao;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Switch;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import ruanjian.xin.xiaocaidao.ui.FriendPage;
 import ruanjian.xin.xiaocaidao.ui.MainPage;
@@ -42,6 +40,8 @@ public class Client extends AppCompatActivity {
     private MenuPage menuPage;
     private FriendPage friendPage;
     private PersonPage personPage;
+
+    private ImageButton searchButton;//搜索按钮
 
     private static int pre_select = 0;
 
@@ -89,6 +89,8 @@ public class Client extends AppCompatActivity {
         Iv_MenuPage = (ImageView)findViewById(R.id.Ivlayout_clientMenuPage);
         Iv_FriendPage = (ImageView)findViewById(R.id.Ivlayout_clientFriendPage);
         Iv_PersonPage = (ImageView)findViewById(R.id.Ivlayout_clientPersonPage);
+
+        searchButton = (ImageButton) findViewById(R.id.Ivlayout_clientPerMessage);
     }
 
     private void setListener(){
@@ -97,8 +99,20 @@ public class Client extends AppCompatActivity {
         Llay_MenuPage.setOnClickListener(listener);
         Llay_FriendPage.setOnClickListener(listener);
         Llay_PersonPage.setOnClickListener(listener);
+        searchButton.setOnClickListener(searchlistener);
     }
-
+    /*搜索按钮监听事件*/
+    private View.OnClickListener searchlistener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.Ivlayout_clientPerMessage:
+                    clearPreTab();
+                    setMenuPage();
+                    break;
+            }
+        }
+    };
     private void setMainPage(){
         Llay_ClientHead.setVisibility(View.VISIBLE);
         if( mainPage==null ){ mainPage = new MainPage(); }
@@ -114,7 +128,7 @@ public class Client extends AppCompatActivity {
 
     private void setMenuPage(){
         Llay_ClientHead.setVisibility(View.VISIBLE);
-        if( menuPage==null ){ menuPage = new MenuPage(); }
+        menuPage = new MenuPage();
         Tv_MenuPage.setTextColor(getResources().getColor(R.color.tab_select));
         Iv_MenuPage.setImageResource(R.drawable.iv_menu_sel);
         pre_select = 1;
@@ -194,4 +208,7 @@ public class Client extends AppCompatActivity {
             }
         }
     }
+
+
+
 }
