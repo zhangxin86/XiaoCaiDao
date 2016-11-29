@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -35,7 +36,7 @@ import static ruanjian.xin.xiaocaidao.utils.Utils.JUHE_URL;
 
 public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRefreshListener{
 
-    public static String temp = "菜";//第一次要显示listview的菜名内容
+    public String temp = "菜";//第一次要显示listview的菜名内容
     private String menuName;//纪录点击事件时某个item的Name
 
     private BaiDuRefreshListView lv;
@@ -72,6 +73,9 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
                     }else if(temp.equals("清蒸")){
                         fetchCaipu("菜");
                         temp = "菜";
+                    }else {
+                        fetchCaipu("菜");
+                        temp="菜";
                     }
                     myadapter.notifyDataSetChanged();
                     lv.setSelection(0);
@@ -82,10 +86,22 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
         };
     };
 
+    public void onRefreshMenu(){
+        this.onResume();
+    }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_menu_page,container,false);
+
+        EditText searchmenu = (EditText) getActivity().findViewById(R.id.search_menu);
+
+        if (searchmenu.length()!=0){
+            temp = searchmenu.getText().toString();
+        }
+
 
 
         cp = new ArrayList<Caipu>();

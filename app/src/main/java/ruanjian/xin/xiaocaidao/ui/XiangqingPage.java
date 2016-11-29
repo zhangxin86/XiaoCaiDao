@@ -42,6 +42,8 @@ import static ruanjian.xin.xiaocaidao.utils.Utils.JUHE_URL;
  * Created by liyuxuan on 2016/11/27.
  */
 
+
+
 public class XiangqingPage extends Activity {
 
     private String menuName;//上一个页面穿来的菜肴名称

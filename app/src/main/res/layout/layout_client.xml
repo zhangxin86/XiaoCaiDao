@@ -44,10 +44,12 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="5dp"/>
             <EditText
+                android:id="@+id/search_menu"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:paddingLeft="10dp"
                 android:hint="搜索你感兴趣的"
+                android:singleLine="true"
                 android:textSize="14sp"
                 android:background="@null"
                 android:layout_gravity="center_vertical"
