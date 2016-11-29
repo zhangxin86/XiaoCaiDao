@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">XiaoCaiDao</string>
+    <string name="user_name">用户名</string>
+    <!--厨友交流相关-->
+    <string name="friend_page_name">厨友交流</string>
+    <string name="add_friend_item">发帖</string>
+    <string name="detail">详情</string>
+    <string name="release">发布</string>
+    <string name="add_friend_hint_title">#说出你的话题#</string>
+    <string name="add_friend_hint_text">说点什么吧。。。</string>
+    <string name="new_item_text">冬瓜，南瓜，黄瓜，西瓜都能吃，哪种瓜不能吃？</string>
+    <string name="hot_item_text">#自己闲暇时瞎做的，大家多多包涵（=。=|||）#</string>
+    <string name="add_tag">添加标签</string>
+    <string name="tag01">早餐</string>
+    <string name="tag02">午餐</string>
+    <string name="tag03">晚餐</string>
+    <string name="tag04">热菜</string>
+    <string name="tag05">凉菜</string>
+    <string name="tag06">酱料</string>
+    <string name="tag07">食材</string>
+    <string name="release_time">2016/11/22</string>
 </resources>
