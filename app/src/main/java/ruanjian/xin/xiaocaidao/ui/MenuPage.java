@@ -31,23 +31,48 @@ import ruanjian.xin.xiaocaidao.adapter.BaiDuRefreshListView;
 import ruanjian.xin.xiaocaidao.adapter.LvAdapter;
 import ruanjian.xin.xiaocaidao.domain.Caipu;
 
+import static ruanjian.xin.xiaocaidao.utils.Utils.JUHE_URL;
+
 public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRefreshListener{
 
-
+    public static String temp = "菜";//第一次要显示listview的菜名内容
+    private String menuName;//纪录点击事件时某个item的Name
 
     private BaiDuRefreshListView lv;
     private ArrayList<Caipu> cp;
     private LvAdapter myadapter;
 
-    private static final String url="http://apis.juhe.cn/cook/query.php";
     private ProgressDialog pDialog;
 
     private final static int REFRESH_COMPLETE = 0;
     private Handler mHandler = new Handler(){
         public void handleMessage(android.os.Message msg) {
             switch (msg.what) {
+                /*循环更新listview的内容*/
                 case REFRESH_COMPLETE:
                     lv.setOnRefreshComplete();
+                    if (temp.equals("菜")){
+                        fetchCaipu("肉");
+                        temp = "肉";
+                    }else if(temp.equals("肉")){
+                        fetchCaipu("蛋");
+                        temp = "蛋";
+                    }else if(temp.equals("蛋")){
+                        fetchCaipu("鱼");
+                        temp = "鱼";
+                    }else if(temp.equals("鱼")){
+                        fetchCaipu("米");
+                        temp = "米";
+                    }else if(temp.equals("米")){
+                        fetchCaipu("水煮");
+                        temp = "水煮";
+                    }else if(temp.equals("水煮")){
+                        fetchCaipu("清蒸");
+                        temp = "清蒸";
+                    }else if(temp.equals("清蒸")){
+                        fetchCaipu("菜");
+                        temp = "菜";
+                    }
                     myadapter.notifyDataSetChanged();
                     lv.setSelection(0);
                     break;
@@ -57,11 +82,19 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
         };
     };
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_menu_page,container,false);
+
+
         cp = new ArrayList<Caipu>();
-        fetchCaipu();
+        pDialog=new ProgressDialog(getActivity());
+        pDialog.setMessage("Loading...");
+        pDialog.show();
+
+
+        fetchCaipu(temp);
         getView(v);
         setAdapter();
         onClick();
@@ -75,9 +108,12 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                menuName = cp.get(position-1).getName();
 
                 Intent intent = new Intent();
                 intent.setClass(getActivity(),XiangqingPage.class);
+                intent.putExtra("menuName",menuName);
+
                 startActivity(intent);
                 //需链接到内容页
             }
@@ -102,6 +138,7 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
             public void run() {
                 try {
                     Thread.sleep(1000);
+                    cp.clear();
 
                     mHandler.sendEmptyMessage(REFRESH_COMPLETE);
                 } catch (InterruptedException e) {
@@ -113,9 +150,9 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
     }
 
 
-    private void fetchCaipu() {
+    private void fetchCaipu(final String caipuName) {
 
-        StringRequest req=new StringRequest(Request.Method.POST,url, new Response.Listener<String>() {
+        StringRequest req=new StringRequest(Request.Method.POST,JUHE_URL, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String s) {
@@ -145,8 +182,7 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
                         String ingredients = menu.getString("ingredients");//主料
                         String burden = menu.getString("burden");//辅料
                         JSONArray albums = menu.getJSONArray("albums");//成品图片集合
-                        String img = albums.getString(0);//成品图片
-                        JSONArray steps = menu.getJSONArray("steps");//步骤对象数组
+                        String img = albums.getString(0);//成品图
                         Caipu caipu = new Caipu();
                         caipu.setImgURL(img);
                         caipu.setName(name);
@@ -171,7 +207,7 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> map = new HashMap<>();
                 map.put("key","90e8a667333aa3c83bbfdcabbd0fa620");
-                map.put("menu","菜");
+                map.put("menu",caipuName);
                 return map;
             }
         };

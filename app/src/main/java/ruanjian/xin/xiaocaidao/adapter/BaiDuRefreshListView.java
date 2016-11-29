@@ -22,6 +22,7 @@ public class BaiDuRefreshListView extends ListView implements AbsListView.OnScro
     private static final int PULL_TO_REFRESH = 1;   //下拉刷新状态
     private static final int RELEASE_TO_REFRESH = 2;    //释放状态
     private static final int REFRESHING = 3;    //正在刷新状态
+    private static final int INSTANCE = 100;
     private static final int RATIO = 3;
     private RelativeLayout headView;    //下拉刷新头
     private int headViewHeight; //头高度
@@ -151,77 +152,80 @@ public class BaiDuRefreshListView extends ListView implements AbsListView.OnScro
                     case MotionEvent.ACTION_MOVE:
                         //再次得到y坐标，用来和startY相减来计算offsetY位移值
                         float tempY = ev.getY();
-                        //再起判断一下是否为listview顶部并且没有记录y坐标
-                        if (mFirstVisibleItem == 0 && !isRecord) {
-                            isRecord = true;
-                            startY = tempY;
-                        }
-                        //如果当前状态不是正在刷新的状态，并且已经记录了y坐标
-                        if (state!=REFRESHING && isRecord ) {
-                            //计算y的偏移量
-                            offsetY = tempY - startY;
-                            //计算当前滑动的高度
-                            float currentHeight = (-headViewHeight+offsetY/3);
-                            //用当前滑动的高度和头部headerView的总高度进行比 计算出当前滑动的百分比 0到1
-                            float currentProgress = 1+currentHeight/headViewHeight;
-                            //如果当前百分比大于1了，将其设置为1，目的是让第一个状态的椭圆不再继续变大
-                            if (currentProgress>=1) {
-                                currentProgress = 1;
+                        int instance = (int)(tempY - startY);
+                        if(instance > INSTANCE) {
+                            //再起判断一下是否为listview顶部并且没有记录y坐标
+                            if (mFirstVisibleItem == 0 && !isRecord) {
+                                isRecord = true;
+                                startY = tempY;
                             }
-                            //如果当前的状态是放开刷新，并且已经记录y坐标
-                            if (state == RELEASE_TO_REFRESH && isRecord) {
+                            //如果当前状态不是正在刷新的状态，并且已经记录了y坐标
+                            if (state != REFRESHING && isRecord) {
+                                //计算y的偏移量
+                                offsetY = tempY - startY + INSTANCE;
+                                //计算当前滑动的高度
+                                float currentHeight = (-headViewHeight + offsetY / 3);
+                                //用当前滑动的高度和头部headerView的总高度进行比 计算出当前滑动的百分比 0到1
+                                float currentProgress = 1 + currentHeight / headViewHeight;
+                                //如果当前百分比大于1了，将其设置为1，目的是让第一个状态的椭圆不再继续变大
+                                if (currentProgress >= 1) {
+                                    currentProgress = 1;
+                                }
+                                //如果当前的状态是放开刷新，并且已经记录y坐标
+                                if (state == RELEASE_TO_REFRESH && isRecord) {
 
-                                setSelection(0);
-                                //如果当前滑动的距离小于headerView的总高度
-                                if (-headViewHeight+offsetY/RATIO<0) {
-                                    //将状态置为下拉刷新状态
-                                    state = PULL_TO_REFRESH;
-                                    //根据状态改变headerView，主要是更新动画和文字等信息
-                                    changeHeaderByState(state);
-                                    //如果当前y的位移值小于0，即为headerView隐藏了
-                                }else if (offsetY<=0) {
-                                    //将状态变为done
-                                    state = DONE;
-                                    stopAnim();
-                                    //根据状态改变headerView，主要是更新动画和文字等信息
-                                    changeHeaderByState(state);
+                                    setSelection(0);
+                                    //如果当前滑动的距离小于headerView的总高度
+                                    if (-headViewHeight + offsetY / RATIO < 0) {
+                                        //将状态置为下拉刷新状态
+                                        state = PULL_TO_REFRESH;
+                                        //根据状态改变headerView，主要是更新动画和文字等信息
+                                        changeHeaderByState(state);
+                                        //如果当前y的位移值小于0，即为headerView隐藏了
+                                    } else if (offsetY <= 0) {
+                                        //将状态变为done
+                                        state = DONE;
+                                        stopAnim();
+                                        //根据状态改变headerView，主要是更新动画和文字等信息
+                                        changeHeaderByState(state);
+                                    }
                                 }
-                            }
-                            //如果当前状态为下拉刷新并且已经记录y坐标
-                            if (state == PULL_TO_REFRESH && isRecord) {
-                                setSelection(0);
-                                //如果下拉距离大于等于headerView的总高度
-                                if (-headViewHeight+offsetY/RATIO>=0) {
-                                    //将状态变为放开刷新
-                                    state = RELEASE_TO_REFRESH;
-                                    //根据状态改变headerView，主要是更新动画和文字等信息
-                                    changeHeaderByState(state);
-                                    //如果当前y的位移值小于0，即为headerView隐藏了
-                                }else if (offsetY<=0) {
-                                    //将状态变为done
-                                    state = DONE;
-                                    //根据状态改变headerView，主要是更新动画和文字等信息
-                                    changeHeaderByState(state);
+                                //如果当前状态为下拉刷新并且已经记录y坐标
+                                if (state == PULL_TO_REFRESH && isRecord) {
+                                    setSelection(0);
+                                    //如果下拉距离大于等于headerView的总高度
+                                    if (-headViewHeight + offsetY / RATIO >= 0) {
+                                        //将状态变为放开刷新
+                                        state = RELEASE_TO_REFRESH;
+                                        //根据状态改变headerView，主要是更新动画和文字等信息
+                                        changeHeaderByState(state);
+                                        //如果当前y的位移值小于0，即为headerView隐藏了
+                                    } else if (offsetY <= 0) {
+                                        //将状态变为done
+                                        state = DONE;
+                                        //根据状态改变headerView，主要是更新动画和文字等信息
+                                        changeHeaderByState(state);
+                                    }
                                 }
-                            }
-                            //如果当前状态为done并且已经记录y坐标
-                            if (state == DONE && isRecord) {
-                                //如果位移值大于0
-                                if (offsetY>=0) {
-                                    //将状态改为下拉刷新状态
-                                    state = PULL_TO_REFRESH;
-                                    changeHeaderByState(state);
+                                //如果当前状态为done并且已经记录y坐标
+                                if (state == DONE && isRecord) {
+                                    //如果位移值大于0
+                                    if (offsetY >= 0) {
+                                        //将状态改为下拉刷新状态
+                                        state = PULL_TO_REFRESH;
+                                        changeHeaderByState(state);
+                                    }
                                 }
-                            }
-                            //如果为下拉刷新状态
-                            if (state == PULL_TO_REFRESH) {
-                                //则改变headerView的padding来实现下拉的效果
-                                headView.setPadding(0,(int)(-headViewHeight+offsetY/RATIO) ,0,0);
-                            }
-                            //如果为放开刷新状态
-                            if (state == RELEASE_TO_REFRESH) {
-                                //改变headerView的padding值
-                                headView.setPadding(0,(int)(-headViewHeight+offsetY/RATIO) ,0, 0);
+                                //如果为下拉刷新状态
+                                if (state == PULL_TO_REFRESH) {
+                                    //则改变headerView的padding来实现下拉的效果
+                                    headView.setPadding(0, (int) (-headViewHeight + offsetY / RATIO), 0, 0);
+                                }
+                                //如果为放开刷新状态
+                                if (state == RELEASE_TO_REFRESH) {
+                                    //改变headerView的padding值
+                                    headView.setPadding(0, (int) (-headViewHeight + offsetY / RATIO), 0, 0);
+                                }
                             }
                         }
                         break;

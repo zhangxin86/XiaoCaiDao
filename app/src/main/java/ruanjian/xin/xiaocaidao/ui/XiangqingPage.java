@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,13 +36,15 @@ import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.adapter.StepAdapter;
 import ruanjian.xin.xiaocaidao.domain.StepItem;
 
+import static ruanjian.xin.xiaocaidao.utils.Utils.JUHE_URL;
+
 /**
  * Created by liyuxuan on 2016/11/27.
  */
 
-
-
 public class XiangqingPage extends Activity {
+
+    private String menuName;//上一个页面穿来的菜肴名称
 
     private TextView tvName;//名称
     private TextView tvTags;//标签
@@ -51,7 +52,6 @@ public class XiangqingPage extends Activity {
     private TextView tvInfo;//描述
     private TextView tvIngredients;//主料
     private TextView tvBurden;//辅料
-    private LinearLayout llSteps;//步骤的LinearLayout
 
     private ListView lvSteps;
     private StepAdapter myadapter;
@@ -64,22 +64,36 @@ public class XiangqingPage extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menudetail);
 
+        menuName=getIntent().getStringExtra("menuName");//得到要传入的要显示的菜品名称数据
+
         tvName = (TextView) findViewById(R.id.tv_menuName);
         tvTags = (TextView)findViewById(R.id.tv_tags);
         ivImg = (ImageView)findViewById(R.id.iv_menuImg);
         tvInfo = (TextView)findViewById(R.id.tv_info);
         tvIngredients = (TextView)findViewById(R.id.tv_ingredients);
         tvBurden = (TextView)findViewById(R.id.tv_burden);
-        llSteps = (LinearLayout)findViewById(R.id.ll_steps);
 
+        pDialog=new ProgressDialog(this);
+        pDialog.setMessage("Loading...");
+        pDialog.show();
+
+        fetchSteps(menuName);
+
+
+        lvSteps = (ListView)findViewById(R.id.lv_steps);
+        myadapter = new StepAdapter(getApplicationContext(),mSteps);
+        lvSteps.setAdapter(myadapter);
+
+    }
+
+    public void fetchSteps(final String menuName) {
 
         AsyncHttpClient httpclient = new AsyncHttpClient();
-        String Url = "http://apis.juhe.cn/cook/query.php";
         RequestParams params = new RequestParams();
         params.add("key","90e8a667333aa3c83bbfdcabbd0fa620");
-        params.add("menu","红烧肉");
+        params.add("menu",menuName);
         params.add("rn","1");
-        httpclient.get(getApplicationContext(),Url,params,new JsonHttpResponseHandler(){
+        httpclient.get(getApplicationContext(),JUHE_URL,params,new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
@@ -117,38 +131,6 @@ public class XiangqingPage extends Activity {
                                 error.printStackTrace();
                             }
                         });
-
-                       // JSONArray steps = obj.getJSONArray("steps");
-                       /* for (int j=0;j<steps.length();j++){
-                            JSONObject stepobj = steps.getJSONObject(j);
-                            String step = stepobj.getString("step");
-                            TextView tvStep = new TextView(getApplicationContext());
-                            tvStep.setText(step);
-                            llSteps.addView(tvStep);
-                            String stepImgs = stepobj.getString("img");
-                            new AsyncHttpClient().get(stepImgs, new AsyncHttpResponseHandler(){
-                                @Override
-                                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                                    if(statusCode==200){
-                                        BitmapFactory factory=new BitmapFactory();
-                                        Bitmap bitmap=factory.decodeByteArray(responseBody, 0, responseBody.length);
-
-                                        ImageView ivStep = new ImageView(getApplicationContext());
-
-                                        ivStep.setImageBitmap(bitmap);
-                                        llSteps.addView(ivStep);
-                                    }
-                                }
-
-                                @Override
-                                public void onFailure(int statusCode, Header[] headers,
-                                                      byte[] responseBody, Throwable error) {
-                                    error.printStackTrace();
-                                }
-                            });
-                        }*/
-
-
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -157,20 +139,11 @@ public class XiangqingPage extends Activity {
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
-                Toast.makeText(getApplicationContext(),"出事儿了",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"出错儿了",Toast.LENGTH_SHORT).show();
             }
         });
 
-        fetchSteps();
-        lvSteps = (ListView)findViewById(R.id.lv_steps);
-        myadapter = new StepAdapter(getApplicationContext(),mSteps);
-        lvSteps.setAdapter(myadapter);
-
-    }
-
-    private void fetchSteps() {
-
-        StringRequest req=new StringRequest(Request.Method.POST,"http://apis.juhe.cn/cook/query.php", new Response.Listener<String>() {
+        StringRequest req=new StringRequest(Request.Method.POST,JUHE_URL, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String s) {
@@ -188,16 +161,12 @@ public class XiangqingPage extends Activity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-                System.out.println("try之前："+jsonObject.toString());
-
                 try {
                     JSONObject result=jsonObject.getJSONObject("result");
                     JSONArray data = result.getJSONArray("data");
                     JSONObject menu = data.getJSONObject(0);
                     JSONArray steps = menu.getJSONArray("steps");//步骤对象数组
                     for (int j=0;j<steps.length();j++){
-                        System.out.println("循环打印"+j);
                         JSONObject stepobj = steps.getJSONObject(j);
                         String stepImg = stepobj.getString("img");
                         System.out.println("图片url："+stepImg);
@@ -205,7 +174,6 @@ public class XiangqingPage extends Activity {
                         StepItem stepItem = new StepItem();
                         stepItem.setStepImg(stepImg);
                         stepItem.setStepTitle(step);
-
 
                         mSteps.add(stepItem);
                     }
@@ -227,7 +195,7 @@ public class XiangqingPage extends Activity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> map = new HashMap<>();
                 map.put("key","90e8a667333aa3c83bbfdcabbd0fa620");
-                map.put("menu","红烧肉");
+                map.put("menu",menuName);
                 return map;
             }
         };
@@ -238,4 +206,5 @@ public class XiangqingPage extends Activity {
         if(pDialog!=null)
             pDialog.dismiss();
         pDialog=null;
-    }}
+    }
+}
