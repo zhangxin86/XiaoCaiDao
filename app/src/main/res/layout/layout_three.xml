@@ -7,12 +7,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
     <Button
+        android:textColor="@color/tab_select"
+        android:background="@null"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btn1"
         android:text="主贴"
-        android:layout_marginLeft="100dp"/>
+        android:layout_marginLeft="110dp"/>
     <Button
+        android:background="@null"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/btn2"

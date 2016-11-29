@@ -54,6 +54,13 @@ public class Main2 extends AppCompatActivity {
         public void onClick(View v) {
             FragmentManager fm = getFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
+            if(v ==button1){
+                button1.setTextColor(getResources().getColor(R.color.tab_select));
+                button2.setTextColor(getResources().getColor(R.color.tab_default));
+            }else {
+                button1.setTextColor(getResources().getColor(R.color.tab_default));
+                button2.setTextColor(getResources().getColor(R.color.tab_select));
+            }
             switch (v.getId()){
                 case R.id.btn1:
                     if (fragment1==null){

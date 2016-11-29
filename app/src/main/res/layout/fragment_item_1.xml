@@ -21,7 +21,7 @@
 
     <Button
         android:layout_marginTop="17dp"
-        android:background="@drawable/shape1"
+        android:background="@null"
         android:id="@+id/fragment_one_list_btn1"
         android:text="关注"
         android:layout_width="wrap_content"

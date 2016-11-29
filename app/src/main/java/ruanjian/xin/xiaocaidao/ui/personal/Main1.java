@@ -3,6 +3,7 @@ package ruanjian.xin.xiaocaidao.ui.personal;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -52,6 +53,13 @@ public class Main1 extends AppCompatActivity {
         public void onClick(View v) {
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            if(v ==button1){
+                button1.setTextColor(getResources().getColor(R.color.tab_select));
+                button2.setTextColor(getResources().getColor(R.color.tab_default));
+            }else {
+                button1.setTextColor(getResources().getColor(R.color.tab_default));
+                button2.setTextColor(getResources().getColor(R.color.tab_select));
+            }
             switch (v.getId()){
                 case R.id.btn1:
                     if(fragment1==null){
@@ -64,6 +72,8 @@ public class Main1 extends AppCompatActivity {
                         fragment2=new Fragment_one2();
                     }
                     fragmentTransaction.replace(R.id.f1,fragment2);
+                    default:
+                        break;
             }
             fragmentTransaction.commit();
             linearLayout.invalidate();

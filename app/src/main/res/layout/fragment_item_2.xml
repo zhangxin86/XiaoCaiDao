@@ -20,7 +20,7 @@
         android:id="@+id/fragment_one_list_tv2" />
 
     <Button
-        android:background="@drawable/shape1"
+        android:background="@null"
         android:layout_marginTop="17dp"
         android:id="@+id/fragment_one_list_btn2"
         android:text="取消关注"
