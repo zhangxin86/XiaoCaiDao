@@ -6,7 +6,7 @@
 
     <!--tabhost相关-->
     <color name="tab_default">#606060</color>
-    <color name="tab_select">#ff8000</color>
+    <color name="tab_select">#ff5722</color>
     <color name="black">#101010</color>
     <!--注册相关-->
     <color name="orange">#f58220</color>
