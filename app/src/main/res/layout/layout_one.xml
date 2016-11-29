@@ -8,12 +8,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <Button
+            android:background="@drawable/shape1"
+           android:textColor="#000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn1"
             android:text="粉丝"
             android:layout_marginLeft="100dp"/>
         <Button
+            android:background="@drawable/shape1"
+            android:textColor="#000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn2"
