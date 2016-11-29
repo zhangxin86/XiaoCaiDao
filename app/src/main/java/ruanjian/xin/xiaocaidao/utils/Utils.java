@@ -6,4 +6,5 @@ package ruanjian.xin.xiaocaidao.utils;
 
 public class Utils {
     public static int flag = 0;
+    public static final String JUHE_URL="http://apis.juhe.cn/cook/query.php";
 }
