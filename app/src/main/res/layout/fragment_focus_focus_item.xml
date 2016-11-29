@@ -6,7 +6,8 @@
         android:id="@+id/fragment_one_list_iv2"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/p1"/>
+        android:src="@drawable/p1"
+        android:layout_marginTop="5dp"/>
 
     <TextView
         android:paddingTop="20dp"

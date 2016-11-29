@@ -9,10 +9,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import ruanjian.xin.xiaocaidao.R;
-import ruanjian.xin.xiaocaidao.ui.personal.Main1;
-import ruanjian.xin.xiaocaidao.ui.personal.Main2;
-import ruanjian.xin.xiaocaidao.ui.personal.Main3;
-import ruanjian.xin.xiaocaidao.ui.personal.Main4;
+import ruanjian.xin.xiaocaidao.ui.personal.Person_fouse;
+import ruanjian.xin.xiaocaidao.ui.personal.Person_collect;
+import ruanjian.xin.xiaocaidao.ui.personal.Person_post;
+import ruanjian.xin.xiaocaidao.ui.personal.Person_setting;
 
 public class PersonPage extends Fragment {
 
@@ -35,24 +35,24 @@ public class PersonPage extends Fragment {
                     switch (v.getId()){
                         case R.id.activity_tv1:
                             Intent intent = new Intent();
-                            intent.setClass(getActivity(),Main1.class);
+                            intent.setClass(getActivity(),Person_fouse.class);
                             startActivity(intent);
                             break;
 
                         case R.id.activity_tv2:
                             Intent intent1 = new Intent();
-                            intent1.setClass(getActivity(),Main2.class);
+                            intent1.setClass(getActivity(),Person_collect.class);
                             startActivity(intent1);
                             break;
                         case R.id.activity_tv3:
                             Intent intent2 = new Intent();
-                            intent2.setClass(getActivity(),Main3.class);
+                            intent2.setClass(getActivity(),Person_post.class);
                             startActivity(intent2);
                             break;
 
                         case R.id.activity_tv4:
                             Intent intent3 = new Intent();
-                            intent3.setClass(getActivity(),Main4.class);
+                            intent3.setClass(getActivity(),Person_setting.class);
                             startActivity(intent3);
                             break;
 

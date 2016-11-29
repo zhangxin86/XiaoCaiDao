@@ -3,14 +3,15 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ruanjian.xin.xiaocaidao.domain.XCRoundImageView
+        android:layout_marginTop="5dp"
         android:id="@+id/fragment_one_list_iv5"
         android:layout_width="80dp"
-        android:layout_height="90dp"
+        android:layout_height="80dp"
         android:src="@drawable/ic9"/>
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="90dp">
+        android:layout_height="80dp">
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"

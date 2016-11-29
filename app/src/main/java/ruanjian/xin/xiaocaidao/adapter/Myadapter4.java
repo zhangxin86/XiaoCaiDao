@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ruanjian.xin.xiaocaidao.R;
-import ruanjian.xin.xiaocaidao.domain.Name;
 import ruanjian.xin.xiaocaidao.domain.Name2;
 
 
@@ -46,7 +45,7 @@ public class Myadapter4 extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.fragment_item_4, null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.fragment_collect_post_item, null);
         }
         TextView textView=(TextView)convertView.findViewById(R.id.fragment_one_list_tv4);
         textView.setText(list.get(position).getName1());

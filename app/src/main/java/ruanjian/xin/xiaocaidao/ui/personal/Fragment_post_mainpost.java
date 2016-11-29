@@ -7,14 +7,12 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.adapter.BaiDuRefreshListView;
-import ruanjian.xin.xiaocaidao.adapter.Myadapter4;
 import ruanjian.xin.xiaocaidao.adapter.Myadapter5;
 import ruanjian.xin.xiaocaidao.domain.Name2;
 
@@ -23,7 +21,7 @@ import ruanjian.xin.xiaocaidao.domain.Name2;
  * Created by 你的账户 on 2016/11/23.
  */
 
-public class Fragment_three1 extends Fragment implements BaiDuRefreshListView.OnBaiduRefreshListener{
+public class Fragment_post_mainpost extends Fragment implements BaiDuRefreshListView.OnBaiduRefreshListener{
     private Myadapter5 myadapter5;
     private BaiDuRefreshListView listView;
     private List<Name2> list = new ArrayList<Name2>();
@@ -47,7 +45,7 @@ public class Fragment_three1 extends Fragment implements BaiDuRefreshListView.On
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v=inflater.inflate(R.layout.fragment_three1,container,false);
+        View v=inflater.inflate(R.layout.fragment_post_mainpost,container,false);
         getView(v);
         getData();
         setAdapter();

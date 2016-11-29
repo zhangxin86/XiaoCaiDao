@@ -17,7 +17,7 @@ import ruanjian.xin.xiaocaidao.R;
  * Created by 你的账户 on 2016/11/23.
  */
 
-public class Main3 extends AppCompatActivity {
+public class Person_post extends AppCompatActivity {
     private Button button1;
     private Button button2;
     private Fragment fragment1;
@@ -26,7 +26,7 @@ public class Main3 extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_three);
+        setContentView(R.layout.layout_post);
         initview();
     }
     private void initview(){
@@ -39,7 +39,7 @@ public class Main3 extends AppCompatActivity {
     private void setDefaultFragment(){
         FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        fragment1 = new Fragment_three1();
+        fragment1 = new Fragment_post_mainpost();
         ft.replace(R.id.f1,fragment1);
         ft.commit();
     }
@@ -62,13 +62,13 @@ public class Main3 extends AppCompatActivity {
             switch (v.getId()){
                 case R.id.btn1:
                     if(fragment1 ==null){
-                        fragment1 =new Fragment_three1();
+                        fragment1 =new Fragment_post_mainpost();
                     }
                     ft.replace(R.id.f1,fragment1);
                     break;
                 case R.id.btn2:
                     if(fragment2 ==null){
-                        fragment2 =new Fragment_three2();
+                        fragment2 =new Fragment_post_repost();
                     }
                     ft.replace(R.id.f1,fragment2);
                     break;

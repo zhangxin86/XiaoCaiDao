@@ -19,10 +19,10 @@
         <activity android:name=".ui.MenuPage" />
         <activity android:name=".ui.FriendPage" />
         <activity android:name=".ui.PersonPage" />
-        <activity android:name=".ui.personal.Main1"/>
-        <activity android:name=".ui.personal.Main2"/>
-        <activity android:name=".ui.personal.Main3"/>
-        <activity android:name=".ui.personal.Main4"/>
+        <activity android:name=".ui.personal.Person_fouse"/>
+        <activity android:name=".ui.personal.Person_collect"/>
+        <activity android:name=".ui.personal.Person_post"/>
+        <activity android:name=".ui.personal.Person_setting"/>
         <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
         <meta-data

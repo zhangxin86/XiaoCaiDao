@@ -3,11 +3,11 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ruanjian.xin.xiaocaidao.domain.XCRoundImageView
+        android:layout_marginTop="5dp"
         android:id="@+id/fragment_one_list_iv1"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:src="@drawable/p1"/>
-
     <TextView
         android:paddingTop="20dp"
         android:paddingLeft="10dp"
@@ -18,7 +18,6 @@
         android:textSize="25dp"
         android:textColor="#000000"
         android:id="@+id/fragment_one_list_tv1"/>
-
     <Button
         android:layout_marginTop="17dp"
         android:background="@null"
