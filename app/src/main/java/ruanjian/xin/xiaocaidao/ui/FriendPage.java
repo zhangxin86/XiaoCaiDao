@@ -6,10 +6,12 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
 import android.widget.TabHost;
 import android.widget.TextView;
 
@@ -23,6 +25,7 @@ public class FriendPage extends Fragment {
     private LocalActivityManager manager;
     private TabHost tabHost;
     private ImageView imageView;
+    private RadioGroup radioderGroup;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,12 +36,12 @@ public class FriendPage extends Fragment {
 
         findView();
         tabHost.setup(manager);
-        tabHost.addTab(tabHost.newTabSpec("hot").setIndicator("热门")
+        tabHost.addTab(tabHost.newTabSpec("hot").setIndicator("remen")
                 .setContent(new Intent(getActivity(), HotFriend.class)));
-        tabHost.addTab(tabHost.newTabSpec("new").setIndicator("最新")
+        tabHost.addTab(tabHost.newTabSpec("new").setIndicator("zuixin")
                 .setContent(new Intent(getActivity(), NewFriend.class)));
-        tabHost.setCurrentTab(0);
-        updateTab(tabHost);    //初始化Tab的颜色，和字体的颜色
+
+
         setListener();
 
         return v;
@@ -47,21 +50,12 @@ public class FriendPage extends Fragment {
     private void findView() {
         tabHost = (TabHost)v.findViewById(R.id.tabhost);
         imageView = (ImageView)v.findViewById(R.id.friend_Item_add);
+        radioderGroup = (RadioGroup) v.findViewById(R.id.main_radio);
     }
 
     private void setListener() {
-        tabHost.setOnTabChangedListener(new OnTabChangedListener());   // 选择监听器
         imageView.setOnClickListener(new OnClickListener());
-    }
-
-    class OnTabChangedListener implements TabHost.OnTabChangeListener {
-        @Override
-        public void onTabChanged(String tabId) {
-            tabHost.setCurrentTabByTag(tabId);
-            System.out.println("tabid " + tabId);
-            System.out.println("curreny after: " + tabHost.getCurrentTabTag());
-            updateTab(tabHost);
-        }
+        radioderGroup.setOnCheckedChangeListener(new OnCheckListener());
     }
 
     private class OnClickListener implements View.OnClickListener {
@@ -72,24 +66,16 @@ public class FriendPage extends Fragment {
         }
     }
 
-    /**
-     * 更新Tab标签的颜色，和字体的颜色
-     * @param tabHost
-     */
-    private void updateTab(final TabHost tabHost) {
-        for (int i = 0; i < tabHost.getTabWidget().getChildCount(); i++) {
-            View view = tabHost.getTabWidget().getChildAt(i);
-            TextView tv = (TextView) tabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
-            tv.setTextSize(16);
-            tv.setTypeface(Typeface.SERIF, 2); // 设置字体和风格
-            if (tabHost.getCurrentTab() == i) {//选中
-                view.setBackgroundDrawable(getResources().getDrawable(R.drawable.friend_tab_back_click));//选中后的背景
-                tv.setTextColor(this.getResources().getColorStateList(
-                        R.color.white));
-            } else {//不选中
-                view.setBackgroundDrawable(getResources().getDrawable(R.drawable.friend_tab_back_none));//非选择的背景
-                tv.setTextColor(this.getResources().getColorStateList(
-                        R.color.tab_select));
+    private class OnCheckListener implements RadioGroup.OnCheckedChangeListener {
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            switch(checkedId){
+                case R.id.button_hot:
+                    tabHost.setCurrentTabByTag("hot");
+                    break;
+                case R.id.button_new:
+                    tabHost.setCurrentTabByTag("new");
+                    break;
             }
         }
     }

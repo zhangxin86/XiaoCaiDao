@@ -5,7 +5,9 @@
     android:id="@+id/activity_friend_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ruanjian.xin.xiaocaidao.ui.FriendPage">
+    tools:context="ruanjian.xin.xiaocaidao.ui.FriendPage"
+    android:background="#f7f7f7">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -32,7 +34,7 @@
     <TabHost
         android:id="@+id/tabhost"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="fill_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,21 +43,35 @@
 
             <TabWidget
                 android:id="@android:id/tabs"
-                android:layout_width="wrap_content"
+                android:visibility="gone"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:layout_margin="30dp"
-                android:layout_gravity="center"
-                android:orientation="horizontal"
-                android:elevation="1dp">
-            </TabWidget>
+                android:layout_weight="0.0" />
+            <RadioGroup
+                android:id="@+id/main_radio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/button_hot"
+                    android:text="热门"
+                    android:ellipsize="marquee"
+                    android:checked="true"
+                    style="@style/FriendRadioButton"/>
+                <RadioButton
+                    android:id="@+id/button_new"
+                    android:text="最新"
+                    style="@style/FriendRadioButton" />
+            </RadioGroup>
 
             <FrameLayout
                 android:id="@android:id/tabcontent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
-            </FrameLayout>
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0" />
         </LinearLayout>
     </TabHost>
+
 </LinearLayout>

@@ -34,11 +34,22 @@
         <item name="android:gravity">center_vertical</item>
     </style>
     <style name="FriendTagStyle">
-        <item name="android:layout_width">70dp</item>
-        <item name="android:layout_height">50dp</item>
-        <item name="android:textSize">16dp</item>
+        <item name="android:layout_width">55dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:textSize">12dp</item>
         <item name="android:background">@drawable/tag_button_style</item>
-        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+    </style>
+    <style name="FriendRadioButton">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:button">@null</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:background">@drawable/radio_selector_back</item>
+        <item name="android:textColor">@drawable/radio_selector_text</item>
     </style>
 
 </resources>
