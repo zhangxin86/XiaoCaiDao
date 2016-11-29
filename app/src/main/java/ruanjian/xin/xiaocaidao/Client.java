@@ -5,11 +5,13 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import ruanjian.xin.xiaocaidao.ui.FriendPage;
 import ruanjian.xin.xiaocaidao.ui.MainPage;
@@ -42,6 +44,7 @@ public class Client extends AppCompatActivity {
     private PersonPage personPage;
 
     private ImageButton searchButton;//搜索按钮
+    private EditText searchEdit;
 
     private static int pre_select = 0;
 
@@ -91,6 +94,7 @@ public class Client extends AppCompatActivity {
         Iv_PersonPage = (ImageView)findViewById(R.id.Ivlayout_clientPersonPage);
 
         searchButton = (ImageButton) findViewById(R.id.Ivlayout_clientPerMessage);
+        searchEdit = (EditText)findViewById(R.id.search_menu);
     }
 
     private void setListener(){
@@ -107,6 +111,10 @@ public class Client extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()){
                 case R.id.Ivlayout_clientPerMessage:
+                    if(searchEdit.getText().toString().length()==0){
+                        Toast.makeText(getApplicationContext(),"请输入搜索内容",Toast.LENGTH_SHORT).show();
+                        break;
+                    }
                     clearPreTab();
                     setMenuPage();
                     break;
