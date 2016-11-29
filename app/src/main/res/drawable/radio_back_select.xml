@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 实心 -->
+    <solid android:color="@color/tab_select"/>
+    <!-- 边框
+    <stroke
+        android:width="0.5dp"
+        android:color="@android:color/black"/>
+     -->
+    <!-- 圆角 -->
+    <corners android:radius="15dp"/>
+    <!-- 边距 -->
+    <padding
+        android:top="3dp"
+        android:bottom="3dp"
+        android:left="10dp"
+        android:right="10dp"/>
+</shape>
