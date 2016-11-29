@@ -30,4 +30,5 @@ dependencies {
     compile 'com.jude:rollviewpager:1.2.9'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.google.android.gms:play-services-appindexing:8.4.0'
+    compile files('libs/android-async-http-1.4.8.jar')
 }

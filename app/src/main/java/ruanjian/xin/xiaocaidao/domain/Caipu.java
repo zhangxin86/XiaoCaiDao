@@ -4,27 +4,24 @@ package ruanjian.xin.xiaocaidao.domain;
  * Created by Administrator on 2016/11/22.
  */
 public class Caipu {//经典菜谱
-    private Long id;
     private String Name;
     private String Material;//材料
-    private String Total;//赞的人数
-    private int img;//主图
-//
-    public Caipu(Long id, String name, String material, String total, int img
+    private String imgURL;//图片地址
+
+    public Caipu(){}
+    public Caipu(String name, String material, String URL
     ) {
-        this.id = id;
         Name = name;
         Material = material;
-        Total = total;
-        this.img = img;
+        imgURL = URL;
     }
 
-    public Long getId() {
-        return id;
+    public String getImgURL() {
+        return imgURL;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setImgURL(String imgURL) {
+        this.imgURL = imgURL;
     }
 
     public String getName() {
@@ -41,21 +38,5 @@ public class Caipu {//经典菜谱
 
     public void setMaterial(String material) {
         Material = material;
-    }
-
-    public String getTotal() {
-        return Total;
-    }
-
-    public void setTotal(String total) {
-        Total = total;
-    }
-
-    public int getImg() {
-        return img;
-    }
-
-    public void setImg(int img) {
-        this.img = img;
     }
 }
