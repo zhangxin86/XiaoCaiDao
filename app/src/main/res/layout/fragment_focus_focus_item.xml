@@ -2,11 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ImageView
-        android:id="@+id/fragment_one_list_iv1"
+    <ruanjian.xin.xiaocaidao.domain.XCRoundImageView
+        android:id="@+id/fragment_one_list_iv2"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/p1"/>
+        android:src="@drawable/p1"
+        android:layout_marginTop="5dp"/>
+
     <TextView
         android:paddingTop="20dp"
         android:paddingLeft="10dp"
@@ -16,10 +18,13 @@
         android:text="小妖怪"
         android:textSize="25dp"
         android:textColor="#000000"
-        android:id="@+id/fragment_one_list_tv1"/>
+        android:id="@+id/fragment_one_list_tv2" />
+
     <Button
-        android:id="@+id/fragment_one_list_btn1"
-        android:text="关注"
-        android:layout_width="match_parent"
-        android:layout_height="80dp" />
+        android:background="@null"
+        android:layout_marginTop="17dp"
+        android:id="@+id/fragment_one_list_btn2"
+        android:text="取消关注"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp" />
 </LinearLayout>

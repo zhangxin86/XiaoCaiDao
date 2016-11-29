@@ -25,14 +25,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="头像"/>
-        <ImageView
+        <ruanjian.xin.xiaocaidao.domain.XCRoundImageView
             android:layout_marginLeft="120dp"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:src="@drawable/p1"/>
 
         <ImageView
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="33dp"
             android:layout_marginTop="25dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -117,9 +117,10 @@
     </LinearLayout>
 
     <Button
+        android:background="@drawable/shape2"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="退出"
-        android:background="@color/tab_select"
-        tools:textColor="@color/common_google_signin_btn_text_dark_default" />
+        android:textColor="#FFFFFF"
+        android:id="@+id/button" />
 </LinearLayout>

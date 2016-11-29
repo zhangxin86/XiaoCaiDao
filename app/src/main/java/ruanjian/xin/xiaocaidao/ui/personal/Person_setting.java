@@ -11,10 +11,11 @@ import ruanjian.xin.xiaocaidao.R;
  * Created by 你的账户 on 2016/11/23.
  */
 
-public class Main4 extends AppCompatActivity {
+public class Person_setting extends AppCompatActivity {
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_four);
+        setContentView(R.layout.layout_setting);
     }
 }

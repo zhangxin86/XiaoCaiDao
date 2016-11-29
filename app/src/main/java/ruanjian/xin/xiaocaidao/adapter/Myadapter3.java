@@ -1,7 +1,6 @@
 package ruanjian.xin.xiaocaidao.adapter;
 
 import android.content.Context;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +46,7 @@ public class Myadapter3 extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView==null){
-            convertView = LayoutInflater.from(context).inflate(R.layout.fragment_item_3,null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.fragment_collect_menu_item,null);
         }
         TextView textView = (TextView)convertView.findViewById(R.id.fragment_one_list_tv3);
         textView.setText(list.get(position).getName());

@@ -45,7 +45,7 @@ public class Myadapter5 extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.fragment_item_5, null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.fragment_post_main_item, null);
         }
         TextView textView=(TextView)convertView.findViewById(R.id.fragment_one_list_tv5);
         textView.setText(list.get(position).getName1());
