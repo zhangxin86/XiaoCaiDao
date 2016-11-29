@@ -3,13 +3,15 @@ package ruanjian.xin.xiaocaidao.ui;
 import android.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
@@ -23,12 +25,13 @@ import ruanjian.xin.xiaocaidao.adapter.CommentAdapter;
 import ruanjian.xin.xiaocaidao.adapter.SpicyAdapter;
 import ruanjian.xin.xiaocaidao.adapter.TodayAdapter;
 import ruanjian.xin.xiaocaidao.domain.Parts;
+import ruanjian.xin.xiaocaidao.utils.RefreshView;
 
 /**
  * Created by xin on 2016/11/17.
  */
 
-public class MainPage extends Fragment {
+public class MainPage extends Fragment implements RefreshView.RefrshListener{
     private TodayAdapter todayAdapter;
     private SpicyAdapter spicyAdapter;
     private CommentAdapter commentAdapter;
@@ -40,12 +43,28 @@ public class MainPage extends Fragment {
     private List<Parts> data3 = new ArrayList<>();
 
     private RollPagerView mRollViewPager;
+    private RefreshView refreshView;
+    private static final int STATE_FRESHED = 3;
 
+    protected Handler myHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            if(msg.what==STATE_FRESHED){
+                refreshView.ChangeHeaderState(STATE_FRESHED);
+                refreshView.isFreshCommplete = true;
+                Toast.makeText(getActivity(),"刷新完毕",Toast.LENGTH_SHORT).show();
+            }
+            super.handleMessage(msg);
+        }
+    };
+
+    /*
+    * 生命周期相关函数
+    * */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_main_page,container,false);
         getView(v);
-
         getData1();
         getData2();
         getData3();
@@ -57,28 +76,50 @@ public class MainPage extends Fragment {
         return v;
     }
 
+
+    @Override
+    public void onRefresh() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    refreshView.isFreshCommplete = false;
+                    Thread.sleep(2000);
+                    myHandler.sendEmptyMessage(STATE_FRESHED);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+
+    /*
+        * 辅助函数
+        * */
     private void getView(View v){
         Lv_Today = (ListView)v.findViewById(R.id.Lvactivity_main_pageToday);
         Gv_Spicy = (GridView)v.findViewById(R.id.Gvactivity_main_pageFoodAndSpicy);
         Lv_Comment = (ListView)v.findViewById(R.id.Lvactivity_main_pageComment);
 
-        mRollViewPager = (RollPagerView)v.findViewById(R.id.roll_view_pager);
+        mRollViewPager = (RollPagerView) v.findViewById(R.id.roll_view_pager);
+
+        refreshView = (RefreshView) v.findViewById(R.id.Sv_refresh);
+        refreshView.setRefrshListener(this);
+        refreshView.init();
     }
     private void setToday(){
         todayAdapter = new TodayAdapter(getActivity(),data1);
         Lv_Today.setAdapter(todayAdapter);
     }
-
     private void setSpicy(){
         spicyAdapter = new SpicyAdapter(getActivity(),data2);
         Gv_Spicy.setAdapter(spicyAdapter);
     }
-
     private void setComment(){
         commentAdapter = new CommentAdapter(getActivity(),data3);
         Lv_Comment.setAdapter(commentAdapter);
     }
-
     private void setRollViewPager(){
         //设置播放时间间隔
         mRollViewPager.setPlayDelay(3000);
@@ -98,6 +139,9 @@ public class MainPage extends Fragment {
         //mRollViewPager.setHintView(null);
     }
 
+    /*
+    * 辅助类
+    * */
     private class TestNormalAdapter extends StaticPagerAdapter {
         private int[] imgs = {
                 R.drawable.img0,
@@ -123,6 +167,10 @@ public class MainPage extends Fragment {
         }
     }
 
+
+    /*
+    * 实验函数
+    * */
     private void getData1(){
         data1.add(new Parts());
         data1.add(new Parts());

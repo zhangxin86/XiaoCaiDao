@@ -6,9 +6,10 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ruanjian.xin.xiaocaidao.ui.MainPage">
+    tools:context="ruanjian.xin.xiaocaidao.ui.MainPage"
+    android:background="#ededed">
 
-    <ScrollView
+    <ruanjian.xin.xiaocaidao.utils.RefreshView
         android:id="@+id/Sv_refresh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,9 +21,53 @@
             android:background="#ededed">
             //刷新样式：
             <RelativeLayout
-                android:id="@+id/Refresh"
+                android:id="@+id/refresh"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="100dp"
+                android:layout_marginTop="-100dp">
+                <ImageView
+                    android:id="@+id/iv_back1"
+                    android:src="@drawable/pull_back"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp" />
+                <ImageView
+                    android:id="@+id/iv_back2"
+                    android:src="@drawable/pull_back"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp" />
+                <RelativeLayout
+                    android:id="@+id/main"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_marginTop="45dp"
+                        android:id="@+id/iv_rider"
+                        android:background="@drawable/pull_rider"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp" />
+                    <ImageView
+                        android:id="@+id/wheel1"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="90dp"
+                        android:background="@drawable/pull_wheel"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp" />
+                    <ImageView
+                        android:id="@+id/wheel2"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginTop="90dp"
+                        android:background="@drawable/pull_wheel"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp" />
+                </RelativeLayout>
+                <ImageView
+                    android:id="@+id/ivsun"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@+id/main"
+                    android:background="@drawable/pull_sun"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
             </RelativeLayout>
             <!--轮播图-->
             <!--<ImageView-->
@@ -324,7 +369,7 @@
             <ListView
                 android:id="@+id/Lvactivity_main_pageComment"
                 android:layout_width="match_parent"
-                android:layout_height="5000dp"
+                android:layout_height="1240dp"
                 android:dividerHeight="5dp"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp">
@@ -332,5 +377,5 @@
             </ListView>
 
         </LinearLayout>
-    </ScrollView>
+    </ruanjian.xin.xiaocaidao.utils.RefreshView>
 </LinearLayout>
