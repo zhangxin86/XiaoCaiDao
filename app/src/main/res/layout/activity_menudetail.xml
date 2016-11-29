@@ -22,7 +22,7 @@
 
                 <TextView
                     android:text="菜品名称"
-                    android:textSize="20sp"
+                    android:textSize="25sp"
                     android:id="@+id/tv_menuName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -50,8 +50,8 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginTop="25dp">
 
                 <!--简介模块-->
@@ -68,8 +68,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="描述"
-                    android:textSize="18sp"
-                    android:layout_marginLeft="10dp"/>
+                    android:textSize="15sp"
+                    android:layout_marginLeft="15dp"/>
 
                 <!--用料模块-->
                 <TextView
@@ -79,53 +79,65 @@
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="#a49c83"
+                    android:layout_marginTop="25dp"
                     android:layout_marginBottom="10dp"/>
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp">
                     <TextView
                         android:text="主料： "
+                        android:textSize="15sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <TextView
                         android:id="@+id/tv_ingredients"
                         android:text="主料们"
+                        android:textSize="15sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp">
                     <TextView
                         android:text="辅料： "
+                        android:textSize="15sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <TextView
                         android:id="@+id/tv_burden"
                         android:text="辅料们"
+                        android:textSize="15sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
                 </LinearLayout>
                 <TextView
                     android:text="步骤"
-                    android:textSize="20dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#a49c83"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="25dp"/>
                 <LinearLayout
                     android:id="@+id/ll_steps"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp">
                     <!--
                         步骤信息，需要网络请求图片
                         -->
                     <ListView
                         android:id="@+id/lv_steps"
                         android:layout_width="match_parent"
-                        android:layout_height="5000dp"
+                        android:layout_height="4300dp"
                         android:dividerHeight="0dp"
                         android:divider="@null"/>
                 </LinearLayout>
