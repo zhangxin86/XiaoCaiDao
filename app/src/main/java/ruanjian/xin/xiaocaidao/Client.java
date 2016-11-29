@@ -21,6 +21,7 @@ import ruanjian.xin.xiaocaidao.utils.Utils;
 
 public class Client extends AppCompatActivity {
     private FrameLayout  Flay_Page;
+    private LinearLayout Llay_ClientHead;
     private LinearLayout Llay_MainPage;
     private LinearLayout Llay_MenuPage;
     private LinearLayout Llay_FriendPage;
@@ -72,6 +73,7 @@ public class Client extends AppCompatActivity {
     /*辅助函数*/
 
     private void findView(){
+        Llay_ClientHead = (LinearLayout)findViewById(R.id.Llaylayout_clientHead);
         Llay_MainPage = (LinearLayout)findViewById(R.id.Llaylayout_clientMainPage);
         Llay_MenuPage = (LinearLayout)findViewById(R.id.Llaylayout_clientMenuPage);
         Llay_FriendPage = (LinearLayout)findViewById(R.id.Llaylayout_clientFriendPage);
@@ -98,6 +100,7 @@ public class Client extends AppCompatActivity {
     }
 
     private void setMainPage(){
+        Llay_ClientHead.setVisibility(View.VISIBLE);
         if( mainPage==null ){ mainPage = new MainPage(); }
         Tv_MainPage.setTextColor(getResources().getColor(R.color.tab_select));
         Iv_MainPage.setImageResource(R.drawable.iv_main_sel);
@@ -110,6 +113,7 @@ public class Client extends AppCompatActivity {
     }
 
     private void setMenuPage(){
+        Llay_ClientHead.setVisibility(View.VISIBLE);
         if( menuPage==null ){ menuPage = new MenuPage(); }
         Tv_MenuPage.setTextColor(getResources().getColor(R.color.tab_select));
         Iv_MenuPage.setImageResource(R.drawable.iv_menu_sel);
@@ -122,6 +126,7 @@ public class Client extends AppCompatActivity {
     }
 
     private void setFriendPage(){
+        Llay_ClientHead.setVisibility(View.GONE);
         if( friendPage==null ){ friendPage = new FriendPage(); }
         Tv_FriendPage.setTextColor(getResources().getColor(R.color.tab_select));
         Iv_FriendPage.setImageResource(R.drawable.iv_friend_sel);
@@ -134,6 +139,7 @@ public class Client extends AppCompatActivity {
     }
 
     private void setPersonPage(){
+        Llay_ClientHead.setVisibility(View.GONE);
         if( personPage==null ){ personPage = new PersonPage(); }
         Tv_PersonPage.setTextColor(getResources().getColor(R.color.tab_select));
         Iv_PersonPage.setImageResource(R.drawable.iv_person_sel);

@@ -7,5 +7,38 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <!--厨友交流相关-->
+    <style name="PersonalLine">
+        <item name="android:background">#ffcccccc</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">1.0dip</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+    </style>
+    <style name="PersonalLine_nonemargin">
+        <item name="android:background">#ffcccccc</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">1.0dip</item>
+    </style>
+    <style name="TagStyle">
+        <item name="android:background">@color/tag_color</item>
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="FriendBottomTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <style name="FriendTagStyle">
+        <item name="android:layout_width">70dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:background">@drawable/tag_button_style</item>
+        <item name="android:layout_marginRight">10dp</item>
+    </style>
 
 </resources>

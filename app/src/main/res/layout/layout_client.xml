@@ -9,6 +9,7 @@
 
     <!--ActionBar（上传按钮、搜索框、消息按钮）-->
     <LinearLayout
+        android:id="@+id/Llaylayout_clientHead"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#ff8000"

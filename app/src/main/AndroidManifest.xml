@@ -35,6 +35,13 @@
         <activity android:name=".ui.personal.Main2"/>
         <activity android:name=".ui.personal.Main3"/>
         <activity android:name=".ui.personal.Main4"/>
+        <!--厨友交流相关-->
+        <activity android:name=".ui.Friend.HotFriend" />
+        <activity android:name=".ui.Friend.NewFriend" />
+        <activity android:name=".ui.Friend.FriendItemAdd" />
+        <activity android:name=".ui.Friend.HotFriendDetail" />
+        <activity android:name=".ui.Friend.NewFriendDetail" />
+        <activity android:name=".Client_hot_detail"></activity>
         <!--菜谱详情页-->
         <activity android:name=".ui.XiangqingPage"/>
         <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
