@@ -7,17 +7,24 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <Button
+            android:background="@null"
+            android:textColor="@color/tab_select"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn1"
             android:text="粉丝"
-            android:layout_marginLeft="100dp"/>
+            android:layout_marginLeft="110dp"/>
+
         <Button
+            android:background="@null"
+            android:textColor="#000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn2"
             android:text="关注"/>
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"

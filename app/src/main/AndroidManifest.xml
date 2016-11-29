@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA"/>
     <application
         android:name=".Controller.ApplicationController"
         android:allowBackup="true"
@@ -31,10 +32,6 @@
         <activity android:name=".ui.MenuPage" />
         <activity android:name=".ui.FriendPage" />
         <activity android:name=".ui.PersonPage" />
-        <activity android:name=".ui.personal.Main1"/>
-        <activity android:name=".ui.personal.Main2"/>
-        <activity android:name=".ui.personal.Main3"/>
-        <activity android:name=".ui.personal.Main4"/>
         <!--厨友交流相关-->
         <activity android:name=".ui.Friend.HotFriend" />
         <activity android:name=".ui.Friend.NewFriend" />
@@ -42,6 +39,11 @@
         <activity android:name=".ui.Friend.HotFriendDetail" />
         <activity android:name=".ui.Friend.NewFriendDetail" />
         <activity android:name=".Client_hot_detail"></activity>
+        <!--个人中心-->
+        <activity android:name=".ui.personal.Person_fouse"/>
+        <activity android:name=".ui.personal.Person_collect"/>
+        <activity android:name=".ui.personal.Person_post"/>
+        <activity android:name=".ui.personal.Person_setting"/>
         <!--菜谱详情页-->
         <activity android:name=".ui.XiangqingPage"/>
         <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
