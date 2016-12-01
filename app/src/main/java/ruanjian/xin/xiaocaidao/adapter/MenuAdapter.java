@@ -20,7 +20,7 @@ import ruanjian.xin.xiaocaidao.Controller.ApplicationController;
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.domain.Caipu;
 
-public class LvAdapter extends BaseAdapter {
+public class MenuAdapter extends BaseAdapter {
     private ArrayList<Caipu> caipus=new ArrayList<Caipu>();
     private Context context;
     private LayoutInflater inflater;
@@ -29,11 +29,11 @@ public class LvAdapter extends BaseAdapter {
     private NetworkImageView caipuImage;
     private TextView caipuName,caipuCailiao,movieRating;
 
-    public LvAdapter(){
+    public MenuAdapter(){
         super();
     }
 
-    public LvAdapter(ArrayList<Caipu> caipus, Context context) {
+    public MenuAdapter(ArrayList<Caipu> caipus, Context context) {
         this.caipus = caipus;
         this.context = context;
     }

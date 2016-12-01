@@ -25,6 +25,7 @@ import ruanjian.xin.xiaocaidao.adapter.CommentAdapter;
 import ruanjian.xin.xiaocaidao.adapter.SpicyAdapter;
 import ruanjian.xin.xiaocaidao.adapter.TodayAdapter;
 import ruanjian.xin.xiaocaidao.domain.Parts;
+import ruanjian.xin.xiaocaidao.utils.Calculator;
 import ruanjian.xin.xiaocaidao.utils.RefreshView;
 
 /**
@@ -111,6 +112,7 @@ public class MainPage extends Fragment implements RefreshView.RefrshListener{
     private void setToday(){
         todayAdapter = new TodayAdapter(getActivity(),data1);
         Lv_Today.setAdapter(todayAdapter);
+        Calculator.setListViewHeightBasedOnChildren(Lv_Today,0);
     }
     private void setSpicy(){
         spicyAdapter = new SpicyAdapter(getActivity(),data2);
@@ -119,6 +121,7 @@ public class MainPage extends Fragment implements RefreshView.RefrshListener{
     private void setComment(){
         commentAdapter = new CommentAdapter(getActivity(),data3);
         Lv_Comment.setAdapter(commentAdapter);
+        Calculator.setListViewHeightBasedOnChildren(Lv_Comment,0);
     }
     private void setRollViewPager(){
         //设置播放时间间隔
@@ -172,11 +175,13 @@ public class MainPage extends Fragment implements RefreshView.RefrshListener{
     * 实验函数
     * */
     private void getData1(){
+        data1.clear();
         data1.add(new Parts());
         data1.add(new Parts());
         data1.add(new Parts());
     }
     private void getData2(){
+        data2.clear();
         data2.add(new Parts());
         data2.add(new Parts());
         data2.add(new Parts());
@@ -185,6 +190,7 @@ public class MainPage extends Fragment implements RefreshView.RefrshListener{
         data2.add(new Parts());
     }
     private void getData3(){
+        data3.clear();
         data3.add(new Parts());
         data3.add(new Parts());
         data3.add(new Parts());

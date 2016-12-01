@@ -6,12 +6,13 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
             <!--标题栏与大图-->
             <LinearLayout
@@ -137,7 +138,7 @@
                     <ListView
                         android:id="@+id/lv_steps"
                         android:layout_width="match_parent"
-                        android:layout_height="4300dp"
+                        android:layout_height="wrap_content"
                         android:dividerHeight="0dp"
                         android:divider="@null"/>
                 </LinearLayout>

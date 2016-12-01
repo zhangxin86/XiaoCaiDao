@@ -7,7 +7,10 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +38,7 @@ import ruanjian.xin.xiaocaidao.Controller.ApplicationController;
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.adapter.StepAdapter;
 import ruanjian.xin.xiaocaidao.domain.StepItem;
+import ruanjian.xin.xiaocaidao.utils.Calculator;
 
 import static ruanjian.xin.xiaocaidao.utils.Utils.JUHE_URL;
 
@@ -55,7 +59,7 @@ public class XiangqingPage extends Activity {
 
     private ListView lvSteps;
     private StepAdapter myadapter;
-    private ArrayList<StepItem> mSteps = new ArrayList<StepItem>();
+    private ArrayList<StepItem> mSteps = new ArrayList<>();
 
     private ProgressDialog pDialog;
 
@@ -183,6 +187,7 @@ public class XiangqingPage extends Activity {
                     e.printStackTrace();
                 }
                 myadapter.notifyDataSetChanged();
+                Calculator.setListViewHeightBasedOnChildren(lvSteps,200);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -207,4 +212,5 @@ public class XiangqingPage extends Activity {
             pDialog.dismiss();
         pDialog=null;
     }
+
 }

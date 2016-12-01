@@ -35,7 +35,7 @@
         android:id="@+id/tabhost"
         android:layout_width="match_parent"
         android:layout_height="fill_parent">
-
+        <!--热门、最新tab标签-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -56,14 +56,16 @@
                 android:orientation="horizontal">
                 <RadioButton
                     android:id="@+id/button_hot"
-                    android:text="热门"
+                    android:text="热 门"
                     android:ellipsize="marquee"
                     android:checked="true"
-                    style="@style/FriendRadioButton"/>
+                    style="@style/FriendRadioButton"
+                    android:layout_marginRight="10dp"/>
                 <RadioButton
                     android:id="@+id/button_new"
-                    android:text="最新"
-                    style="@style/FriendRadioButton" />
+                    android:text="最 新"
+                    style="@style/FriendRadioButton"
+                    android:layout_marginLeft="10dp"/>
             </RadioGroup>
 
             <FrameLayout

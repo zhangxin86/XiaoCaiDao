@@ -13,6 +13,7 @@ import java.util.List;
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.adapter.FriendCommentAdapter;
 import ruanjian.xin.xiaocaidao.domain.Parts;
+import ruanjian.xin.xiaocaidao.utils.Calculator;
 
 public class HotFriendDetail extends Fragment {
 
@@ -36,6 +37,7 @@ public class HotFriendDetail extends Fragment {
     private void setComment() {
         commentAdapter = new FriendCommentAdapter(getActivity(),data);
         Lv_comment.setAdapter(commentAdapter);
+        Calculator.setListViewHeightBasedOnChildren(Lv_comment,0);
     }
 
     private void getData(){
