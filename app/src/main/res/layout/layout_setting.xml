@@ -106,7 +106,7 @@
     <Button
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
-        android:background="@drawable/shape2"
+        android:background="@drawable/button_background_selector"
         android:layout_width="360dp"
         android:layout_height="60dp"
         android:text="退出"
