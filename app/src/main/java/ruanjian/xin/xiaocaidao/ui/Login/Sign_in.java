@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import ruanjian.xin.xiaocaidao.R;
@@ -18,6 +21,8 @@ public class Sign_in extends Activity {
     private EditText etpwd;
     private EditText etpwd2;
     private Button btnsign;
+    private Animation scale;
+    private LinearLayout all;
     private UserDataManager mUserDataManager;         //用户数据管理类
 
     protected void onCreate(Bundle savedInstanceState){
@@ -25,10 +30,15 @@ public class Sign_in extends Activity {
         setContentView(R.layout.activity_sign_in);
 
         //获取控件
+        all = (LinearLayout)findViewById(R.id.all);
         btnsign=(Button)findViewById(R.id.btnsign);
         etusername=(EditText) findViewById(R.id.etusername);
         etpwd=(EditText)findViewById(R.id.etpwd);
         etpwd2=(EditText)findViewById(R.id.etpwd2);
+
+        scale = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.scaleanim);
+        all.setAnimation(scale);
+        all.startAnimation(scale);
         //建立本地数据库
         if (mUserDataManager == null) {
             mUserDataManager = new UserDataManager(this);

@@ -4,9 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import ruanjian.xin.xiaocaidao.Client;
@@ -16,11 +21,14 @@ import ruanjian.xin.xiaocaidao.R;
  * Created by 贾紫璇 on 2016/11/16.
  */
 public class Login extends Activity {
+    private LinearLayout all;
     private EditText etusername;
     private EditText etpwd;
     private Button btnlogin;
     private UserDataManager mUserDataManager;//用户数据管理类
     private SharedPreferences login_sp;
+    private Animation scale;
+
     //用户数据
     private UserData db;
 
@@ -32,9 +40,13 @@ public class Login extends Activity {
         setContentView(R.layout.activity_login);
 
         //获取控件
+        all = (LinearLayout)findViewById(R.id.all);
         etusername=(EditText)findViewById(R.id.etusername);
         etpwd=(EditText)findViewById(R.id.etpwd);
         btnlogin=(Button)findViewById(R.id.btnlogin);
+        scale = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.scaleanim);
+        all.setAnimation(scale);
+        all.startAnimation(scale);
 
         //建立本地数据库
 

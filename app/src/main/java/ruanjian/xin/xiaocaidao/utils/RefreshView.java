@@ -145,20 +145,22 @@ public class RefreshView extends ScrollView{
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
-                horizontal_scrollinstance = ev.getX()-startX;
-                vertical_scrollinstance = ev.getY()-startY;
-                Log.i("tag","滑动距离是"+vertical_scrollinstance);
-                Log.i("tag","ev.gety="+ev.getY());
-                Log.i("tag","startY=="+startY);
-                if(scrollBack != null)
-                    scrollBack.cancel();
-                if(vertical_scrollinstance>VERTICAL_SCROLL_INSTANCE&&isFreshCommplete
-                        &&horizontal_scrollinstance<HORIZONTAL_SCROLL_INSTANCE) {
-                    if (!isStartScroll) startAnim();
-                    int instance = (int) ((vertical_scrollinstance-200) * 0.1f);
-                    params.setMargins(0, instance, 0, 0);
-                    refresh.setLayoutParams(params);
-                    isStartScroll = true;
+                if(isScrolledToTop) {
+                    horizontal_scrollinstance = ev.getX() - startX;
+                    vertical_scrollinstance = ev.getY() - startY;
+                    Log.i("tag", "滑动距离是" + vertical_scrollinstance);
+                    Log.i("tag", "ev.gety=" + ev.getY());
+                    Log.i("tag", "startY==" + startY);
+                    if (scrollBack != null)
+                        scrollBack.cancel();
+                    if (vertical_scrollinstance > VERTICAL_SCROLL_INSTANCE && isFreshCommplete
+                            && horizontal_scrollinstance < HORIZONTAL_SCROLL_INSTANCE) {
+                        if (!isStartScroll) startAnim();
+                        int instance = (int) ((vertical_scrollinstance - 100) * 0.1f);
+                        params.setMargins(0, instance, 0, 0);
+                        refresh.setLayoutParams(params);
+                        isStartScroll = true;
+                    }
                 }
                 break;
             case MotionEvent.ACTION_UP:
