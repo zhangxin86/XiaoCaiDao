@@ -40,23 +40,24 @@
         android:orientation="horizontal"
         android:layout_height="55dp"
         android:padding="10dp"
-        android:background="#cfcfcf"
+        android:background="@color/back_color"
         android:gravity="center">
         <EditText
+            android:textSize="14sp"
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_weight="7"
             android:padding="5dp"
             android:gravity="center"
-            android:background="@drawable/follow_frame_style"
+            android:background="@drawable/et_comment"
             android:hint="评论一下"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_weight="1.5"
+            android:layout_weight="2"
             android:layout_marginLeft="15dp"
-            android:textSize="14dp"
-            android:text="评论"
+            android:textSize="14sp"
+            android:text="评  论"
             android:textColor="@color/white"
             android:background="@drawable/comment_button_style"/>
     </LinearLayout>

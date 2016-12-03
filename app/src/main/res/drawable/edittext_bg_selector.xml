@@ -3,5 +3,5 @@
     <item android:state_focused="false"
         android:drawable="@drawable/edittext_bg_normal"></item>
     <item android:state_focused="true"
-        android:drawable="@drawable/edittext_bg_focused"></item>
+        android:drawable="@drawable/edittext_bg_normal"></item>
 </selector>

@@ -6,5 +6,6 @@
         android:id="@+id/hot_listView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:dividerHeight="5dp"></ListView>
+        android:dividerHeight="5dp"
+        android:overScrollMode="never"></ListView>
 </LinearLayout>

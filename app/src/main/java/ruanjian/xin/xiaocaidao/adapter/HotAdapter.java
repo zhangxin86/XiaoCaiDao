@@ -44,7 +44,7 @@ public class HotAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if( convertView==null ){
-            convertView = LayoutInflater.from(context).inflate(R.layout.activity_hot_item,null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.lv_comment,null);
         }
         return convertView;
     }

@@ -29,8 +29,9 @@ import java.util.Map;
 import ruanjian.xin.xiaocaidao.Controller.ApplicationController;
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.adapter.BaiDuRefreshListView;
-import ruanjian.xin.xiaocaidao.adapter.LvAdapter;
+import ruanjian.xin.xiaocaidao.adapter.MenuAdapter;
 import ruanjian.xin.xiaocaidao.domain.Caipu;
+import ruanjian.xin.xiaocaidao.utils.Calculator;
 
 import static ruanjian.xin.xiaocaidao.utils.Utils.JUHE_URL;
 
@@ -41,7 +42,7 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
 
     private BaiDuRefreshListView lv;
     private ArrayList<Caipu> cp;
-    private LvAdapter myadapter;
+    private MenuAdapter myadapter;
 
     private ProgressDialog pDialog;
 
@@ -85,12 +86,6 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
             }
         };
     };
-
-    public void onRefreshMenu(){
-        this.onResume();
-    }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -141,7 +136,7 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
     }
 
     public void setAdapter(){
-        myadapter = new LvAdapter(cp,getActivity());
+        myadapter = new MenuAdapter(cp,getActivity());
         lv.setAdapter(myadapter);
         lv.setOnBaiduRefreshListener(this);
     }
