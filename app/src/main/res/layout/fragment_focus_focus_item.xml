@@ -8,7 +8,6 @@
         android:layout_height="80dp"
         android:src="@drawable/p1"
         android:layout_marginTop="5dp"/>
-
     <TextView
         android:paddingTop="20dp"
         android:paddingLeft="10dp"
@@ -22,7 +21,7 @@
 
     <Button
         android:background="@null"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/fragment_one_list_btn2"
         android:text="取消关注"
         android:layout_width="wrap_content"

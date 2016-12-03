@@ -45,6 +45,7 @@
         <activity android:name=".ui.personal.Person_collect"/>
         <activity android:name=".ui.personal.Person_post"/>
         <activity android:name=".ui.personal.Person_setting"/>
+        <activity android:name=".ui.personal.Person_about"/>
         <!--菜谱详情页-->
         <activity android:name=".ui.XiangqingPage"/>
         <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
