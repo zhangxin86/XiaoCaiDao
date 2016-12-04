@@ -61,6 +61,19 @@
         android:orientation="vertical"
         android:background="@color/white"
         android:layout_marginBottom="10dp">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:padding="10dp"
+            android:minLines="3"
+            android:gravity="top"
+            android:textSize="14dp"
+            android:hint="@string/add_friend_hint_text"
+            android:background="@null"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/editText" />
 
         <RelativeLayout
             android:layout_width="80dp"
@@ -69,9 +82,8 @@
             android:layout_margin="10dp">
             <ImageView
                 android:id="@+id/add_photo"
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_margin="10dp"
                 android:gravity="center" />
         </RelativeLayout>
@@ -90,19 +102,6 @@
                 android:gravity="center"
                 android:background="@drawable/friend_add_backgound"/>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:padding="10dp"
-                android:minLines="3"
-                android:gravity="top"
-                android:textSize="14dp"
-                android:hint="@string/add_friend_hint_text"
-                android:background="@null"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:id="@+id/editText" />
         </RelativeLayout>
     </RelativeLayout>
 

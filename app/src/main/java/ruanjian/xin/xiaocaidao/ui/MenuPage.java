@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -33,6 +34,7 @@ import ruanjian.xin.xiaocaidao.adapter.MenuAdapter;
 import ruanjian.xin.xiaocaidao.domain.Caipu;
 import ruanjian.xin.xiaocaidao.utils.Calculator;
 
+import static ruanjian.xin.xiaocaidao.utils.Utils.JUHE_KEY;
 import static ruanjian.xin.xiaocaidao.utils.Utils.JUHE_URL;
 
 public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRefreshListener{
@@ -55,24 +57,31 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
                     lv.setOnRefreshComplete();
                     if (temp.equals("菜")){
                         fetchCaipu("肉");
+                        Toast.makeText(getActivity(),"肉类",Toast.LENGTH_SHORT).show();
                         temp = "肉";
                     }else if(temp.equals("肉")){
                         fetchCaipu("蛋");
+                        Toast.makeText(getActivity(),"蛋类",Toast.LENGTH_SHORT).show();
                         temp = "蛋";
                     }else if(temp.equals("蛋")){
                         fetchCaipu("鱼");
+                        Toast.makeText(getActivity(),"鱼类",Toast.LENGTH_SHORT).show();
                         temp = "鱼";
                     }else if(temp.equals("鱼")){
                         fetchCaipu("米");
+                        Toast.makeText(getActivity(),"米",Toast.LENGTH_SHORT).show();
                         temp = "米";
                     }else if(temp.equals("米")){
                         fetchCaipu("水煮");
+                        Toast.makeText(getActivity(),"水煮",Toast.LENGTH_SHORT).show();
                         temp = "水煮";
                     }else if(temp.equals("水煮")){
                         fetchCaipu("清蒸");
+                        Toast.makeText(getActivity(),"清蒸",Toast.LENGTH_SHORT).show();
                         temp = "清蒸";
                     }else if(temp.equals("清蒸")){
                         fetchCaipu("菜");
+                        Toast.makeText(getActivity(),"菜",Toast.LENGTH_SHORT).show();
                         temp = "菜";
                     }else {
                         fetchCaipu("菜");
@@ -96,9 +105,6 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
         if (searchmenu.length()!=0){
             temp = searchmenu.getText().toString();
         }
-
-
-
         cp = new ArrayList<Caipu>();
         pDialog=new ProgressDialog(getActivity());
         pDialog.setMessage("Loading...");
@@ -217,7 +223,7 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> map = new HashMap<>();
-                map.put("key","90e8a667333aa3c83bbfdcabbd0fa620");
+                map.put("key",JUHE_KEY);
                 map.put("menu",caipuName);
                 return map;
             }

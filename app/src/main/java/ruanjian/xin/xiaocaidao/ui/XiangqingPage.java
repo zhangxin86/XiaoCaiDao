@@ -40,6 +40,7 @@ import ruanjian.xin.xiaocaidao.adapter.StepAdapter;
 import ruanjian.xin.xiaocaidao.domain.StepItem;
 import ruanjian.xin.xiaocaidao.utils.Calculator;
 
+import static ruanjian.xin.xiaocaidao.utils.Utils.JUHE_KEY;
 import static ruanjian.xin.xiaocaidao.utils.Utils.JUHE_URL;
 
 /**
@@ -94,7 +95,7 @@ public class XiangqingPage extends Activity {
 
         AsyncHttpClient httpclient = new AsyncHttpClient();
         RequestParams params = new RequestParams();
-        params.add("key","90e8a667333aa3c83bbfdcabbd0fa620");
+        params.add("key",JUHE_KEY);
         params.add("menu",menuName);
         params.add("rn","1");
         httpclient.get(getApplicationContext(),JUHE_URL,params,new JsonHttpResponseHandler(){
@@ -199,7 +200,7 @@ public class XiangqingPage extends Activity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> map = new HashMap<>();
-                map.put("key","90e8a667333aa3c83bbfdcabbd0fa620");
+                map.put("key",JUHE_KEY);
                 map.put("menu",menuName);
                 return map;
             }
