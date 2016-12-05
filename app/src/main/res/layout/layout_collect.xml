@@ -4,22 +4,22 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    <Button
-        android:textColor="@color/tab_select"
-        android:background="@null"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btn1"
-        android:text="菜谱"
-        android:layout_marginLeft="110dp"/>
-    <Button
-        android:background="@null"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/btn2"
-    android:text="帖子"/>
+        android:gravity="center_horizontal">
+        <Button
+            android:textColor="@color/tab_select"
+            android:background="@null"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn1"
+            android:text="菜谱"/>
+        <Button
+            android:background="@null"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn2"
+            android:text="帖子"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
