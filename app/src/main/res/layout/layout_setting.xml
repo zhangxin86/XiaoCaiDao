@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:text="用户名"/>
         <TextView
-            android:text="飞翔的六毛"
+            android:text="小菜叨"
             android:layout_marginTop="25dp"
             android:textSize="20dp"
             android:textColor="#000000"

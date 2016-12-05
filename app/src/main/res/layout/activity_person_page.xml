@@ -24,7 +24,7 @@
             android:id="@+id/personal_1_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="飞翔的六毛"
+            android:text="小菜叨"
             android:layout_below="@+id/personal_1"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="10"
-            android:layout_marginLeft="146dp"
+            android:layout_marginLeft="156dp"
             android:layout_below="@id/personal_1_2"/>
         <TextView
             tools:textColor="@android:color/white"
@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="10"
-            android:layout_marginLeft="240dp"
+            android:layout_marginLeft="220dp"
             android:layout_below="@id/personal_1_2"/>
         <TextView
             tools:textColor="@android:color/white"
@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="粉丝"
-            android:layout_marginLeft="141dp"
+            android:layout_marginLeft="151dp"
             android:layout_below="@+id/personal_1_3" />
         <TextView
             tools:textColor="@android:color/white"
@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="关注"
-            android:layout_marginLeft="234dp"
+            android:layout_marginLeft="214dp"
             android:layout_below="@+id/personal_1_3" />
     </RelativeLayout>
     <RelativeLayout
