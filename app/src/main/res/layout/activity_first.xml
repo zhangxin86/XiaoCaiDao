@@ -24,11 +24,13 @@
         <Button
             android:id="@+id/btnlogin"
             android:text="登    录"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textColor="@color/white"
             android:background="@drawable/button"
             android:layout_width="match_parent"
             android:layout_height="55dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
             android:layout_marginBottom="20dp"/>
 
         <Button
@@ -38,7 +40,9 @@
             android:textColor="@color/white"
             android:background="@drawable/button"
             android:layout_width="match_parent"
-            android:layout_height="55dp" />
+            android:layout_height="55dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"/>
     </LinearLayout>
 
 </LinearLayout>

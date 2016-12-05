@@ -12,7 +12,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingBottom="3dp"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="20dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
         <View style="@style/PersonalLine_nonemargin" />
         <LinearLayout
             android:orientation="vertical"
@@ -143,7 +145,7 @@
             android:layout_height="wrap_content"
             android:divider="@color/back_color"
             android:dividerHeight="2dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:background="@color/pre_color">
 
         </ListView>
