@@ -4,16 +4,16 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
     <Button
         android:textColor="@color/tab_select"
         android:background="@null"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btn1"
-        android:text="主贴"
-        android:layout_marginLeft="110dp"/>
+        android:text="主贴" />
     <Button
         android:background="@null"
     android:layout_width="wrap_content"

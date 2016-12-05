@@ -18,7 +18,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="#ededed">
+            android:background="#ededed"
+            android:focusableInTouchMode="true"
+            android:focusable="true">
             //刷新样式：
             <RelativeLayout
                 android:id="@+id/refresh"

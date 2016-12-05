@@ -3,6 +3,7 @@ package ruanjian.xin.xiaocaidao.ui.personal;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,11 +16,16 @@ import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -46,6 +52,7 @@ import java.util.Map;
 
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.domain.XCRoundImageView;
+import ruanjian.xin.xiaocaidao.ui.Login.First;
 import ruanjian.xin.xiaocaidao.ui.PersonPage;
 import ruanjian.xin.xiaocaidao.ui.SelectWindow.SelectPicPopupWindow;
 import ruanjian.xin.xiaocaidao.utils.FileUtil;
@@ -73,6 +80,18 @@ public class Person_setting extends AppCompatActivity implements View.OnClickLis
     private static final int REQUESTCODE_PICK = 0;		// 相册选图标记
     private static final int REQUESTCODE_TAKE = 1;		// 相机拍照标记
     private static final int REQUESTCODE_CUTTING = 2;	// 图片裁切标记
+
+
+    //张鑫：
+    private LinearLayout Llay_UserName;
+    private LinearLayout Llay_PassWord;
+    private TextView Tv_UserName;
+    private TextView Et_PassWord;
+    private EditText tempEdit;
+    private AlertDialog.Builder builder;
+    private Button Btn_exit;
+    private ImageView Iv_back;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +100,8 @@ public class Person_setting extends AppCompatActivity implements View.OnClickLis
         mContext = Person_setting.this;
 
         initViews();
+        getView();
+        setListener();
     }
     private void initViews(){
         avatarImg = (XCRoundImageView)findViewById(R.id.avatarImg);
@@ -241,5 +262,67 @@ public class Person_setting extends AppCompatActivity implements View.OnClickLis
         }else {
             System.out.println("文件不存在！！！");
         }
+    }
+
+    /*辅助函数*/
+    private void getView(){
+        Llay_UserName = (LinearLayout)findViewById(R.id.Llaylayout_settingUserName);
+        Llay_PassWord = (LinearLayout)findViewById(R.id.Llaylayout_settingPassWord);
+
+        Tv_UserName = (TextView)findViewById(R.id.Tvlayout_settingUserName);
+        Et_PassWord = (TextView)findViewById(R.id.Tvlayout_settingPassWord);
+
+        builder = new AlertDialog.Builder(Person_setting.this);
+        Btn_exit = (Button)findViewById(R.id.Btnlayout_settingExit);
+        Iv_back = (ImageView)findViewById(R.id.back);
+    }
+    private void setListener(){
+        Btn_exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Person_setting.this, First.class);
+                startActivity(i);
+            }
+        });
+        Iv_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        Llay_UserName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tempEdit = new EditText(Person_setting.this);
+                builder.setTitle("请输入用户名");
+                builder.setView(tempEdit);
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String UserName = tempEdit.getText().toString();
+                        if( UserName.length()==0 ){
+                            Toast.makeText(Person_setting.this,"用户名不能为空",Toast.LENGTH_SHORT).show();
+                        }else{
+                            Tv_UserName.setText(UserName);
+                        }
+
+                    }
+                });
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.show();
+            }
+        });
+
+        Llay_PassWord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 }
