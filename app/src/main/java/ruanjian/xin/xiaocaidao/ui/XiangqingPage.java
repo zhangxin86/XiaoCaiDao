@@ -49,14 +49,29 @@ import static ruanjian.xin.xiaocaidao.utils.Utils.JUHE_URL;
 
 public class XiangqingPage extends Activity {
 
-    private String menuName;//上一个页面穿来的菜肴名称
+    public JSONObject result;//返回结果
+    public JSONArray data;
+    public JSONObject obj;
+    public String title;//菜谱名称标题
+    public String tags;//标签
+    public String imtro;//描述
+    public String ingredients;//主料
+    public String burden;//辅料
+    public String album;//成品图url
+    public JSONArray steps;//步骤对象数组
+    public JSONObject stepobj;//步骤对象
 
-    private TextView tvName;//名称
-    private TextView tvTags;//标签
-    private ImageView ivImg;//主图
-    private TextView tvInfo;//描述
-    private TextView tvIngredients;//主料
-    private TextView tvBurden;//辅料
+
+
+    private String menuName;//上一个页面穿来的菜肴名称
+    private String mId;//上一个页面传来的菜品id
+
+    private TextView tvName;//名称控件
+    private TextView tvTags;//标签控件
+    private ImageView ivImg;//主图控件
+    private TextView tvInfo;//描述控件
+    private TextView tvIngredients;//主料控件
+    private TextView tvBurden;//辅料控件
 
     private ListView lvSteps;
     private StepAdapter myadapter;
@@ -70,6 +85,7 @@ public class XiangqingPage extends Activity {
         setContentView(R.layout.activity_menudetail);
 
         menuName=getIntent().getStringExtra("menuName");//得到要传入的要显示的菜品名称数据
+        mId = getIntent().getStringExtra("id");
 
         tvName = (TextView) findViewById(R.id.tv_menuName);
         tvTags = (TextView)findViewById(R.id.tv_tags);
@@ -82,7 +98,7 @@ public class XiangqingPage extends Activity {
         pDialog.setMessage("Loading...");
         pDialog.show();
 
-        fetchSteps(menuName);
+        fetchSteps(menuName,mId);
 
 
         lvSteps = (ListView)findViewById(R.id.lv_steps);
@@ -91,13 +107,12 @@ public class XiangqingPage extends Activity {
 
     }
 
-    public void fetchSteps(final String menuName) {
+    public void fetchSteps(final String menuName,final String mId) {
 
         AsyncHttpClient httpclient = new AsyncHttpClient();
         RequestParams params = new RequestParams();
         params.add("key",JUHE_KEY);
         params.add("menu",menuName);
-        params.add("rn","1");
         httpclient.get(getApplicationContext(),JUHE_URL,params,new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -105,38 +120,45 @@ public class XiangqingPage extends Activity {
                 System.out.println(response.toString());
 
                 try {
-                    JSONObject result = response.getJSONObject("result");
-                    JSONArray data = result.getJSONArray("data");
-                    for (int i=0;i<data.length();i++){
-                        JSONObject obj = data.getJSONObject(i);
-                        String title = obj.getString("title");//菜品名称标题
-                        tvName.setText(title);
-                        String tags = obj.getString("tags");//标签
-                        tvTags.setText(tags);
-                        String imtro = obj.getString("imtro");//描述
-                        tvInfo.setText(imtro);
-                        String ingredients = obj.getString("ingredients");//主料
-                        tvIngredients.setText(ingredients);
-                        String burden = obj.getString("burden");//辅料
-                        tvBurden.setText(burden);
-                        String album = obj.getJSONArray("albums").getString(0);//成品图
-                        new AsyncHttpClient().get(album, new AsyncHttpResponseHandler(){
-                            @Override
-                            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                                if(statusCode==200){
-                                    BitmapFactory factory=new BitmapFactory();
-                                    Bitmap bitmap=factory.decodeByteArray(responseBody, 0, responseBody.length);
-                                    ivImg.setImageBitmap(bitmap);
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(int statusCode, Header[] headers,
-                                                  byte[] responseBody, Throwable error) {
-                                error.printStackTrace();
-                            }
-                        });
+                    result = response.getJSONObject("result");
+                    data = result.getJSONArray("data");
+                    /*找到对应id的菜*/
+                    int i=0;
+                    for (i=0;i<data.length();i++){
+                        JSONObject tempObj = data.getJSONObject(i);
+                        if (tempObj.getString("id").equals(mId)){
+                            break;
+                        }
                     }
+                    obj = data.getJSONObject(i);
+                    title = obj.getString("title");//菜品名称标题
+                    tvName.setText(title);
+                    tags = obj.getString("tags");//标签
+                    tvTags.setText(tags);
+                    imtro = obj.getString("imtro");//描述
+                    tvInfo.setText(imtro);
+                    ingredients = obj.getString("ingredients");//主料
+                    tvIngredients.setText(ingredients);
+                    burden = obj.getString("burden");//辅料
+                    tvBurden.setText(burden);
+                    album = obj.getJSONArray("albums").getString(0);//成品图
+                    new AsyncHttpClient().get(album, new AsyncHttpResponseHandler(){
+                        @Override
+                        public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                            if(statusCode==200){
+                                BitmapFactory factory=new BitmapFactory();
+                                Bitmap bitmap=factory.decodeByteArray(responseBody, 0, responseBody.length);
+                                ivImg.setImageBitmap(bitmap);
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(int statusCode, Header[] headers,
+                                              byte[] responseBody, Throwable error) {
+                            error.printStackTrace();
+                        }
+                    });
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -167,12 +189,20 @@ public class XiangqingPage extends Activity {
                     e.printStackTrace();
                 }
                 try {
-                    JSONObject result=jsonObject.getJSONObject("result");
-                    JSONArray data = result.getJSONArray("data");
-                    JSONObject menu = data.getJSONObject(0);
-                    JSONArray steps = menu.getJSONArray("steps");//步骤对象数组
+                    result=jsonObject.getJSONObject("result");
+                    data = result.getJSONArray("data");
+                    int i=0;
+                    /*找到对应id的菜*/
+                    for (i=0;i<data.length();i++){
+                        JSONObject tempObj = data.getJSONObject(i);
+                        if (tempObj.getString("id").equals(mId)){
+                            break;
+                        }
+                    }
+                    JSONObject menu = data.getJSONObject(i);
+                    steps = menu.getJSONArray("steps");//步骤对象数组
                     for (int j=0;j<steps.length();j++){
-                        JSONObject stepobj = steps.getJSONObject(j);
+                        stepobj = steps.getJSONObject(j);
                         String stepImg = stepobj.getString("img");
                         System.out.println("图片url："+stepImg);
                         String step = stepobj.getString("step");

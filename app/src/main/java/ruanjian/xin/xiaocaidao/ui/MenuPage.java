@@ -32,7 +32,6 @@ import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.adapter.BaiDuRefreshListView;
 import ruanjian.xin.xiaocaidao.adapter.MenuAdapter;
 import ruanjian.xin.xiaocaidao.domain.Caipu;
-import ruanjian.xin.xiaocaidao.utils.Calculator;
 
 import static ruanjian.xin.xiaocaidao.utils.Utils.JUHE_KEY;
 import static ruanjian.xin.xiaocaidao.utils.Utils.JUHE_URL;
@@ -41,6 +40,17 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
 
     public String temp = "菜";//第一次要显示listview的菜名内容
     private String menuName;//纪录点击事件时某个item的Name
+    private String mId;//纪录点击事件时某个item的ID
+
+    /*有关json请求*/
+    public JSONObject result;//json返回结果
+    public JSONArray data;
+    public String id;//菜品id
+    public String name;//菜品名称
+    public String ingredients;//主料
+    public String burden;//辅料
+    public JSONArray albums;//成品图片集合
+    public String img;//成品图
 
     private BaiDuRefreshListView lv;
     private ArrayList<Caipu> cp;
@@ -126,11 +136,12 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 menuName = cp.get(position-1).getName();
+                mId = cp.get(position-1).getID();
 
                 Intent intent = new Intent();
                 intent.setClass(getActivity(),XiangqingPage.class);
                 intent.putExtra("menuName",menuName);
-
+                intent.putExtra("id",mId);
                 startActivity(intent);
                 //需链接到内容页
             }
@@ -191,18 +202,20 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
                 System.out.println(jsonObject.toString());
 
                 try {
-                    JSONObject result=jsonObject.getJSONObject("result");
-                    JSONArray data = result.getJSONArray("data");
+                    result=jsonObject.getJSONObject("result");
+                    data = result.getJSONArray("data");
                     for (int i=0;i<data.length();i++){
                         JSONObject menu = data.getJSONObject(i);
-                        String name = menu.getString("title");//名称
-                        String ingredients = menu.getString("ingredients");//主料
-                        String burden = menu.getString("burden");//辅料
-                        JSONArray albums = menu.getJSONArray("albums");//成品图片集合
-                        String img = albums.getString(0);//成品图
+                        id = menu.getString("id");//获得菜品id
+                        name = menu.getString("title");//名称
+                        ingredients = menu.getString("ingredients");//主料
+                        burden = menu.getString("burden");//辅料
+                        albums = menu.getJSONArray("albums");//成品图片集合
+                        img = albums.getString(0);//成品图
                         Caipu caipu = new Caipu();
                         caipu.setImgURL(img);
                         caipu.setName(name);
+                        caipu.setID(id);
                         caipu.setMaterial(ingredients+burden);
 
                         cp.add(caipu);
