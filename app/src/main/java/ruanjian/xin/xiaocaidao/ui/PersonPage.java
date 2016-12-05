@@ -33,7 +33,7 @@ public class PersonPage extends Fragment {
     LinearLayout mSave;//我的收藏选项
     LinearLayout mPost;//我的帖子选项
     LinearLayout mSet;//设置选项
-    LinearLayout mAbout;//关于我们选项
+    //LinearLayout mAbout;//关于我们选项
 
     private final int IMG_CHANGE = 1;
     @Override
@@ -46,7 +46,7 @@ public class PersonPage extends Fragment {
         mSave = (LinearLayout)v.findViewById(R.id.Ll_save);
         mPost = (LinearLayout)v.findViewById(R.id.Ll_Post);
         mSet = (LinearLayout)v.findViewById(R.id.Ll_Setting);
-        mAbout = (LinearLayout)v.findViewById(R.id.Ll_about);
+        //mAbout = (LinearLayout)v.findViewById(R.id.Ll_about);
 
         /*如果头像本机已经自己保存过，就加载本机对应头像的路径的图片*/
         if (fileIsExists()){
@@ -82,11 +82,11 @@ public class PersonPage extends Fragment {
                             intent3.setClass(getActivity(),Person_setting.class);
                             startActivityForResult(intent3,IMG_CHANGE);
                             break;
-                        case R.id.Ll_about:
-                            Intent intent4 = new Intent();
-                            intent4.setClass(getActivity(),Person_about.class);
-                            startActivity(intent4);
-                            break;
+//                        case R.id.Ll_about:
+//                            Intent intent4 = new Intent();
+//                            intent4.setClass(getActivity(),Person_about.class);
+//                            startActivity(intent4);
+//                            break;
                         default:
                             break;
                     }
@@ -96,7 +96,7 @@ public class PersonPage extends Fragment {
         mSave.setOnClickListener(listener);
         mPost.setOnClickListener(listener);
         mSet.setOnClickListener(listener);
-        mAbout.setOnClickListener(listener);
+        //mAbout.setOnClickListener(listener);
         return v;
     }
 

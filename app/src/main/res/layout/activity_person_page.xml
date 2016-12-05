@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_person_page"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="ruanjian.xin.xiaocaidao.ui.PersonPage">
+    <!--橘黄色部分-->
     <RelativeLayout
         android:id="@+id/yi"
         android:background="@android:color/holo_orange_dark"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         tools:background="@android:color/holo_orange_dark"
-        android:layout_weight="0.42">
+        android:gravity="center_horizontal">
+        <!--用户头像-->
         <ruanjian.xin.xiaocaidao.domain.XCRoundImageView
             android:src="@drawable/person1"
             android:layout_width="80dp"
@@ -20,161 +23,249 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp" />
+        <!--用户名-->
         <TextView
             android:id="@+id/personal_1_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="飞翔的六毛"
+            android:textColor="@color/white"
             android:layout_below="@+id/personal_1"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            tools:textColor="@android:color/white" />
-        <TextView
-            tools:textColor="@android:color/white"
-            android:id="@+id/personal_1_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="10"
-            android:layout_marginLeft="146dp"
-            android:layout_below="@id/personal_1_2"/>
-        <TextView
-            tools:textColor="@android:color/white"
-            android:id="@+id/personal_1_4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="10"
-            android:layout_marginLeft="240dp"
-            android:layout_below="@id/personal_1_2"/>
-        <TextView
-            tools:textColor="@android:color/white"
-            android:id="@+id/personal_1_5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="粉丝"
-            android:layout_marginLeft="141dp"
-            android:layout_below="@+id/personal_1_3" />
-        <TextView
-            tools:textColor="@android:color/white"
-            android:id="@+id/personal_1_6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="关注"
-            android:layout_marginLeft="234dp"
-            android:layout_below="@+id/personal_1_3" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/yi"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+            android:layout_marginTop="10dp" />
+        <!--粉丝数、关注数-->
         <LinearLayout
-
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/background_light"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true">
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/personal_1_2"
+            android:gravity="center_horizontal">
             <LinearLayout
-                android:id="@+id/Ll_Follows"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="@android:color/background_light">
-                <ImageButton
-                    android:layout_width="38dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/per1"/>
+                android:layout_weight="1"
+                android:gravity="center">
                 <TextView
-                    android:layout_marginTop="6dp"
+                    tools:textColor="@android:color/white"
+                    android:id="@+id/personal_1_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10"
+                    android:textColor="@color/white"/>
+                <TextView
+                    tools:textColor="@android:color/white"
+                    android:id="@+id/personal_1_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="粉丝"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+                <TextView
+                    tools:textColor="@android:color/white"
+                    android:id="@+id/personal_1_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10"
+                    android:textColor="@color/white"/>
+                <TextView
+                    tools:textColor="@android:color/white"
+                    android:id="@+id/personal_1_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="关注"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!--我的关注、收藏、帖子部分-->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f4f4f4"
+        android:gravity="center_horizontal"
+        android:paddingTop="15dp">
+        <!--我的关注-->
+        <LinearLayout
+            android:id="@+id/Ll_Follows"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#fff">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/per1"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="4dp"/>
+                <TextView
                     android:textSize="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="我的关注"
-                    android:layout_marginLeft="20dp"
-                    tools:textColor="@android:color/background_dark" />
+                    android:textColor="#565656"
+                    android:gravity="center_vertical"/>
             </LinearLayout>
-
             <LinearLayout
-                android:id="@+id/Ll_save"
-                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="20dp">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/per5"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--我的收藏-->
+        <LinearLayout
+            android:id="@+id/Ll_save"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#fff">
+            <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content">
-                <ImageButton
-                    android:layout_width="38dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/per2"/>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/per2"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="4dp"/>
                 <TextView
-                    android:layout_marginTop="6dp"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="我的收藏"
-                    android:layout_marginLeft="20dp"
-                    tools:textColor="@android:color/background_dark" />
-
+                    android:textColor="#565656"
+                    android:gravity="center_vertical"/>
             </LinearLayout>
-
             <LinearLayout
-                android:id="@+id/Ll_Post"
-                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="20dp">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/per5"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--我的帖子-->
+        <LinearLayout
+            android:id="@+id/Ll_Post"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#fff">
+            <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content">
-                <ImageButton
-                    android:layout_width="38dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/per3"/>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/per3"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="4dp"/>
                 <TextView
-                    android:layout_marginTop="6dp"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="我的帖子"
-                    android:layout_marginLeft="20dp"
-                    tools:textColor="@android:color/background_dark" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/Ll_Setting"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageButton
-                    android:layout_width="38dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/per4"/>
-                <TextView
-                    android:layout_marginTop="6dp"
-                    android:textSize="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="设置"
-                    android:layout_marginLeft="20dp"
-                    tools:textColor="@android:color/background_dark" />
+                    android:textColor="#565656"
+                    android:gravity="center_vertical"/>
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/Ll_about"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageButton
-                    android:layout_width="38dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/per4"/>
-                <TextView
-                    android:layout_marginTop="6dp"
-                    android:textSize="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="关于我们"
-                    android:layout_marginLeft="20dp"
-                    tools:textColor="@android:color/background_dark" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="20dp">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/per5"/>
             </LinearLayout>
         </LinearLayout>
-    </RelativeLayout>
-</RelativeLayout>
+
+        <!--设置-->
+        <LinearLayout
+            android:id="@+id/Ll_Setting"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="10dp"
+            android:background="#fff">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/per4"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="4dp"/>
+                <TextView
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="设   置"
+                    android:textColor="#565656"
+                    android:gravity="center_vertical"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="20dp">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/per5"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
