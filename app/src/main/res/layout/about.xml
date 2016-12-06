@@ -1,9 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="关于我们"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ededed">
+        <RelativeLayout
+            android:id="@+id/Rlaylayout_aboutHead"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/white">
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:padding="10dp"
+                android:src="@drawable/back_icon"/>
+            <TextView
+                android:id="@+id/friend_title"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:padding="16dp"
+                android:text="关于"
+                android:textSize="22dp"
+                android:textColor="@color/black"
+                android:textAlignment="center"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/Rlaylayout_aboutContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true">
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/p1"
+                android:layout_centerHorizontal="true" />
+            <TextView
+                android:id="@+id/app_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_below="@id/logo"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="10dp"
+                android:text="小菜叨"/>
+            <TextView
+                android:id="@+id/app_ver"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_below="@id/app_name"
+                android:layout_centerHorizontal="true"
+                android:text="v.0.0.1"/>
+            <Button
+                android:layout_below="@id/app_ver"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_margin="10dp"
+                android:layout_centerHorizontal="true"
+                android:text="新版本介绍"
+                android:background="@drawable/aboutbutton"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_centerHorizontal="true"
+                android:text="联系我们：1332321132"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
 </LinearLayout>

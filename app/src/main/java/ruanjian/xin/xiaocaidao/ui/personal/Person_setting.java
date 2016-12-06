@@ -85,6 +85,7 @@ public class Person_setting extends AppCompatActivity implements View.OnClickLis
     //张鑫：
     private LinearLayout Llay_UserName;
     private LinearLayout Llay_PassWord;
+    private LinearLayout About;
     private TextView Tv_UserName;
     private TextView Et_PassWord;
     private EditText tempEdit;
@@ -268,6 +269,7 @@ public class Person_setting extends AppCompatActivity implements View.OnClickLis
     private void getView(){
         Llay_UserName = (LinearLayout)findViewById(R.id.Llaylayout_settingUserName);
         Llay_PassWord = (LinearLayout)findViewById(R.id.Llaylayout_settingPassWord);
+        About =(LinearLayout)findViewById(R.id.Llaylayout_About);
 
         Tv_UserName = (TextView)findViewById(R.id.Tvlayout_settingUserName);
         Et_PassWord = (TextView)findViewById(R.id.Tvlayout_settingPassWord);
@@ -322,6 +324,14 @@ public class Person_setting extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onClick(View v) {
 
+            }
+        });
+
+        About.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Person_setting.this,Person_about.class);
+                startActivity(i);
             }
         });
     }

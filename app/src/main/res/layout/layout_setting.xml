@@ -207,6 +207,7 @@
 
     <!--关于我们-->
     <LinearLayout
+        android:id="@+id/Llaylayout_About"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="80dp"
