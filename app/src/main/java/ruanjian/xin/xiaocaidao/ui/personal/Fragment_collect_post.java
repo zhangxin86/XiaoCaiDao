@@ -13,7 +13,7 @@ import java.util.List;
 
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.adapter.BaiDuRefreshListView;
-import ruanjian.xin.xiaocaidao.adapter.Myadapter4;
+import ruanjian.xin.xiaocaidao.adapter.Adapter_collect_post;
 import ruanjian.xin.xiaocaidao.domain.Name2;
 
 /**
@@ -21,7 +21,7 @@ import ruanjian.xin.xiaocaidao.domain.Name2;
  */
 
 public class Fragment_collect_post extends Fragment implements  BaiDuRefreshListView.OnBaiduRefreshListener{
-    private Myadapter4 myadapter4;
+    private Adapter_collect_post adaptercollectpost;
     private List<Name2> list = new ArrayList<>();
     private BaiDuRefreshListView listView;
 
@@ -31,7 +31,7 @@ public class Fragment_collect_post extends Fragment implements  BaiDuRefreshList
             switch (msg.what) {
                 case REFRESH_COMPLETE:
                     listView.setOnRefreshComplete();
-                    myadapter4.notifyDataSetChanged();
+                    adaptercollectpost.notifyDataSetChanged();
                     listView.setSelection(0);
                     break;
                 default:
@@ -47,8 +47,8 @@ public class Fragment_collect_post extends Fragment implements  BaiDuRefreshList
         /*
         getData();
         listView = (ListView)v.findViewById(R.id.fragment_two_list);
-        myadapter4 = new Myadapter4(getActivity(),list);
-        listView.setAdapter(myadapter4);
+        adaptercollectpost = new Adapter_collect_post(getActivity(),list);
+        listView.setAdapter(adaptercollectpost);
         return  v;
         */
         getView(v);
@@ -61,8 +61,8 @@ public class Fragment_collect_post extends Fragment implements  BaiDuRefreshList
     }
 
     public void setAdapter(){
-        myadapter4 =new Myadapter4(getActivity(),list);
-        listView.setAdapter(myadapter4);
+        adaptercollectpost =new Adapter_collect_post(getActivity(),list);
+        listView.setAdapter(adaptercollectpost);
         listView.setOnBaiduRefreshListener(this);
     }
 

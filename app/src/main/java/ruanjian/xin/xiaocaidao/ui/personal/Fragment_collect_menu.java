@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ruanjian.xin.xiaocaidao.R;
+import ruanjian.xin.xiaocaidao.adapter.Adapter_collect_menu;
 import ruanjian.xin.xiaocaidao.adapter.BaiDuRefreshListView;
-import ruanjian.xin.xiaocaidao.adapter.Myadapter3;
 import ruanjian.xin.xiaocaidao.domain.Name1;
 
 
@@ -24,7 +24,7 @@ import ruanjian.xin.xiaocaidao.domain.Name1;
 
 public class Fragment_collect_menu extends Fragment implements BaiDuRefreshListView.OnBaiduRefreshListener {
 
-    private Myadapter3 myadapter3;
+    private Adapter_collect_menu myadapter3;
     private List<Name1>list= new ArrayList<>();
     private BaiDuRefreshListView listView;
     private final static int REFRESH_COMPLETE = 0;
@@ -50,7 +50,7 @@ public class Fragment_collect_menu extends Fragment implements BaiDuRefreshListV
         getdata();
         listView= (ListView) v.findViewById(R.id.fragment_two_list);
 
-        myadapter3 = new Myadapter3(getActivity(),list);
+        myadapter3 = new Adapter_collect_menu(getActivity(),list);
         listView.setAdapter(myadapter3);
         return v;
         */
@@ -64,7 +64,7 @@ public class Fragment_collect_menu extends Fragment implements BaiDuRefreshListV
     }
 
     public void setAdapter(){
-        myadapter3=new Myadapter3(getActivity(),list);
+        myadapter3=new Adapter_collect_menu(getActivity(),list);
         listView.setAdapter(myadapter3);
         listView.setOnBaiduRefreshListener(this);
     }
@@ -98,5 +98,6 @@ public class Fragment_collect_menu extends Fragment implements BaiDuRefreshListV
         list.add(new Name1(0,"红烧狮子头","50人做过"));
         list.add(new Name1(0,"红烧狮子头","50人做过"));
     }
+//接口
 
 }

@@ -13,7 +13,7 @@ import java.util.List;
 
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.adapter.BaiDuRefreshListView;
-import ruanjian.xin.xiaocaidao.adapter.Myadapter5;
+import ruanjian.xin.xiaocaidao.adapter.Adapter_post_main;
 import ruanjian.xin.xiaocaidao.domain.Name2;
 
 
@@ -22,7 +22,7 @@ import ruanjian.xin.xiaocaidao.domain.Name2;
  */
 
 public class Fragment_post_mainpost extends Fragment implements BaiDuRefreshListView.OnBaiduRefreshListener{
-    private Myadapter5 myadapter5;
+    private Adapter_post_main adapterpostmain;
     private BaiDuRefreshListView listView;
     private List<Name2> list = new ArrayList<Name2>();
 
@@ -33,7 +33,7 @@ public class Fragment_post_mainpost extends Fragment implements BaiDuRefreshList
             switch (msg.what) {
                 case REFRESH_COMPLETE:
                     listView.setOnRefreshComplete();
-                    myadapter5.notifyDataSetChanged();
+                    adapterpostmain.notifyDataSetChanged();
                     listView.setSelection(0);
                     break;
                 default:
@@ -53,8 +53,8 @@ public class Fragment_post_mainpost extends Fragment implements BaiDuRefreshList
         /*
         getData();
         listView= (ListView)v.findViewById(R.id.fragment_three_list);
-        myadapter5 = new Myadapter5(getActivity(),list);
-        listView.setAdapter(myadapter5);
+        adapterpostmain = new Adapter_post_main(getActivity(),list);
+        listView.setAdapter(adapterpostmain);
         return v;
         */
     }
@@ -62,8 +62,8 @@ public class Fragment_post_mainpost extends Fragment implements BaiDuRefreshList
         listView = (BaiDuRefreshListView)v.findViewById(R.id.fragment_three_list);
     }
     private void setAdapter(){
-        myadapter5 = new Myadapter5(getActivity(),list);
-        listView.setAdapter(myadapter5);
+        adapterpostmain = new Adapter_post_main(getActivity(),list);
+        listView.setAdapter(adapterpostmain);
         listView.setOnBaiduRefreshListener(this);
     }
     public void onRefresh(){
