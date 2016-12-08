@@ -18,7 +18,7 @@ import ruanjian.xin.xiaocaidao.domain.Parts;
  * Created by lhm on 2016/11/22.
  */
 
-public class NewFriend extends Activity{
+public class NewFriend extends Activity{    //最新贴
     private NewAdapter newAdapter;
     private ListView listView;
     private List<Parts> data = new ArrayList<>();

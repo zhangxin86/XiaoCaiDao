@@ -19,7 +19,7 @@ import ruanjian.xin.xiaocaidao.domain.Parts;
  * Created by lhm on 2016/11/22.
  */
 
-public class HotFriend extends Activity {
+public class HotFriend extends Activity {    //热门帖子
 
     private HotAdapter hotAdapter;
     private ListView listView;

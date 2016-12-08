@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_breakfast"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="ruanjian.xin.xiaocaidao.ui.Main.ThreeMeals">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#ededed">
+        <RelativeLayout
+            android:id="@+id/Rlaylayout_aboutHead"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#84cc31">
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:padding="10dp"
+                android:src="@drawable/back_icon_white"/>
+            <TextView
+                android:id="@+id/_title"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:padding="16dp"
+                android:text="早  餐"
+                android:textSize="22dp"
+                android:textColor="@color/white"
+                android:textAlignment="center"/>
+        </RelativeLayout>
+        <ListView
+            android:id="@+id/three_meals_listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:dividerHeight="5dp"
+            android:overScrollMode="never">
+        </ListView>
+    </LinearLayout>
+</LinearLayout>

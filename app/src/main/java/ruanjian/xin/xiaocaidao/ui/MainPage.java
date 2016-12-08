@@ -1,6 +1,7 @@
 package ruanjian.xin.xiaocaidao.ui;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,6 +27,7 @@ import ruanjian.xin.xiaocaidao.adapter.CommentAdapter;
 import ruanjian.xin.xiaocaidao.adapter.SpicyAdapter;
 import ruanjian.xin.xiaocaidao.adapter.TodayAdapter;
 import ruanjian.xin.xiaocaidao.domain.Parts;
+import ruanjian.xin.xiaocaidao.ui.Main.ThreeMeals;
 import ruanjian.xin.xiaocaidao.utils.Calculator;
 import ruanjian.xin.xiaocaidao.utils.RefreshView;
 
@@ -36,6 +39,9 @@ public class MainPage extends Fragment implements RefreshView.RefrshListener{
     private TodayAdapter todayAdapter;
     private SpicyAdapter spicyAdapter;
     private CommentAdapter commentAdapter;
+    private LinearLayout Ll_Breakfast;
+    private LinearLayout Ll_Lunch;
+    private LinearLayout Ll_dinner;
     private ListView Lv_Today;
     private GridView Gv_Spicy;
     private ListView Lv_Comment;
@@ -94,7 +100,6 @@ public class MainPage extends Fragment implements RefreshView.RefrshListener{
         }).start();
     }
 
-
     /*
         * 辅助函数
         * */
@@ -102,6 +107,10 @@ public class MainPage extends Fragment implements RefreshView.RefrshListener{
         Lv_Today = (ListView)v.findViewById(R.id.Lvactivity_main_pageToday);
         Gv_Spicy = (GridView)v.findViewById(R.id.Gvactivity_main_pageFoodAndSpicy);
         Lv_Comment = (ListView)v.findViewById(R.id.Lvactivity_main_pageComment);
+
+        Ll_Breakfast = (LinearLayout)v.findViewById(R.id.Llayactivity_main_pageBreakFast);
+        Ll_Lunch = (LinearLayout)v.findViewById(R.id.Llayactivity_main_pageAfternoon);
+        Ll_dinner = (LinearLayout)v.findViewById(R.id.Llayactivity_main_pageDinner);
 
         mRollViewPager = (RollPagerView) v.findViewById(R.id.roll_view_pager);
 

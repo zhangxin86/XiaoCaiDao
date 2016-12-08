@@ -2,7 +2,6 @@ package ruanjian.xin.xiaocaidao.ui.Friend;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +13,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -30,16 +28,13 @@ import org.apache.http.Header;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.ui.SelectWindow.SelectPicPopupWindow;
 
 import static ruanjian.xin.xiaocaidao.utils.Utils.JIFINAL_UPLOAD;
 
-public class FriendItemAdd extends Activity implements View.OnClickListener {
+public class ItemAdd extends Activity implements View.OnClickListener {    //发帖
     private Context mContext;
     private Button select_btn;//选择图片
     private ImageView add_imageView;//图片显示控件
@@ -59,7 +54,7 @@ public class FriendItemAdd extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend_item_add);
-        mContext = FriendItemAdd.this;
+        mContext = ItemAdd.this;
 
         findView();
         setListener();
