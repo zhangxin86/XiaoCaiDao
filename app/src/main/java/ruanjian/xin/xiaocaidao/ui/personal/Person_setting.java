@@ -61,6 +61,8 @@ import ruanjian.xin.xiaocaidao.utils.NetUtil;
 import static ruanjian.xin.xiaocaidao.utils.Utils.JIFINAL_UPLOAD;
 
 /**
+ * 选项：个人中心
+ * 子选项：设置
  * Created by 你的账户 on 2016/11/23.
  */
 
@@ -81,8 +83,6 @@ public class Person_setting extends AppCompatActivity implements View.OnClickLis
     private static final int REQUESTCODE_TAKE = 1;		// 相机拍照标记
     private static final int REQUESTCODE_CUTTING = 2;	// 图片裁切标记
 
-
-    //张鑫：
     private LinearLayout Llay_UserName;
     private LinearLayout Llay_PassWord;
     private TextView Tv_UserName;
@@ -91,6 +91,7 @@ public class Person_setting extends AppCompatActivity implements View.OnClickLis
     private AlertDialog.Builder builder;
     private Button Btn_exit;
     private ImageView Iv_back;
+    private LinearLayout setting_about;//关于我们按钮
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -275,12 +276,21 @@ public class Person_setting extends AppCompatActivity implements View.OnClickLis
         builder = new AlertDialog.Builder(Person_setting.this);
         Btn_exit = (Button)findViewById(R.id.Btnlayout_settingExit);
         Iv_back = (ImageView)findViewById(R.id.back);
+        setting_about = (LinearLayout) findViewById(R.id.setting_about);
     }
     private void setListener(){
         Btn_exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Person_setting.this, First.class);
+                startActivity(i);
+            }
+        });
+
+        setting_about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Person_setting.this, Person_about.class);
                 startActivity(i);
             }
         });

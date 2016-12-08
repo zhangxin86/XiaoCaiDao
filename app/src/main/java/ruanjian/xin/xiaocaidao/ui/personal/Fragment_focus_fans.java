@@ -17,6 +17,8 @@ import ruanjian.xin.xiaocaidao.adapter.Adapter_focus_fans;
 import ruanjian.xin.xiaocaidao.domain.Name;
 
 /**
+ * 选项：我的关注
+ * 子选项：粉丝
  * Created by 你的账户 on 2016/11/24.
  */
 

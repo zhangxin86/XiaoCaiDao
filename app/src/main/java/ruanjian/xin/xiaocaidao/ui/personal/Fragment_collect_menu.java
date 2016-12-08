@@ -19,6 +19,8 @@ import ruanjian.xin.xiaocaidao.domain.Name1;
 
 
 /**
+ * 选项：我的收藏
+ * 子选项：菜单
  * Created by 你的账户 on 2016/11/23.
  */
 

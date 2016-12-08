@@ -14,14 +14,16 @@ import ruanjian.xin.xiaocaidao.R;
 
 
 /**
+ * 选项：个人中心
+ * 子选项：我的帖子
  * Created by 你的账户 on 2016/11/23.
  */
 
 public class Person_post extends AppCompatActivity {
-    private Button button1;
-    private Button button2;
-    private Fragment fragment1;
-    private Fragment fragment2;
+    private Button btn_Post;//主贴按钮
+    private Button btn_Repost;//回帖按钮
+    private Fragment fragment_Post;//主贴覆盖页
+    private Fragment fragmentRepost;//回帖覆盖页
     private LinearLayout linearLayout;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,8 +32,8 @@ public class Person_post extends AppCompatActivity {
         initview();
     }
     private void initview(){
-        button1= (Button)findViewById(R.id.btn1);
-        button2= (Button)findViewById(R.id.btn2);
+        btn_Post= (Button)findViewById(R.id.btn1);
+        btn_Repost= (Button)findViewById(R.id.btn2);
         linearLayout = (LinearLayout)findViewById(R.id.ll);
         setListener();
         setDefaultFragment();
@@ -39,38 +41,40 @@ public class Person_post extends AppCompatActivity {
     private void setDefaultFragment(){
         FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        fragment1 = new Fragment_post_mainpost();
-        ft.replace(R.id.f1,fragment1);
+        fragment_Post = new Fragment_post_mainpost();
+        ft.replace(R.id.f1,fragment_Post);
         ft.commit();
     }
     private void setListener(){
-        button1.setOnClickListener(listener);
-        button2.setOnClickListener(listener);
+        btn_Post.setOnClickListener(listener);
+        btn_Repost.setOnClickListener(listener);
     }
     private View.OnClickListener listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             FragmentManager fm = getFragmentManager();
             FragmentTransaction ft =fm.beginTransaction();
-            if(v ==button1){
-                button1.setTextColor(getResources().getColor(R.color.tab_select));
-                button2.setTextColor(getResources().getColor(R.color.tab_default));
+            if(v ==btn_Post){
+                btn_Post.setTextColor(getResources().getColor(R.color.tab_select));
+                btn_Repost.setTextColor(getResources().getColor(R.color.tab_default));
             }else {
-                button1.setTextColor(getResources().getColor(R.color.tab_default));
-                button2.setTextColor(getResources().getColor(R.color.tab_select));
+                btn_Post.setTextColor(getResources().getColor(R.color.tab_default));
+                btn_Repost.setTextColor(getResources().getColor(R.color.tab_select));
             }
             switch (v.getId()){
+                //点击主贴按钮出现主页页面
                 case R.id.btn1:
-                    if(fragment1 ==null){
-                        fragment1 =new Fragment_post_mainpost();
+                    if(fragment_Post ==null){
+                        fragment_Post =new Fragment_post_mainpost();
                     }
-                    ft.replace(R.id.f1,fragment1);
+                    ft.replace(R.id.f1,fragment_Post);
                     break;
+                //点击回帖按钮出现回帖页面
                 case R.id.btn2:
-                    if(fragment2 ==null){
-                        fragment2 =new Fragment_post_repost();
+                    if(fragmentRepost ==null){
+                        fragmentRepost =new Fragment_post_repost();
                     }
-                    ft.replace(R.id.f1,fragment2);
+                    ft.replace(R.id.f1,fragmentRepost);
                     break;
                 default:
             }

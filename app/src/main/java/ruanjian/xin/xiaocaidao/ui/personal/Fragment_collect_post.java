@@ -17,6 +17,8 @@ import ruanjian.xin.xiaocaidao.adapter.Adapter_collect_post;
 import ruanjian.xin.xiaocaidao.domain.Name2;
 
 /**
+ * 选项：我的收藏
+ * 子选项：帖子
  * Created by 你的账户 on 2016/11/23.
  */
 

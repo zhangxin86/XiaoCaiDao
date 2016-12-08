@@ -18,6 +18,8 @@ import ruanjian.xin.xiaocaidao.domain.Name2;
 
 
 /**
+ * 选项：我的帖子
+ * 子选项：主贴
  * Created by 你的账户 on 2016/11/23.
  */
 

@@ -17,6 +17,8 @@ import ruanjian.xin.xiaocaidao.adapter.Adapter_focus_focus;
 import ruanjian.xin.xiaocaidao.domain.Name;
 
 /**
+ * 选项：我的关注
+ * 子选项：关注
  * Created by 你的账户 on 2016/11/23.
  */
 
