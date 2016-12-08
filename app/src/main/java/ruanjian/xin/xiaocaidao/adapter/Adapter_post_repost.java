@@ -11,19 +11,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ruanjian.xin.xiaocaidao.R;
-import ruanjian.xin.xiaocaidao.domain.Name1;
+import ruanjian.xin.xiaocaidao.domain.Name2;
 
 
 /**
  * Created by 你的账户 on 2016/11/24.
  */
 
-public class Myadapter3 extends BaseAdapter {
+public class Adapter_post_repost extends BaseAdapter {
     private Context context;
-    private List<Name1> list = new ArrayList<>();
+    private List<Name2> list = new ArrayList<>();
 
-
-    public Myadapter3(Context context, List<Name1> list) {
+    public Adapter_post_repost(Context context, List<Name2> list) {
         this.context = context;
         this.list = list;
     }
@@ -45,13 +44,15 @@ public class Myadapter3 extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if(convertView==null){
-            convertView = LayoutInflater.from(context).inflate(R.layout.fragment_collect_menu_item,null);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.fragment_post_repost_item, null);
         }
-        TextView textView = (TextView)convertView.findViewById(R.id.fragment_one_list_tv3);
-        textView.setText(list.get(position).getName());
-        TextView textView1 = (TextView)convertView.findViewById(R.id.fragment_one_list_tv3_1);
-        textView1.setText(list.get(position).getName1());
+        TextView textView=(TextView)convertView.findViewById(R.id.fragment_one_list_tv6);
+        textView.setText(list.get(position).getName1());
+        TextView textView1=(TextView)convertView.findViewById(R.id.fragment_one_list_tv6_1);
+        textView1.setText(list.get(position).getName2());
+        TextView textView2=(TextView)convertView.findViewById(R.id.fragment_one_list_tv6_2);
+        textView2.setText(list.get(position).getName3());
         return convertView;
     }
 }

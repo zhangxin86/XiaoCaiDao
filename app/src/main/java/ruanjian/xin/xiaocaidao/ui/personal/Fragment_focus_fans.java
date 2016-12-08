@@ -13,15 +13,17 @@ import java.util.List;
 
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.adapter.BaiDuRefreshListView;
-import ruanjian.xin.xiaocaidao.adapter.Myadapter1;
+import ruanjian.xin.xiaocaidao.adapter.Adapter_focus_fans;
 import ruanjian.xin.xiaocaidao.domain.Name;
 
 /**
+ * 选项：我的关注
+ * 子选项：粉丝
  * Created by 你的账户 on 2016/11/24.
  */
 
 public class Fragment_focus_fans extends Fragment implements BaiDuRefreshListView.OnBaiduRefreshListener{
-    private Myadapter1 myadapter1;
+    private Adapter_focus_fans myadapter1;
     private List<Name> list = new ArrayList<Name>();
     private BaiDuRefreshListView listView;
 
@@ -49,11 +51,11 @@ public class Fragment_focus_fans extends Fragment implements BaiDuRefreshListVie
         setAdapter();
         return v;
 
-/*
+        /*
         //listView = (ListView)container.findViewById(R.id.fragment_one_list);
         listView =(ListView) v.findViewById(R.id.fragment_one_list);
         getData();
-        myadapter1 =new Myadapter1(getActivity(),list);
+        myadapter1 =new Adapter_focus_fans(getActivity(),list);
         if(listView==null) Log.i("tag","list null");
         if(myadapter1==null) Log.i("tag","null");
         listView.setAdapter(myadapter1);
@@ -66,7 +68,7 @@ public class Fragment_focus_fans extends Fragment implements BaiDuRefreshListVie
     }
 
     public void setAdapter(){
-        myadapter1 =new Myadapter1(getActivity(),list);
+        myadapter1 =new Adapter_focus_fans(getActivity(),list);
         listView.setAdapter(myadapter1);
         listView.setOnBaiduRefreshListener(this);
     }

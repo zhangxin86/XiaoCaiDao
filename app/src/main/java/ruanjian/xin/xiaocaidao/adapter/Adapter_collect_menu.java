@@ -11,17 +11,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ruanjian.xin.xiaocaidao.R;
-import ruanjian.xin.xiaocaidao.domain.Name;
+import ruanjian.xin.xiaocaidao.domain.Name1;
+
 
 /**
- * Created by 你的账户 on 2016/11/23.
+ * Created by 你的账户 on 2016/11/24.
  */
 
-public class Myadapter2 extends BaseAdapter {
+public class Adapter_collect_menu extends BaseAdapter {
     private Context context;
-    private List<Name> list = new ArrayList<>();
+    private List<Name1> list = new ArrayList<>();
 
-    public Myadapter2(Context context, List<Name> list) {
+
+    public Adapter_collect_menu(Context context, List<Name1> list) {
         this.context = context;
         this.list = list;
     }
@@ -44,10 +46,12 @@ public class Myadapter2 extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView==null){
-            convertView = LayoutInflater.from(context).inflate(R.layout.fragment_focus_focus_item,null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.fragment_collect_menu_item,null);
         }
-        TextView textView =(TextView)convertView.findViewById(R.id.fragment_one_list_tv2);
+        TextView textView = (TextView)convertView.findViewById(R.id.fragment_one_list_tv3);
         textView.setText(list.get(position).getName());
+        TextView textView1 = (TextView)convertView.findViewById(R.id.fragment_one_list_tv3_1);
+        textView1.setText(list.get(position).getName1());
         return convertView;
     }
 }

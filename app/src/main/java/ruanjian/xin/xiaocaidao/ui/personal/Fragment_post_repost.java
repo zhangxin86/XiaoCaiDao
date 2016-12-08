@@ -13,18 +13,20 @@ import java.util.List;
 
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.adapter.BaiDuRefreshListView;
-import ruanjian.xin.xiaocaidao.adapter.Myadapter6;
+import ruanjian.xin.xiaocaidao.adapter.Adapter_post_repost;
 import ruanjian.xin.xiaocaidao.domain.Name2;
 
 
 /**
+ * 选项：我的帖子
+ * 子选项：回帖
  * Created by 你的账户 on 2016/11/23.
  */
 
 public class Fragment_post_repost extends Fragment implements BaiDuRefreshListView.OnBaiduRefreshListener {
     private List<Name2> list = new ArrayList<>();
     private BaiDuRefreshListView listView;
-    private Myadapter6 myadapter6;
+    private Adapter_post_repost adapterpostrepost;
 
     private final static int REFRESH_COMPLETE = 0;
     private Handler mHandler = new Handler(){
@@ -32,7 +34,7 @@ public class Fragment_post_repost extends Fragment implements BaiDuRefreshListVi
             switch (msg.what) {
                 case REFRESH_COMPLETE:
                     listView.setOnRefreshComplete();
-                    myadapter6.notifyDataSetChanged();
+                    adapterpostrepost.notifyDataSetChanged();
                     listView.setSelection(0);
                     break;
                 default:
@@ -48,8 +50,8 @@ public class Fragment_post_repost extends Fragment implements BaiDuRefreshListVi
         /*
         getData();
         listView = (ListView)v.findViewById(R.id.fragment_three_list);
-        myadapter6= new Myadapter6(getActivity(),list);
-        listView.setAdapter(myadapter6);
+        adapterpostrepost= new Adapter_post_repost(getActivity(),list);
+        listView.setAdapter(adapterpostrepost);
         return  v;
         */
         getView(v);
@@ -61,8 +63,8 @@ public class Fragment_post_repost extends Fragment implements BaiDuRefreshListVi
         listView=(BaiDuRefreshListView)v.findViewById(R.id.fragment_three_list);
     }
     private void setAdapter(){
-        myadapter6 = new Myadapter6(getActivity(),list);
-        listView.setAdapter(myadapter6);
+        adapterpostrepost = new Adapter_post_repost(getActivity(),list);
+        listView.setAdapter(adapterpostrepost);
         listView.setOnBaiduRefreshListener(this);
     }
     public void onRefresh(){

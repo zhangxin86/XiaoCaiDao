@@ -13,16 +13,18 @@ import java.util.List;
 
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.adapter.BaiDuRefreshListView;
-import ruanjian.xin.xiaocaidao.adapter.Myadapter2;
+import ruanjian.xin.xiaocaidao.adapter.Adapter_focus_focus;
 import ruanjian.xin.xiaocaidao.domain.Name;
 
 /**
+ * 选项：我的关注
+ * 子选项：关注
  * Created by 你的账户 on 2016/11/23.
  */
 
 public class Fragment_focus_focus extends Fragment implements BaiDuRefreshListView.OnBaiduRefreshListener {
     private BaiDuRefreshListView listView;
-    private Myadapter2 myadapter2;
+    private Adapter_focus_focus focusfocusadapter;
     private List<Name> list = new ArrayList<>();
 
     private final static int REFRESH_COMPLETE = 0;
@@ -31,7 +33,7 @@ public class Fragment_focus_focus extends Fragment implements BaiDuRefreshListVi
             switch (msg.what) {
                 case REFRESH_COMPLETE:
                     listView.setOnRefreshComplete();
-                    myadapter2.notifyDataSetChanged();
+                    focusfocusadapter.notifyDataSetChanged();
                     listView.setSelection(0);
                     break;
                 default:
@@ -53,8 +55,8 @@ public class Fragment_focus_focus extends Fragment implements BaiDuRefreshListVi
         /*
         getData();
         listView = (ListView) v.findViewById(R.id.fragment_one_list);
-        myadapter2 = new Myadapter2(getActivity(), list);
-        listView.setAdapter(myadapter2);
+        focusfocusadapter = new Adapter_focus_focus(getActivity(), list);
+        listView.setAdapter(focusfocusadapter);
         return v;
         */
     }
@@ -63,8 +65,8 @@ public class Fragment_focus_focus extends Fragment implements BaiDuRefreshListVi
     }
 
     public void setAdapter(){
-        myadapter2 =new Myadapter2(getActivity(),list);
-        listView.setAdapter(myadapter2);
+        focusfocusadapter =new Adapter_focus_focus(getActivity(),list);
+        listView.setAdapter(focusfocusadapter);
         listView.setOnBaiduRefreshListener(this);
     }
 
