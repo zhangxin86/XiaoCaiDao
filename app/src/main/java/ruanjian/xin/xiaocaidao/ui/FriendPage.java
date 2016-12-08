@@ -3,20 +3,16 @@ package ruanjian.xin.xiaocaidao.ui;
 import android.app.Fragment;
 import android.app.LocalActivityManager;
 import android.content.Intent;
-import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TabHost;
-import android.widget.TextView;
 
 import ruanjian.xin.xiaocaidao.R;
-import ruanjian.xin.xiaocaidao.ui.Friend.FriendItemAdd;
+import ruanjian.xin.xiaocaidao.ui.Friend.ItemAdd;
 import ruanjian.xin.xiaocaidao.ui.Friend.HotFriend;
 import ruanjian.xin.xiaocaidao.ui.Friend.NewFriend;
 
@@ -61,7 +57,7 @@ public class FriendPage extends Fragment {
     private class OnClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(getActivity(),FriendItemAdd.class);
+            Intent intent = new Intent(getActivity(),ItemAdd.class);
             startActivity(intent);
         }
     }

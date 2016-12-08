@@ -15,7 +15,7 @@ import ruanjian.xin.xiaocaidao.adapter.FriendCommentAdapter;
 import ruanjian.xin.xiaocaidao.domain.Parts;
 import ruanjian.xin.xiaocaidao.utils.Calculator;
 
-public class HotFriendDetail extends Fragment {
+public class HotFriendDetail_Fragment extends Fragment {    //热门帖子详情页
 
     private FriendCommentAdapter commentAdapter;
     private ListView Lv_comment;

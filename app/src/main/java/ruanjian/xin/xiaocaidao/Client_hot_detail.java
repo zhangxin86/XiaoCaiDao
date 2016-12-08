@@ -10,14 +10,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import ruanjian.xin.xiaocaidao.ui.Friend.HotFriendDetail;
+import ruanjian.xin.xiaocaidao.ui.Friend.HotFriendDetail_Fragment;
 
-public class Client_hot_detail extends AppCompatActivity {
+public class Client_hot_detail extends AppCompatActivity {    //帖子评论框架，上面边框和下面输入框
 
     private FrameLayout HotFlay_Page;
     private RelativeLayout HotRlay_Head;
     private LinearLayout HotLlay_Bottom;
-    private HotFriendDetail hotFriendDetail;
+    private HotFriendDetail_Fragment hotFriendDetailFragment;
     private ImageView imageView;
 
     @Override
@@ -45,10 +45,10 @@ public class Client_hot_detail extends AppCompatActivity {
     private void setContent(){
         HotRlay_Head.setVisibility(View.VISIBLE);
         HotLlay_Bottom.setVisibility(View.VISIBLE);
-        if( hotFriendDetail==null ){ hotFriendDetail = new HotFriendDetail(); }
+        if( hotFriendDetailFragment ==null ){ hotFriendDetailFragment = new HotFriendDetail_Fragment(); }
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        transaction.replace(R.id.Hotlayout_clientPage,hotFriendDetail);
+        transaction.replace(R.id.Hotlayout_clientPage, hotFriendDetailFragment);
         transaction.commit();
     }
 
