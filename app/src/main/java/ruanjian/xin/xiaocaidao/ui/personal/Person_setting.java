@@ -278,7 +278,7 @@ public class Person_setting extends AppCompatActivity implements View.OnClickLis
         builder = new AlertDialog.Builder(Person_setting.this);
         Btn_exit = (Button)findViewById(R.id.Btnlayout_settingExit);
         Iv_back = (ImageView)findViewById(R.id.back);
-        setting_about = (LinearLayout) findViewById(R.id.setting_about);
+        setting_about = (LinearLayout) findViewById(R.id.Llaylayout_About);
     }
     private void setListener(){
         Btn_exit.setOnClickListener(new View.OnClickListener() {
