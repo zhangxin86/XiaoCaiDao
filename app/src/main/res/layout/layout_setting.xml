@@ -207,13 +207,12 @@
 
     <!--关于我们-->
     <LinearLayout
-        android:id="@+id/setting_about"
+        android:id="@+id/Llaylayout_About"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:gravity="center_vertical">
         <LinearLayout
-
             android:layout_weight="2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

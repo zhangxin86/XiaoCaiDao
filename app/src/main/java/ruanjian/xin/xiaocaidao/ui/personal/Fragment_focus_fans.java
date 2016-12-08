@@ -51,7 +51,7 @@ public class Fragment_focus_fans extends Fragment implements BaiDuRefreshListVie
         setAdapter();
         return v;
 
-/*
+        /*
         //listView = (ListView)container.findViewById(R.id.fragment_one_list);
         listView =(ListView) v.findViewById(R.id.fragment_one_list);
         getData();
