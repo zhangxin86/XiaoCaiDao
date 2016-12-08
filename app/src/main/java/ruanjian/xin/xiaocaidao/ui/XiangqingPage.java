@@ -9,9 +9,11 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -61,8 +63,6 @@ public class XiangqingPage extends Activity {
     public JSONArray steps;//步骤对象数组
     public JSONObject stepobj;//步骤对象
 
-
-
     private String menuName;//上一个页面穿来的菜肴名称
     private String mId;//上一个页面传来的菜品id
 
@@ -73,6 +73,9 @@ public class XiangqingPage extends Activity {
     private TextView tvIngredients;//主料控件
     private TextView tvBurden;//辅料控件
 
+    private RelativeLayout titleXiangqing; //不能删掉， include中的内容
+    private TextView tv_title;
+    private Button btnTitle;
     private ListView lvSteps;
     private StepAdapter myadapter;
     private ArrayList<StepItem> mSteps = new ArrayList<>();
@@ -84,7 +87,11 @@ public class XiangqingPage extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menudetail);
 
+
         menuName=getIntent().getStringExtra("menuName");//得到要传入的要显示的菜品名称数据
+        findView();
+        setViews();
+
         mId = getIntent().getStringExtra("id");
 
         tvName = (TextView) findViewById(R.id.tv_menuName);
@@ -106,6 +113,28 @@ public class XiangqingPage extends Activity {
         lvSteps.setAdapter(myadapter);
 
     }
+    private void findView(){
+        titleXiangqing = (RelativeLayout)findViewById(R.id.Xiangqing);
+        tv_title = (TextView)findViewById(R.id.text_title);
+        btnTitle = (Button)findViewById(R.id.button_backward);
+
+    }
+    private void setViews(){
+        tv_title.setText(menuName);
+        btnTitle.setOnClickListener(listener);
+    }
+    View.OnClickListener listener= new View.OnClickListener(){
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.button_backward:
+                    finish();
+                    break;
+
+            }
+        }
+    };
+
 
     public void fetchSteps(final String menuName,final String mId) {
 

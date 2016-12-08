@@ -1,11 +1,11 @@
 package ruanjian.xin.xiaocaidao.ui;
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +13,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jude.rollviewpager.RollPagerView;
@@ -22,12 +23,12 @@ import com.jude.rollviewpager.hintview.ColorPointHintView;
 import java.util.ArrayList;
 import java.util.List;
 
+import ruanjian.xin.xiaocaidao.Client;
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.adapter.CommentAdapter;
 import ruanjian.xin.xiaocaidao.adapter.SpicyAdapter;
 import ruanjian.xin.xiaocaidao.adapter.TodayAdapter;
 import ruanjian.xin.xiaocaidao.domain.Parts;
-import ruanjian.xin.xiaocaidao.ui.Main.ThreeMeals;
 import ruanjian.xin.xiaocaidao.utils.Calculator;
 import ruanjian.xin.xiaocaidao.utils.RefreshView;
 
@@ -39,12 +40,17 @@ public class MainPage extends Fragment implements RefreshView.RefrshListener{
     private TodayAdapter todayAdapter;
     private SpicyAdapter spicyAdapter;
     private CommentAdapter commentAdapter;
-    private LinearLayout Ll_Breakfast;
-    private LinearLayout Ll_Lunch;
-    private LinearLayout Ll_dinner;
     private ListView Lv_Today;
     private GridView Gv_Spicy;
     private ListView Lv_Comment;
+
+    //跳转相关按钮：
+    private LinearLayout Llayactivity_main_page_SeasonFood; //应季食材
+    private LinearLayout Llayactivity_main_page_Spicy;      //推荐酱料
+    private LinearLayout Llayactivity_main_page_Follow;     //教你做菜
+    private LinearLayout Llayactivity_main_pageBreakFast;   //早餐
+    private LinearLayout Llayactivity_main_pageAfternoon;   //午餐
+    private LinearLayout Llayactivity_main_pageDinner;      //晚餐
     private List<Parts> data1 = new ArrayList<>();
     private List<Parts> data2 = new ArrayList<>();
     private List<Parts> data3 = new ArrayList<>();
@@ -53,6 +59,8 @@ public class MainPage extends Fragment implements RefreshView.RefrshListener{
     private RefreshView refreshView;
     private static final int STATE_FRESHED = 3;
 
+    private View v;
+    private View.OnClickListener listener;
     protected Handler myHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -70,11 +78,14 @@ public class MainPage extends Fragment implements RefreshView.RefrshListener{
     * */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.activity_main_page,container,false);
+        v = inflater.inflate(R.layout.activity_main_page,container,false);
         getView(v);
+        setColorSquareListener();
+
         getData1();
         getData2();
         getData3();
+
         setRollViewPager();
         setToday();
         setSpicy();
@@ -82,8 +93,6 @@ public class MainPage extends Fragment implements RefreshView.RefrshListener{
 
         return v;
     }
-
-
     @Override
     public void onRefresh() {
         new Thread(new Runnable() {
@@ -101,37 +110,41 @@ public class MainPage extends Fragment implements RefreshView.RefrshListener{
     }
 
     /*
-        * 辅助函数
-        * */
+    * 辅助函数
+    * */
     private void getView(View v){
+        Log.i("diaoyong","diaoyong");
+        //三个推荐位：
         Lv_Today = (ListView)v.findViewById(R.id.Lvactivity_main_pageToday);
         Gv_Spicy = (GridView)v.findViewById(R.id.Gvactivity_main_pageFoodAndSpicy);
         Lv_Comment = (ListView)v.findViewById(R.id.Lvactivity_main_pageComment);
-
-        Ll_Breakfast = (LinearLayout)v.findViewById(R.id.Llayactivity_main_pageBreakFast);
-        Ll_Lunch = (LinearLayout)v.findViewById(R.id.Llayactivity_main_pageAfternoon);
-        Ll_dinner = (LinearLayout)v.findViewById(R.id.Llayactivity_main_pageDinner);
-
+        //轮播图：
         mRollViewPager = (RollPagerView) v.findViewById(R.id.roll_view_pager);
-
+        //刷新相关：
         refreshView = (RefreshView) v.findViewById(R.id.Sv_refresh);
         refreshView.setRefrshListener(this);
         refreshView.init();
+        //中央彩块：
+        Llayactivity_main_page_SeasonFood = (LinearLayout)v.findViewById(R.id.Llayactivity_main_page_SeasonFood);
+        Llayactivity_main_page_Spicy = (LinearLayout)v.findViewById(R.id.Llayactivity_main_page_Spicy);
+        Llayactivity_main_page_Follow = (LinearLayout)v.findViewById(R.id.Llayactivity_main_page_Follow);
+        Llayactivity_main_pageBreakFast = (LinearLayout)v.findViewById(R.id.Llayactivity_main_pageBreakFast);
+        Llayactivity_main_pageAfternoon = (LinearLayout)v.findViewById(R.id.Llayactivity_main_pageAfternoon);
+        Llayactivity_main_pageDinner = (LinearLayout)v.findViewById(R.id.Llayactivity_main_pageDinner);
     }
-    private void setToday(){
-        todayAdapter = new TodayAdapter(getActivity(),data1);
-        Lv_Today.setAdapter(todayAdapter);
-        Calculator.setListViewHeightBasedOnChildren(Lv_Today,0);
+    //中央彩块相关逻辑：
+    public void getColorSquareListener(View.OnClickListener listener){
+        this.listener = listener;
     }
-    private void setSpicy(){
-        spicyAdapter = new SpicyAdapter(getActivity(),data2);
-        Gv_Spicy.setAdapter(spicyAdapter);
+    private void setColorSquareListener(){
+        Llayactivity_main_page_SeasonFood.setOnClickListener(listener);
+        Llayactivity_main_page_Spicy.setOnClickListener(listener);
+        Llayactivity_main_page_Follow.setOnClickListener(listener);
+        Llayactivity_main_pageBreakFast.setOnClickListener(listener);
+        Llayactivity_main_pageAfternoon.setOnClickListener(listener);
+        Llayactivity_main_pageDinner.setOnClickListener(listener);
     }
-    private void setComment(){
-        commentAdapter = new CommentAdapter(getActivity(),data3);
-        Lv_Comment.setAdapter(commentAdapter);
-        Calculator.setListViewHeightBasedOnChildren(Lv_Comment,0);
-    }
+    //轮播图相关逻辑：
     private void setRollViewPager(){
         //设置播放时间间隔
         mRollViewPager.setPlayDelay(3000);
@@ -149,6 +162,21 @@ public class MainPage extends Fragment implements RefreshView.RefrshListener{
         mRollViewPager.setHintView(new ColorPointHintView(getActivity(), Color.YELLOW,Color.WHITE));
         //mRollViewPager.setHintView(new TextHintView(this));
         //mRollViewPager.setHintView(null);
+    }
+    //推荐位相关逻辑：（今日推荐、应季食材、今日热帖）
+    private void setToday(){
+        todayAdapter = new TodayAdapter(getActivity(),data1);
+        Lv_Today.setAdapter(todayAdapter);
+        Calculator.setListViewHeightBasedOnChildren(Lv_Today,0);
+    }
+    private void setSpicy(){
+        spicyAdapter = new SpicyAdapter(getActivity(),data2);
+        Gv_Spicy.setAdapter(spicyAdapter);
+    }
+    private void setComment(){
+        commentAdapter = new CommentAdapter(getActivity(),data3);
+        Lv_Comment.setAdapter(commentAdapter);
+        Calculator.setListViewHeightBasedOnChildren(Lv_Comment,0);
     }
 
     /*
@@ -178,7 +206,12 @@ public class MainPage extends Fragment implements RefreshView.RefrshListener{
             return imgs.length;
         }
     }
-
+//    private class ThreeMealsOnclikListener implements View.OnClickListener{
+//        @Override
+//        public void onClick(View v) {
+//
+//        }
+//    }
 
     /*
     * 实验函数

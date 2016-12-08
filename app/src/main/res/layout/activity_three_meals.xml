@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="ruanjian.xin.xiaocaidao.ui.Main.ThreeMeals">
+    tools:context="ruanjian.xin.xiaocaidao.ui.ThreeMeals">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,31 +14,25 @@
         <RelativeLayout
             android:id="@+id/Rlaylayout_aboutHead"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="#84cc31">
-            <ImageView
-                android:id="@+id/back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:padding="10dp"
-                android:src="@drawable/back_icon_white"/>
+            android:layout_height="60dp">
             <TextView
-                android:id="@+id/_title"
+                android:id="@+id/Tvactivity_three_mealsThreeMeals"
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:padding="16dp"
-                android:text="早  餐"
+                android:text="晚餐"
                 android:textSize="22dp"
                 android:textColor="@color/white"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                android:background="#84cc31"/>
         </RelativeLayout>
         <ListView
             android:id="@+id/three_meals_listview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
+            android:divider="#f7f7f7"
             android:dividerHeight="5dp"
-            android:overScrollMode="never">
+            android:scrollbars="none">
         </ListView>
     </LinearLayout>
 </LinearLayout>

@@ -6,19 +6,15 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -33,22 +29,13 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import org.apache.http.Header;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.domain.XCRoundImageView;
@@ -56,7 +43,6 @@ import ruanjian.xin.xiaocaidao.ui.Login.First;
 import ruanjian.xin.xiaocaidao.ui.PersonPage;
 import ruanjian.xin.xiaocaidao.ui.SelectWindow.SelectPicPopupWindow;
 import ruanjian.xin.xiaocaidao.utils.FileUtil;
-import ruanjian.xin.xiaocaidao.utils.NetUtil;
 
 import static ruanjian.xin.xiaocaidao.utils.Utils.JIFINAL_UPLOAD;
 

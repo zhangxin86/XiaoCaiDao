@@ -59,6 +59,8 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
     private ProgressDialog pDialog;
 
     private final static int REFRESH_COMPLETE = 0;
+
+
     private Handler mHandler = new Handler(){
         public void handleMessage(android.os.Message msg) {
             switch (msg.what) {
@@ -130,6 +132,7 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
 
 
     }
+
     public void onClick(){
         //经典菜谱点击事件，进行页面跳转
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -177,7 +180,9 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
         }).start();
     }
 
-
+    /*
+    *拉取菜谱列表
+    * */
     private void fetchCaipu(final String caipuName) {
 
         StringRequest req=new StringRequest(Request.Method.POST,JUHE_URL, new Response.Listener<String>() {
@@ -233,7 +238,7 @@ public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRe
                 hidePDialog();
             }
         }){
-            @Override
+            @Override/*设置参数*/
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> map = new HashMap<>();
                 map.put("key",JUHE_KEY);

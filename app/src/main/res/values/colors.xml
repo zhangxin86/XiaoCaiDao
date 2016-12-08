@@ -8,6 +8,10 @@
     <color name="tab_default">#606060</color>
     <color name="tab_select">#ff5722</color>
     <color name="black">#101010</color>
+    <!--三餐相关-->
+    <color name="breakfast">#9bd45b</color>
+    <color name="afternoon">#ffa726</color>
+    <color name="dinner">#9165df</color>
     <!--注册相关-->
     <color name="orange">#f58220</color>
     <color name="white">#fffffb</color>

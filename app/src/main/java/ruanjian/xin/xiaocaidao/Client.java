@@ -2,8 +2,10 @@ package ruanjian.xin.xiaocaidao;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -17,6 +19,7 @@ import ruanjian.xin.xiaocaidao.ui.FriendPage;
 import ruanjian.xin.xiaocaidao.ui.MainPage;
 import ruanjian.xin.xiaocaidao.ui.MenuPage;
 import ruanjian.xin.xiaocaidao.ui.PersonPage;
+import ruanjian.xin.xiaocaidao.ui.ThreeMeals;
 import ruanjian.xin.xiaocaidao.utils.Utils;
 
 public class Client extends AppCompatActivity {
@@ -46,8 +49,12 @@ public class Client extends AppCompatActivity {
     private ImageButton searchButton;//搜索按钮
     private EditText searchEdit;
 
+
     private static int pre_select = 0;
 
+    public static final int BREAKFAST = 0;
+    public static final int LUNCH = 1;
+    public static final int DINNER = 2;
     /*生命周期函数*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +81,6 @@ public class Client extends AppCompatActivity {
 
 
     /*辅助函数*/
-
     private void findView(){
         Llay_ClientHead = (LinearLayout)findViewById(R.id.Llaylayout_clientHead);
         Llay_MainPage = (LinearLayout)findViewById(R.id.Llaylayout_clientMainPage);
@@ -98,13 +104,14 @@ public class Client extends AppCompatActivity {
     }
 
     private void setListener(){
-        MyListener listener = new MyListener();
-        Llay_MainPage.setOnClickListener(listener);
-        Llay_MenuPage.setOnClickListener(listener);
-        Llay_FriendPage.setOnClickListener(listener);
-        Llay_PersonPage.setOnClickListener(listener);
+        MyListener myListener = new MyListener();
+        Llay_MainPage.setOnClickListener(myListener);
+        Llay_MenuPage.setOnClickListener(myListener);
+        Llay_FriendPage.setOnClickListener(myListener);
+        Llay_PersonPage.setOnClickListener(myListener);
         searchButton.setOnClickListener(searchlistener);
     }
+
     /*搜索按钮监听事件*/
     private View.OnClickListener searchlistener = new View.OnClickListener() {
         @Override
@@ -121,9 +128,11 @@ public class Client extends AppCompatActivity {
             }
         }
     };
+    //页面跳转相关：
     private void setMainPage(){
         Llay_ClientHead.setVisibility(View.VISIBLE);
         if( mainPage==null ){ mainPage = new MainPage(); }
+        ColorSquareListener listener = new ColorSquareListener();
         Tv_MainPage.setTextColor(getResources().getColor(R.color.tab_select));
         Iv_MainPage.setImageResource(R.drawable.iv_main_sel);
         pre_select = 0;
@@ -131,9 +140,9 @@ public class Client extends AppCompatActivity {
         FragmentTransaction transaction = fm.beginTransaction();
         transaction.replace(R.id.Flaylayout_clientPage,mainPage);
         transaction.commit();
+        mainPage.getColorSquareListener(listener);
         Llay_TabHost.invalidate();
     }
-
     private void setMenuPage(){
         Llay_ClientHead.setVisibility(View.VISIBLE);
         menuPage = new MenuPage();
@@ -146,7 +155,6 @@ public class Client extends AppCompatActivity {
         transaction.commit();
         Llay_TabHost.invalidate();
     }
-
     private void setFriendPage(){
         Llay_ClientHead.setVisibility(View.GONE);
         if( friendPage==null ){ friendPage = new FriendPage(); }
@@ -159,7 +167,6 @@ public class Client extends AppCompatActivity {
         transaction.commit();
         Llay_TabHost.invalidate();
     }
-
     private void setPersonPage(){
         Llay_ClientHead.setVisibility(View.GONE);
         if( personPage==null ){ personPage = new PersonPage(); }
@@ -212,6 +219,48 @@ public class Client extends AppCompatActivity {
                     break;
                 case R.id.Llaylayout_clientPersonPage:
                     setPersonPage();
+                    break;
+            }
+        }
+    }
+
+    private class ColorSquareListener implements View.OnClickListener{
+        @Override
+        public void onClick(View v) {
+            Intent i = new Intent();
+            LayoutInflater inflater = getLayoutInflater();
+            View tt = inflater.inflate(R.layout.activity_three_meals,null);
+            TextView Tv_ThreeMeals = (TextView)tt.findViewById(R.id.Tvactivity_three_mealsThreeMeals);
+            switch (v.getId()){
+                case R.id.Llayactivity_main_page_SeasonFood:
+
+                    break;
+                case R.id.Llayactivity_main_page_Spicy:
+
+                    break;
+                case R.id.Llayactivity_main_page_Follow:
+                    clearPreTab();
+                    setMenuPage();
+                    break;
+                case R.id.Llayactivity_main_pageBreakFast:
+
+                    i.setClass(Client.this, ThreeMeals.class);
+                    i.putExtra("推荐","早餐");
+                    startActivity(i);
+                    break;
+                case R.id.Llayactivity_main_pageAfternoon:
+                    Tv_ThreeMeals.setText("午餐");
+                    Tv_ThreeMeals.setBackgroundColor(getResources().getColor(R.color.afternoon));
+                    i.setClass(Client.this, ThreeMeals.class);
+                    i.putExtra("推荐","午餐");
+                    startActivity(i);
+                    break;
+                case R.id.Llayactivity_main_pageDinner:
+                    Tv_ThreeMeals.setText("晚餐");
+                    Tv_ThreeMeals.setBackgroundColor(getResources().getColor(R.color.dinner));
+                    i.setClass(Client.this, ThreeMeals.class);
+                    i.putExtra("推荐","晚餐");
+                    startActivity(i);
                     break;
             }
         }

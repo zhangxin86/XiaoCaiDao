@@ -48,6 +48,7 @@ public class Login extends Activity {
         all.setAnimation(scale);
         all.startAnimation(scale);
 
+        //CheckLogin();
         //建立本地数据库
 
         //给登录按钮绑定注册监听器
@@ -58,8 +59,8 @@ public class Login extends Activity {
 
                 //...
                 //获取当前输入的用户名和密码
-                username=etusername.getText().toString().trim();
-                pwd=etpwd.getText().toString().trim();
+                //username=etusername.getText().toString().trim();
+                //pwd=etpwd.getText().toString().trim();
                 //SharedPreferences.Editor editor =login_sp.edit();
 //                int result=mUserDataManager.findUserByNameAndPwd(username,pwd);
 //                if (result == 1){//返回1说明用户名和密码均正确
@@ -67,7 +68,6 @@ public class Login extends Activity {
 //                    editor.putString("USER_NAME", username);
 //                    editor.putString("PASSWORD", pwd);
 //                    editor.commit();
-
                     Intent intent=new Intent(Login.this,Client.class);
                     startActivity(intent);
                     finish();
