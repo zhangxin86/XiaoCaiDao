@@ -209,7 +209,7 @@ public class MainPage extends Fragment implements RefreshView.RefrshListener{
                 {
                     switch (picNo){
                         case 1:
-                            menuName = "红烧肉";
+                            menuName = "水果沙拉";
                             mId = "RollView";
 
                             break;
@@ -218,7 +218,7 @@ public class MainPage extends Fragment implements RefreshView.RefrshListener{
                             mId = "RollView";
                             break;
                         case 3:
-                            menuName = "宫爆鸡丁";
+                            menuName = "红烧肉";
                             mId = "RollView";
                             break;
                         case 4:
