@@ -157,7 +157,10 @@ public class XiangqingPage extends Activity {
                         JSONObject tempObj = data.getJSONObject(i);
                         if (tempObj.getString("id").equals(mId)){
                             break;
-                        }
+                        }else if(mId.equals("RollView")){
+                            i = 0;
+                            break;
+                        };
                     }
                     obj = data.getJSONObject(i);
                     title = obj.getString("title");//菜品名称标题
@@ -226,7 +229,10 @@ public class XiangqingPage extends Activity {
                         JSONObject tempObj = data.getJSONObject(i);
                         if (tempObj.getString("id").equals(mId)){
                             break;
-                        }
+                        }else if(mId.equals("RollView")){
+                            i = 0;
+                            break;
+                        };
                     }
                     JSONObject menu = data.getJSONObject(i);
                     steps = menu.getJSONArray("steps");//步骤对象数组

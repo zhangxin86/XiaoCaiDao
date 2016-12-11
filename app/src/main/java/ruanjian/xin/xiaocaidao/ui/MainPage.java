@@ -1,6 +1,7 @@
 package ruanjian.xin.xiaocaidao.ui;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -72,6 +73,8 @@ public class MainPage extends Fragment implements RefreshView.RefrshListener{
             super.handleMessage(msg);
         }
     };
+    private String menuName;
+    private String mId;
 
     /*
     * 生命周期相关函数
@@ -193,10 +196,45 @@ public class MainPage extends Fragment implements RefreshView.RefrshListener{
 
         @Override
         public View getView(ViewGroup container, int position) {
+            final int picNo = position + 1;
             ImageView view = new ImageView(container.getContext());
             view.setImageResource(imgs[position]);
             view.setScaleType(ImageView.ScaleType.CENTER_CROP);
             view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+
+            view.setOnClickListener(new View.OnClickListener()      // 点击事件
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    switch (picNo){
+                        case 1:
+                            menuName = "红烧肉";
+                            mId = "RollView";
+
+                            break;
+                        case 2:
+                            menuName = "鱼香肉丝";
+                            mId = "RollView";
+                            break;
+                        case 3:
+                            menuName = "宫爆鸡丁";
+                            mId = "RollView";
+                            break;
+                        case 4:
+                            menuName = "蔬菜沙拉";
+                            mId = "RollView";
+                            break;
+                    }
+
+                    Intent intent = new Intent();
+                    intent.setClass(getActivity(),XiangqingPage.class);
+                    intent.putExtra("menuName",menuName);
+                    intent.putExtra("id",mId);
+                    startActivity(intent);
+                }
+
+            });
             return view;
         }
 
