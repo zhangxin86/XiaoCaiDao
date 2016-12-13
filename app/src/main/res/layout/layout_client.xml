@@ -12,13 +12,13 @@
         android:id="@+id/Llaylayout_clientHead"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#ff8000"
+        android:background="#483D8B"
         android:orientation="horizontal"
 
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         android:minHeight="100dp">
-        <!--发布消息按钮（ActionBar左边）-->
+        <!--发布消息按钮（ActionBar左边）#483D8B-->
         <ImageButton
             android:id="@+id/Ivlayout_clientUpMessage"
             android:layout_width="25dp"
@@ -33,7 +33,7 @@
             android:orientation="horizontal"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:background="#f1f1f1"
+            android:background="@drawable/search_back"
             android:layout_weight="6"
             android:layout_gravity="center_vertical"
             android:focusableInTouchMode="true"
@@ -78,6 +78,7 @@
     </FrameLayout>
 
     <!--tab-->
+    <View style="@style/PersonalLine_nonemargin" />
     <LinearLayout
         android:id="@+id/Llaylayout_clientTabHost"
         android:layout_width="match_parent"
