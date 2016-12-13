@@ -77,6 +77,9 @@ public class Sign_in extends Activity {
                                     break;
                                 case 4:
                                     handler.sendEmptyMessage(4);
+                                    Intent i = new Intent(Sign_in.this, success.class);
+                                    startActivity(i);
+                                    finish();
                                     break;
                             }
                         }catch (InterruptedException e){
@@ -116,9 +119,7 @@ public class Sign_in extends Activity {
                         return 3;
                     }
                     else {
-                        Intent i = new Intent(Sign_in.this, success.class);
-                        startActivity(i);
-                        finish();
+                        return 4;
                     }
                 }
             }
@@ -150,6 +151,8 @@ public class Sign_in extends Activity {
                 case 3:
                     tv.setText("注册失败");
                     break;
+                case 4:
+                    tv.setText("注册成功");
             }
             pd1.dismiss();// 关闭ProgressDialog
         }
