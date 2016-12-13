@@ -1,56 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:background="@drawable/fuzzy_first"
+    android:background="@drawable/fuzzy_back"
     android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
-        <!--放置logo位置-->
-        <FrameLayout
+        android:gravity="center">
+        <LinearLayout
+            android:id="@+id/all"
+            android:orientation="vertical"
+            android:background="@drawable/login_button_style"
             android:layout_width="match_parent"
-            android:layout_height="300dp">
-
-        </FrameLayout>
-        <EditText
-            android:id="@+id/etusername"
-            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="手机号/邮箱/昵称"
-            android:textSize="20sp"
-            android:alpha="0.8"
-            android:padding="15dp"
-            android:background="@drawable/login_edit_style"/>
-        <EditText
-            android:id="@+id/etpwd"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="密码"
-            android:textSize="20sp"
-            android:alpha="0.8"
-            android:padding="15dp"
-            android:background="@drawable/login_edit_style"/>
-        <EditText
-            android:id="@+id/etpwd2"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="确认密码"
-            android:textSize="20sp"
-            android:alpha="0.8"
-            android:padding="15dp"
-            android:background="@drawable/login_edit_style"/>
-        <Button
-            android:id="@+id/btnsign"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="注册"
-            android:textSize="22dp"
-            android:textColor="#ffffff"
-            android:background="@drawable/button_regist_style"/>
+            android:paddingBottom="20dp"
+            android:gravity="center">
+            <EditText
+                android:id="@+id/etusername"
+                android:hint="手机号/邮箱/昵称"
+                android:textSize="18sp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/edittext_bg_selector"
+                android:layout_width="320dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginBottom="20dp"/>
+            <EditText
+                android:id="@+id/etpwd"
+                android:hint="密码"
+                android:textSize="18sp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/edittext_bg_selector"
+                android:layout_width="320dp"
+                android:layout_height="40dp"
+                android:inputType="textPassword"
+                android:layout_marginBottom="20dp"/>
+            <EditText
+                android:id="@+id/etpwd2"
+                android:inputType="textPassword"
+                android:hint="确认密码"
+                android:layout_marginBottom="40dp"
+                android:textSize="18sp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/edittext_bg_selector"
+                android:layout_width="320dp"
+                android:layout_height="40dp" />
+            <Button
+                android:id="@+id/btnsign"
+                android:text="注册"
+                android:textSize="20dp"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:background="@drawable/button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv"/>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
