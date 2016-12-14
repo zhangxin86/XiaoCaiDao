@@ -14,8 +14,8 @@
    </item>
     <item>
         <shape>
-            <solid android:color="@color/tab_select"/>
-            <corners android:radius="50dip"/>
+            <solid android:color="#FF3030"/>
+            <corners android:radius="10dip"/>
             <padding
                 android:left="10dp"
                 android:top="5dp"

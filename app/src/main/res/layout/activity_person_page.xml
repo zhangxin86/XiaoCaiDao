@@ -9,10 +9,9 @@
     <!--橘黄色部分-->
     <RelativeLayout
         android:id="@+id/yi"
-        android:background="@android:color/holo_orange_dark"
+        android:background="#483D8B"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        tools:background="@android:color/holo_orange_dark"
         android:gravity="center_horizontal">
         <!--用户头像-->
         <ruanjian.xin.xiaocaidao.domain.XCRoundImageView

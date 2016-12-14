@@ -251,7 +251,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
         android:background="@drawable/button_background_selector"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="50dp"
         android:text="退    出"
         android:textSize="18sp"

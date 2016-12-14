@@ -6,7 +6,8 @@
 
     <!--tabhost相关-->
     <color name="tab_default">#606060</color>
-    <color name="tab_select">#ff5722</color>
+    <color name="tab_select">#483D8B</color>
+    <color name="friend_select">#ff5722</color>
     <color name="black">#101010</color>
     <!--三餐相关-->
     <color name="breakfast">#9bd45b</color>
