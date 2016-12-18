@@ -118,7 +118,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="应季食材"
+                                android:text="应季美食"
                                 android:textSize="20sp"
                                 android:textColor="#fff"
                                 android:gravity="center"
@@ -170,14 +170,16 @@
                             android:background="#ff3824"
                             android:gravity="center"
                             android:layout_marginRight="2dp">
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="推荐酱料"
+                                android:text="酱料食材"
                                 android:textSize="20sp"
                                 android:textColor="#fff"
                                 android:layout_gravity="center"
-                                android:gravity="center"/>
+                                android:gravity="center"
+                                android:id="@+id/textView" />
                         </LinearLayout>
                         <!--教你做菜彩块-->
                         <LinearLayout
