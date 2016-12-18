@@ -9,7 +9,7 @@
     <!--橘黄色部分-->
     <RelativeLayout
         android:id="@+id/yi"
-        android:background="#483D8B"
+        android:background="#3d55b6"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:gravity="center_horizontal">
@@ -24,7 +24,7 @@
             android:layout_marginTop="25dp" />
         <!--用户名-->
         <TextView
-            android:id="@+id/personal_1_2"
+            android:id="@+id/Tvactivity_person_pageUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="飞翔的六毛"
@@ -37,7 +37,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/personal_1_2"
+            android:layout_below="@id/Tvactivity_person_pageUserName"
             android:gravity="center_horizontal">
             <LinearLayout
                 android:orientation="vertical"
@@ -47,7 +47,7 @@
                 android:gravity="center">
                 <TextView
                     tools:textColor="@android:color/white"
-                    android:id="@+id/personal_1_3"
+                    android:id="@+id/Tvactivity_person_pageFans"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="10"
@@ -69,7 +69,7 @@
                 android:gravity="center">
                 <TextView
                     tools:textColor="@android:color/white"
-                    android:id="@+id/personal_1_4"
+                    android:id="@+id/Tvactivity_person_pageFocus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="10"

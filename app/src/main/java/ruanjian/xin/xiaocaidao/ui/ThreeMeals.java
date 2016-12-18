@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -34,8 +36,10 @@ import static ruanjian.xin.xiaocaidao.utils.Utils.JUHE_KEY;
 import static ruanjian.xin.xiaocaidao.utils.Utils.JUHE_URL;
 
 public class ThreeMeals extends AppCompatActivity {
-
-    public String tempName = null;
+    private ImageView iv_back;
+    private RelativeLayout RlayHead;
+    public String tempName = "";
+    private String fetchName = "";
     private String menuName;//纪录点击事件时某个item的Name
 
     /*有关json请求*/
@@ -66,7 +70,7 @@ public class ThreeMeals extends AppCompatActivity {
         findView();
         setBarView();
         setAdapter();
-        fetchCaipu(tempName,myadapter);
+        fetchCaipu(fetchName,myadapter);
 
         onClick();
 
@@ -99,17 +103,30 @@ public class ThreeMeals extends AppCompatActivity {
     private void findView() {
         Tv_ThreeMeals = (TextView)findViewById(R.id.Tvactivity_three_mealsThreeMeals);
         listView = (ListView)findViewById(R.id.three_meals_listview);
+        RlayHead = (RelativeLayout)findViewById(R.id.Rlaylayout_aboutHead);
+        iv_back = (ImageView)findViewById(R.id.iv_back);
+        iv_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ThreeMeals.this.finish();
+            }
+        });
     }
     private void setBarView(){
         Tv_ThreeMeals.setText(tempName);
-        if (tempName.equals("早餐")){
-            Tv_ThreeMeals.setBackgroundColor(getResources().getColor(R.color.breakfast));
-        }else if(tempName.equals("午餐")){
-            Tv_ThreeMeals.setBackgroundColor(getResources().getColor(R.color.afternoon));
-        }else {
-            Tv_ThreeMeals.setBackgroundColor(getResources().getColor(R.color.dinner));
+        if (tempName.equals("早    餐")){
+            fetchName = "早餐";
+            RlayHead.setBackgroundColor(getResources().getColor(R.color.breakfast));
+        }else if(tempName.equals("午    餐")){
+            fetchName = "午餐";
+            RlayHead.setBackgroundColor(getResources().getColor(R.color.afternoon));
+        }else if(tempName.equals("晚    餐")){
+            fetchName = "晚餐";
+            RlayHead.setBackgroundColor(getResources().getColor(R.color.dinner));
+        }else{
+            fetchName = "冬季";
+            RlayHead.setBackgroundColor(getResources().getColor(R.color.dinner));
         }
-
     }
 
 

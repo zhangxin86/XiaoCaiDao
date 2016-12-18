@@ -38,7 +38,7 @@ public class Adapter_focus_focus extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return list.get(position).getId();
+        return position;
     }
 
     @Override

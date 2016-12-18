@@ -12,9 +12,11 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import ruanjian.xin.xiaocaidao.ui.Friend.BlogSubmitActivity;
 import ruanjian.xin.xiaocaidao.ui.FriendPage;
 import ruanjian.xin.xiaocaidao.ui.MainPage;
 import ruanjian.xin.xiaocaidao.ui.MenuPage;
@@ -22,7 +24,7 @@ import ruanjian.xin.xiaocaidao.ui.PersonPage;
 import ruanjian.xin.xiaocaidao.ui.ThreeMeals;
 import ruanjian.xin.xiaocaidao.utils.Utils;
 
-public class Client extends AppCompatActivity {
+public class ClientActivity extends AppCompatActivity {
     private FrameLayout  Flay_Page;
     private LinearLayout Llay_ClientHead;
     private LinearLayout Llay_MainPage;
@@ -47,7 +49,9 @@ public class Client extends AppCompatActivity {
     private PersonPage personPage;
 
     private ImageButton searchButton;//搜索按钮
+    private ImageButton addButton;//发帖按钮
     private EditText searchEdit;
+
 
 
     private static int pre_select = 0;
@@ -89,6 +93,7 @@ public class Client extends AppCompatActivity {
         Llay_PersonPage = (LinearLayout)findViewById(R.id.Llaylayout_clientPersonPage);
         Llay_TabHost = (LinearLayout)findViewById(R.id.Llaylayout_clientTabHost);
 
+
         Tv_MainPage = (TextView)findViewById(R.id.Tvlayout_clientMainPage);
         Tv_MenuPage = (TextView)findViewById(R.id.Tvlayout_clientMenuPage);
         Tv_FriendPage = (TextView)findViewById(R.id.Tvlayout_clientFriendPage);
@@ -100,6 +105,7 @@ public class Client extends AppCompatActivity {
         Iv_PersonPage = (ImageView)findViewById(R.id.Ivlayout_clientPersonPage);
 
         searchButton = (ImageButton) findViewById(R.id.Ivlayout_clientPerMessage);
+        addButton = (ImageButton) findViewById(R.id.Ivlayout_clientUpMessage);
         searchEdit = (EditText)findViewById(R.id.search_menu);
     }
 
@@ -109,23 +115,28 @@ public class Client extends AppCompatActivity {
         Llay_MenuPage.setOnClickListener(myListener);
         Llay_FriendPage.setOnClickListener(myListener);
         Llay_PersonPage.setOnClickListener(myListener);
+        addButton.setOnClickListener(addlistener);
         searchButton.setOnClickListener(searchlistener);
     }
 
+    /*发布按钮监听事件*/
+    private View.OnClickListener addlistener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent i = new Intent(ClientActivity.this, BlogSubmitActivity.class);
+            startActivity(i);
+        }
+    };
     /*搜索按钮监听事件*/
     private View.OnClickListener searchlistener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            switch (v.getId()){
-                case R.id.Ivlayout_clientPerMessage:
-                    if(searchEdit.getText().toString().length()==0){
-                        Toast.makeText(getApplicationContext(),"请输入搜索内容",Toast.LENGTH_SHORT).show();
-                        break;
-                    }
-                    clearPreTab();
-                    setMenuPage();
-                    break;
+            if(searchEdit.getText().toString().length()==0){
+                Toast.makeText(getApplicationContext(),"请输入搜索内容",Toast.LENGTH_SHORT).show();
+                return;
             }
+            clearPreTab();
+            setMenuPage();
         }
     };
     //页面跳转相关：
@@ -230,9 +241,13 @@ public class Client extends AppCompatActivity {
             Intent i = new Intent();
             LayoutInflater inflater = getLayoutInflater();
             View tt = inflater.inflate(R.layout.activity_three_meals,null);
+            RelativeLayout RlayHead = (RelativeLayout)tt.findViewById(R.id.Rlaylayout_aboutHead);
             TextView Tv_ThreeMeals = (TextView)tt.findViewById(R.id.Tvactivity_three_mealsThreeMeals);
             switch (v.getId()){
                 case R.id.Llayactivity_main_page_SeasonFood:
+                    i.setClass(ClientActivity.this, ThreeMeals.class);
+                    i.putExtra("推荐","冬    季");
+                    startActivity(i);
 
                     break;
                 case R.id.Llayactivity_main_page_Spicy:
@@ -244,28 +259,21 @@ public class Client extends AppCompatActivity {
                     break;
                 case R.id.Llayactivity_main_pageBreakFast:
 
-                    i.setClass(Client.this, ThreeMeals.class);
-                    i.putExtra("推荐","早餐");
+                    i.setClass(ClientActivity.this, ThreeMeals.class);
+                    i.putExtra("推荐","早    餐");
                     startActivity(i);
                     break;
                 case R.id.Llayactivity_main_pageAfternoon:
-                    Tv_ThreeMeals.setText("午餐");
-                    Tv_ThreeMeals.setBackgroundColor(getResources().getColor(R.color.afternoon));
-                    i.setClass(Client.this, ThreeMeals.class);
-                    i.putExtra("推荐","午餐");
+                    i.setClass(ClientActivity.this, ThreeMeals.class);
+                    i.putExtra("推荐","午    餐");
                     startActivity(i);
                     break;
                 case R.id.Llayactivity_main_pageDinner:
-                    Tv_ThreeMeals.setText("晚餐");
-                    Tv_ThreeMeals.setBackgroundColor(getResources().getColor(R.color.dinner));
-                    i.setClass(Client.this, ThreeMeals.class);
-                    i.putExtra("推荐","晚餐");
+                    i.setClass(ClientActivity.this, ThreeMeals.class);
+                    i.putExtra("推荐","晚    餐");
                     startActivity(i);
                     break;
             }
         }
     }
-
-
-
 }

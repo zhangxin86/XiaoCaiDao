@@ -60,7 +60,7 @@ public class MenuAdapter extends BaseAdapter {
             inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if(view == null)
-            view = inflater.inflate(R.layout.lv_back01,null);
+            view = inflater.inflate(R.layout.lv_menu,null);
         if (imageLoader == null)
             imageLoader = ApplicationController.getInstance().getImageLoader();
 

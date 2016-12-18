@@ -21,6 +21,8 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.StringRequest;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -68,7 +70,7 @@ public class XiangqingPage extends Activity {
 
     private TextView tvName;//名称控件
     private TextView tvTags;//标签控件
-    private ImageView ivImg;//主图控件
+    private NetworkImageView ivImg;//主图控件
     private TextView tvInfo;//描述控件
     private TextView tvIngredients;//主料控件
     private TextView tvBurden;//辅料控件
@@ -81,6 +83,7 @@ public class XiangqingPage extends Activity {
     private ArrayList<StepItem> mSteps = new ArrayList<>();
 
     private ProgressDialog pDialog;
+    private ImageLoader imageLoader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +99,7 @@ public class XiangqingPage extends Activity {
 
         tvName = (TextView) findViewById(R.id.tv_menuName);
         tvTags = (TextView)findViewById(R.id.tv_tags);
-        ivImg = (ImageView)findViewById(R.id.iv_menuImg);
+        ivImg = (NetworkImageView) findViewById(R.id.iv_menuImg);
         tvInfo = (TextView)findViewById(R.id.tv_info);
         tvIngredients = (TextView)findViewById(R.id.tv_ingredients);
         tvBurden = (TextView)findViewById(R.id.tv_burden);
@@ -118,6 +121,9 @@ public class XiangqingPage extends Activity {
         tv_title = (TextView)findViewById(R.id.text_title);
         btnTitle = (Button)findViewById(R.id.button_backward);
 
+        if (imageLoader == null)
+            imageLoader = ApplicationController.getInstance().getImageLoader();
+
     }
     private void setViews(){
         tv_title.setText(menuName);
@@ -138,18 +144,29 @@ public class XiangqingPage extends Activity {
 
     public void fetchSteps(final String menuName,final String mId) {
 
-        AsyncHttpClient httpclient = new AsyncHttpClient();
-        RequestParams params = new RequestParams();
-        params.add("key",JUHE_KEY);
-        params.add("menu",menuName);
-        httpclient.get(getApplicationContext(),JUHE_URL,params,new JsonHttpResponseHandler(){
+        StringRequest req0 = new StringRequest(Request.Method.POST, JUHE_URL, new Response.Listener<String>() {
+
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
-                System.out.println(response.toString());
+            public void onResponse(String s) {
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        //hidePDialog();
+                    }
+                }, 1000);
+
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject(s);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
 
                 try {
-                    result = response.getJSONObject("result");
+
+                    JSONObject result = jsonObject.getJSONObject("result");     //data = result.getJSONArray("data");
                     data = result.getJSONArray("data");
                     /*找到对应id的菜*/
                     int i=0;
@@ -157,7 +174,7 @@ public class XiangqingPage extends Activity {
                         JSONObject tempObj = data.getJSONObject(i);
                         if (tempObj.getString("id").equals(mId)){
                             break;
-                        }else if(mId.equals("RollView")){
+                        }else if(mId.equals("RollView")||mId.equals("Today")){
                             i = 0;
                             break;
                         };
@@ -174,33 +191,31 @@ public class XiangqingPage extends Activity {
                     burden = obj.getString("burden");//辅料
                     tvBurden.setText(burden);
                     album = obj.getJSONArray("albums").getString(0);//成品图
-                    new AsyncHttpClient().get(album, new AsyncHttpResponseHandler(){
-                        @Override
-                        public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                            if(statusCode==200){
-                                BitmapFactory factory=new BitmapFactory();
-                                Bitmap bitmap=factory.decodeByteArray(responseBody, 0, responseBody.length);
-                                ivImg.setImageBitmap(bitmap);
-                            }
-                        }
 
-                        @Override
-                        public void onFailure(int statusCode, Header[] headers,
-                                              byte[] responseBody, Throwable error) {
-                            error.printStackTrace();
-                        }
-                    });
+                    ivImg.setImageUrl(album,imageLoader);
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
+        }, new Response.ErrorListener() {
             @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                super.onFailure(statusCode, headers, throwable, errorResponse);
-                Toast.makeText(getApplicationContext(),"出错儿了",Toast.LENGTH_SHORT).show();
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.e("CaipuMenuPge", "error:" + volleyError.getMessage());
+                //hidePDialog();
             }
-        });
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> map = new HashMap<>();
+                map.put("key",JUHE_KEY);
+                map.put("menu",menuName);
+                return map;
+            }
+        };
+        ApplicationController.getInstance().addToRequestQueue(req0);
+
 
         StringRequest req=new StringRequest(Request.Method.POST,JUHE_URL, new Response.Listener<String>() {
 
@@ -229,7 +244,7 @@ public class XiangqingPage extends Activity {
                         JSONObject tempObj = data.getJSONObject(i);
                         if (tempObj.getString("id").equals(mId)){
                             break;
-                        }else if(mId.equals("RollView")){
+                        }else if(mId.equals("RollView")||mId.equals("Today")){
                             i = 0;
                             break;
                         };

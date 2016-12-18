@@ -14,17 +14,25 @@
         <RelativeLayout
             android:id="@+id/Rlaylayout_aboutHead"
             android:layout_width="match_parent"
-            android:layout_height="60dp">
+            android:layout_height="60dp"
+            android:background="#84cc31">
+            <ImageView
+                android:id="@+id/iv_back"
+                android:background="@drawable/back_icon_white"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:clickable="true"/>
             <TextView
                 android:id="@+id/Tvactivity_three_mealsThreeMeals"
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:padding="16dp"
-                android:text="晚餐"
+                android:text="早    餐"
                 android:textSize="22dp"
                 android:textColor="@color/white"
-                android:textAlignment="center"
-                android:background="#84cc31"/>
+                android:textAlignment="center"/>
         </RelativeLayout>
         <ListView
             android:id="@+id/three_meals_listview"

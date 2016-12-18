@@ -105,7 +105,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="#4f72fc"
+                        android:background="#3d55b6"
                         android:layout_marginBottom="2dp">
                         <!--应季食材彩块内字体部分-->
                         <LinearLayout
@@ -167,7 +167,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="#ff503f"
+                            android:background="#ff3824"
                             android:gravity="center"
                             android:layout_marginRight="2dp">
                             <TextView
@@ -185,7 +185,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="#24c624"
+                            android:background="#20b320"
                             android:gravity="center">
                             <TextView
                                 android:layout_width="wrap_content"
@@ -213,7 +213,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="#9bd45b"
+                        android:background="#28da28"
                         android:gravity="center"
                         android:layout_marginBottom="1dp">
                         <ImageView
@@ -236,7 +236,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="#ffa726"
+                        android:background="#ffc941"
                         android:gravity="center"
                         android:layout_marginBottom="1dp">
                         <ImageView
@@ -259,7 +259,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="#9165df"
+                        android:background="#7652b4"
                         android:gravity="center">
                         <ImageView
                             android:layout_width="35dp"
@@ -371,7 +371,7 @@
             <ListView
                 android:id="@+id/Lvactivity_main_pageComment"
                 android:layout_width="match_parent"
-                android:layout_height="1240dp"
+                android:layout_height="300dp"
                 android:dividerHeight="5dp"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp">

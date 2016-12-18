@@ -3,7 +3,7 @@
     android:id="@+id/titleXiangqing"
     android:layout_width="match_parent"
     android:layout_height="60dp"
-    android:background="#ff8000" >
+    android:background="#4431b3" >
     <TextView
         android:id="@+id/text_title"
         android:layout_width="match_parent"
@@ -17,18 +17,16 @@
     <!--返回按钮-->
     <Button
         android:id="@+id/button_backward"
-        android:layout_width="60dp"
-        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:drawablePadding="6dp"
         android:ellipsize="end"
         android:gravity="center"
         android:onClick="onClick"
-        android:background="#00000000"
-        android:paddingLeft="5dp"
+        android:background="@drawable/back_icon_white"
+        android:layout_marginLeft="15dp"
         android:singleLine="true"
-        android:text="返回"
-        android:textColor="#ffffff"
-        android:textSize="18dp"
         android:visibility="visible" />
     <!--提交按钮-->
     <Button

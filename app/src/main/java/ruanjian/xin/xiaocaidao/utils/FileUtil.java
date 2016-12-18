@@ -9,9 +9,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 public class FileUtil {
 
@@ -42,12 +39,12 @@ public class FileUtil {
 	public static String saveFile(Context c, String filePath, String fileName, byte[] bytes) {
 		String fileFullName = "";
 		FileOutputStream fos = null;
-		String dateFolder = new SimpleDateFormat("yyyyMMdd", Locale.CHINA)
-				.format(new Date());
+		//String dateFolder = new SimpleDateFormat("yyyyMMddhhmmss", Locale.CHINA)
+				//.format(new Date());
 		try {
 			String suffix = "";
 			if (filePath == null || filePath.trim().length() == 0) {
-				filePath = Environment.getExternalStorageDirectory() + "/JiaXT/" + dateFolder + "/";
+				filePath = Environment.getExternalStorageDirectory() + "/JiaXT/" + "myHead" + "/";
 			}
 			File file = new File(filePath);
 			if (!file.exists()) {

@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.Login.First"
+            android:name=".ui.Login.LoginActivity"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,11 +27,10 @@
             </intent-filter>
         </activity>
         <!-- 登陆注册相关页 -->
-        <activity android:name=".ui.Login.Sign_in" />
-        <activity android:name=".ui.Login.success" />
+        <activity android:name=".ui.Login.SignActivity" />
         <activity android:name=".ui.Login.Login" />
         <!-- Client主框架 -->
-        <activity android:name=".Client" />
+        <activity android:name=".ClientActivity" />
         <!-- Tab相关页 -->
         <activity android:name=".ui.MainPage" />
         <activity android:name=".ui.MenuPage" />
@@ -40,8 +39,8 @@
         <!-- 厨友交流相关 -->
         <activity android:name=".ui.Friend.HotFriend" />
         <activity android:name=".ui.Friend.NewFriend" />
-        <activity android:name=".ui.Friend.ItemAdd" />
-        <activity android:name=".ui.Friend.HotFriendDetail_Fragment" />
+        <activity android:name=".ui.Friend.BlogSubmitActivity" />
+        <activity android:name=".ui.Friend.HotFriendDetailFragment" />
         <activity android:name=".ui.Friend.NewFriendDetail" />
         <activity android:name=".Client_hot_detail" />
         <!-- 个人中心 -->
@@ -52,6 +51,8 @@
         <activity android:name=".ui.personal.Person_about" />
         <!-- 菜谱详情页 -->
         <activity android:name=".ui.XiangqingPage" />
+        <!--食材酱料详情页-->
+        <activity android:name=".ui.SpiceActivity"/>
         <!--
      ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.

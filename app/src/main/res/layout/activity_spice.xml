@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/layout_title" android:id="@+id/SpiceTitle"/>
+    <ImageView
+        android:id="@+id/NetSpiceImg"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/baicai"/>
+    <TextView
+        android:id="@+id/Tv_spiceName"
+        android:text="大白菜"
+        android:textSize="18dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/Tv_spiceDes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textSize="15dp"
+        android:text="    fhd;sjao;ifjdoi非农i那你哦富饶i哪地方那骚ing i哦你发；反虐待你覅哦到i佛id好i过后分打死哦"/>
+    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="营养价值"
+            android:textSize="18dp"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/Tv_spiceNutrition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textSize="15dp"
+        android:text="     fhd;sjao;ifjdoi非农i那你哦富饶i哪地方那骚ing i哦你发；反虐待你覅哦到i佛id好i过后分打死哦"/>
+
+
+
+
+
+</LinearLayout>

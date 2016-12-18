@@ -29,7 +29,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:layout_marginBottom="15dp"
-                    android:textColor="#ff8000"/>
+                    android:textColor="#b4734a"/>
                 <TextView
                     android:text="#"
                     android:id="@+id/tv_tags"
@@ -39,7 +39,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginBottom="10dp"/>
 
-                <ImageView
+                <com.android.volley.toolbox.NetworkImageView
                     android:id="@+id/iv_menuImg"
                     android:layout_gravity="center_horizontal"
                     android:layout_width="300dp"

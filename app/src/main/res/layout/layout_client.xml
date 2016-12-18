@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="ruanjian.xin.xiaocaidao.Client">
+    tools:context="ruanjian.xin.xiaocaidao.ClientActivity">
 
     <!--ActionBar（上传按钮、搜索框、消息按钮）-->
     <LinearLayout
         android:id="@+id/Llaylayout_clientHead"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#483D8B"
+        android:background="#4431b3"
         android:orientation="horizontal"
 
         android:paddingTop="5dp"
@@ -59,12 +59,12 @@
         <!--个人信息按钮（ActionBar右边）-->
         <ImageButton
             android:id="@+id/Ivlayout_clientPerMessage"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/message" />
+            android:background="@drawable/btn_search" />
     </LinearLayout>
 
     <!--主界面（tab上面）-->

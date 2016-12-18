@@ -12,7 +12,7 @@ import android.widget.RadioGroup;
 import android.widget.TabHost;
 
 import ruanjian.xin.xiaocaidao.R;
-import ruanjian.xin.xiaocaidao.ui.Friend.ItemAdd;
+import ruanjian.xin.xiaocaidao.ui.Friend.BlogSubmitActivity;
 import ruanjian.xin.xiaocaidao.ui.Friend.HotFriend;
 import ruanjian.xin.xiaocaidao.ui.Friend.NewFriend;
 
@@ -57,7 +57,7 @@ public class FriendPage extends Fragment {
     private class OnClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(getActivity(),ItemAdd.class);
+            Intent intent = new Intent(getActivity(),BlogSubmitActivity.class);
             startActivity(intent);
         }
     }

@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ruanjian.xin.xiaocaidao.domain.XCRoundImageView
+    <ruanjian.xin.xiaocaidao.domain.CircleNetworkImage
         android:layout_marginTop="5dp"
-        android:id="@+id/fragment_one_list_iv1"
+        android:id="@+id/cv_fans_avater"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:src="@drawable/p1"/>

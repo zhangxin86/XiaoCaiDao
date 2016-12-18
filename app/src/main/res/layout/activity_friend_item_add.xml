@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ruanjian.xin.xiaocaidao.ui.Friend.ItemAdd"
+    tools:context="ruanjian.xin.xiaocaidao.ui.Friend.BlogSubmitActivity"
     android:background="#ededed">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -28,6 +28,7 @@
             android:textColor="@color/black"
             android:textAlignment="center"/>
         <TextView
+            android:id="@+id/Release"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/release"
@@ -38,126 +39,134 @@
             android:textColor="#e51c23"
             android:textSize="20dp"/>
     </RelativeLayout>
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:orientation="vertical">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:padding="10dp"
-            android:textSize="16dp"
-            android:hint="@string/add_friend_hint_title"
-            android:background="@null"/>
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:orientation="vertical"
-        android:background="@color/white"
-        android:layout_marginBottom="10dp">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:padding="10dp"
-            android:minLines="3"
-            android:gravity="top"
-            android:textSize="14dp"
-            android:hint="@string/add_friend_hint_text"
-            android:background="@null"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:id="@+id/editText" />
-
-        <RelativeLayout
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_alignParentBottom="true"
-            android:layout_margin="10dp">
-            <ImageView
-                android:id="@+id/add_photo"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="10dp"
-                android:gravity="center" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@drawable/friend_add_button_shape"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_margin="10dp">
-            <Button
-                android:id="@+id/select_photo"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:background="@drawable/friend_add_backgound"/>
-
-        </RelativeLayout>
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/white">
-        <TextView
-            android:padding="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:text="@string/add_tag"/>
-        <View style="@style/PersonalLine_nonemargin" />
+        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="10dp">
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="vertical">
+                <EditText
+                    android:id="@+id/et_blogname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:padding="10dp"
+                    android:textSize="16dp"
+                    android:hint="@string/add_friend_hint_title"
+                    android:background="@null"/>
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:layout_marginBottom="10dp">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:padding="10dp"
+                    android:minLines="3"
+                    android:gravity="top"
+                    android:textSize="14dp"
+                    android:hint="@string/add_friend_hint_text"
+                    android:background="@null"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/et_blogcontent" />
 
-            <Button
-                android:id="@+id/Tag01"
-                style="@style/FriendTagStyle"
-                android:text="@string/tag01"/>
+                <RelativeLayout
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="10dp">
+                    <ImageView
+                        android:id="@+id/add_photo"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="10dp"
+                        android:gravity="center" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/friend_add_button_shape"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="10dp">
+                    <Button
+                        android:id="@+id/select_photo"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="10dp"
+                        android:gravity="center"
+                        android:background="@drawable/friend_add_backgound"/>
 
-            <Button
-                android:id="@+id/Tag02"
-                style="@style/FriendTagStyle"
-                android:text="@string/tag02"/>
-            <Button
-                android:id="@+id/Tag03"
-                style="@style/FriendTagStyle"
-                android:text="@string/tag03"/>
-            <Button
-                android:id="@+id/Tag04"
-                style="@style/FriendTagStyle"
-                android:text="@string/tag04"/>
-            <Button
-                android:id="@+id/Tag05"
-                style="@style/FriendTagStyle"
-                android:text="@string/tag05"/>
+                </RelativeLayout>
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white">
+                <TextView
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:text="@string/add_tag"/>
+                <View style="@style/PersonalLine_nonemargin" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <Button
+                        android:id="@+id/Tag01"
+                        style="@style/FriendTagStyle"
+                        android:text="@string/tag01"/>
+
+                    <Button
+                        android:id="@+id/Tag02"
+                        style="@style/FriendTagStyle"
+                        android:text="@string/tag02"/>
+                    <Button
+                        android:id="@+id/Tag03"
+                        style="@style/FriendTagStyle"
+                        android:text="@string/tag03"/>
+                    <Button
+                        android:id="@+id/Tag04"
+                        style="@style/FriendTagStyle"
+                        android:text="@string/tag04"/>
+                    <Button
+                        android:id="@+id/Tag05"
+                        style="@style/FriendTagStyle"
+                        android:text="@string/tag05"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+                    <Button
+                        android:id="@+id/Tag06"
+                        style="@style/FriendTagStyle"
+                        android:text="@string/tag06"/>
+                    <Button
+                        android:id="@+id/Tag07"
+                        style="@style/FriendTagStyle"
+                        android:text="@string/tag07"/>
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="10dp">
-            <Button
-                android:id="@+id/Tag06"
-                style="@style/FriendTagStyle"
-                android:text="@string/tag06"/>
-            <Button
-                android:id="@+id/Tag07"
-                style="@style/FriendTagStyle"
-                android:text="@string/tag07"/>
-        </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 </LinearLayout>

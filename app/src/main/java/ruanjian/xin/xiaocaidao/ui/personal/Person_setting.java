@@ -11,10 +11,13 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -39,16 +42,16 @@ import java.util.Locale;
 
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.domain.XCRoundImageView;
-import ruanjian.xin.xiaocaidao.ui.Login.First;
+import ruanjian.xin.xiaocaidao.ui.Login.LoginActivity;
 import ruanjian.xin.xiaocaidao.ui.PersonPage;
 import ruanjian.xin.xiaocaidao.ui.SelectWindow.SelectPicPopupWindow;
 import ruanjian.xin.xiaocaidao.utils.FileUtil;
+import ruanjian.xin.xiaocaidao.utils.HttpUtil;
+import ruanjian.xin.xiaocaidao.utils.Utils;
 
-import static ruanjian.xin.xiaocaidao.utils.Utils.JIFINAL_UPLOAD;
+import static ruanjian.xin.xiaocaidao.utils.Utils.timeFloder;
 
 /**
- * 选项：个人中心
- * 子选项：设置
  * Created by 你的账户 on 2016/11/23.
  */
 
@@ -69,6 +72,8 @@ public class Person_setting extends AppCompatActivity implements View.OnClickLis
     private static final int REQUESTCODE_TAKE = 1;		// 相机拍照标记
     private static final int REQUESTCODE_CUTTING = 2;	// 图片裁切标记
 
+
+    //张鑫：
     private LinearLayout Llay_UserName;
     private LinearLayout Llay_PassWord;
     private LinearLayout About;
@@ -78,7 +83,21 @@ public class Person_setting extends AppCompatActivity implements View.OnClickLis
     private AlertDialog.Builder builder;
     private Button Btn_exit;
     private ImageView Iv_back;
-    private LinearLayout setting_about;//关于我们按钮
+    private HttpUtil httpUtil = new HttpUtil();
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            if(msg.what==1){
+                Toast.makeText(Person_setting.this,"昵称修改成功",Toast.LENGTH_SHORT).show();
+                Tv_UserName.setText(HttpUtil.una);
+            }else if(msg.what==2){
+                Toast.makeText(Person_setting.this,"密码修改成功",Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(Person_setting.this,"修改失败",Toast.LENGTH_SHORT).show();
+            }
+            super.handleMessage(msg);
+        }
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -89,6 +108,7 @@ public class Person_setting extends AppCompatActivity implements View.OnClickLis
 
         initViews();
         getView();
+        setMessage();
         setListener();
     }
     private void initViews(){
@@ -99,11 +119,8 @@ public class Person_setting extends AppCompatActivity implements View.OnClickLis
 
         /*如果头像本机已经自己保存过*/
         if (PersonPage.fileIsExists()){
-            String dateFolder = new SimpleDateFormat("yyyyMMdd", Locale.CHINA)
-                    .format(new Date());
-            String filePath = Environment.getExternalStorageDirectory() + "/JiaXT/" + dateFolder + "/";
-
-            avatarImg.setImageURI(Uri.fromFile(new File(filePath,"temphead.jpg")));
+            String filePath = Environment.getExternalStorageDirectory() + "/JiaXT/" + "myHead" + "/";
+            avatarImg.setImageURI(Uri.fromFile(new File(filePath,PersonPage.PicName)));
         }
     }
 
@@ -116,8 +133,6 @@ public class Person_setting extends AppCompatActivity implements View.OnClickLis
                 menuWindow.showAtLocation(findViewById(R.id.setting),
                         Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 0);
                 break;
-
-
             default:
                 break;
         }
@@ -202,7 +217,9 @@ public class Person_setting extends AppCompatActivity implements View.OnClickLis
             Bitmap photo = extras.getParcelable("data");
             Drawable drawable = new BitmapDrawable(null, photo);
             //保存图片到本机
-            urlpath = FileUtil.saveFile(mContext, "temphead.jpg", photo);
+            timeFloder = new SimpleDateFormat("yyyyMMddhhmmss", Locale.CHINA).format(new Date());
+            PersonPage.PicName = timeFloder+".jpg";
+            urlpath = FileUtil.saveFile(mContext, PersonPage.PicName, photo);
             avatarImg.setImageDrawable(drawable);
 
             pd = ProgressDialog.show(mContext, null, "正在上传图片，请稍候...");
@@ -217,20 +234,20 @@ public class Person_setting extends AppCompatActivity implements View.OnClickLis
      * ps:图片路径或者名称须要改动！！！！！！！！！！！
      */
     public void upLoadAvatar(){
-        String dateFolder = new SimpleDateFormat("yyyyMMdd", Locale.CHINA)
-                .format(new Date());
-        String filePath = Environment.getExternalStorageDirectory() + "/JiaXT/" + dateFolder + "/";
+        String filePath = Environment.getExternalStorageDirectory() + "/JiaXT/" + "myHead" + "/";
         System.out.println("filePath:"+filePath);
-        File file = new File(filePath,"temphead.jpg");
+        File file = new File(filePath,PersonPage.PicName);
         if (file.exists() && file.length() > 0) {
             AsyncHttpClient as = new AsyncHttpClient();
             RequestParams params = new RequestParams();
             try {
+                params.put("account",HttpUtil.uac);
+                Log.i("account",HttpUtil.uac);
                 params.put("uploadfile", file);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-            as.post(JIFINAL_UPLOAD, params, new AsyncHttpResponseHandler() {
+            as.post(Utils.set_imUrl, params, new AsyncHttpResponseHandler() {
                 @Override
                 public void onSuccess(int i, Header[] headers, byte[] bytes) {
                     try {
@@ -252,7 +269,11 @@ public class Person_setting extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+
     /*辅助函数*/
+    private void setMessage(){
+        Tv_UserName.setText(HttpUtil.una);
+    }
     private void getView(){
         Llay_UserName = (LinearLayout)findViewById(R.id.Llaylayout_settingUserName);
         Llay_PassWord = (LinearLayout)findViewById(R.id.Llaylayout_settingPassWord);
@@ -264,21 +285,12 @@ public class Person_setting extends AppCompatActivity implements View.OnClickLis
         builder = new AlertDialog.Builder(Person_setting.this);
         Btn_exit = (Button)findViewById(R.id.Btnlayout_settingExit);
         Iv_back = (ImageView)findViewById(R.id.back);
-        setting_about = (LinearLayout) findViewById(R.id.Llaylayout_About);
     }
     private void setListener(){
         Btn_exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Person_setting.this, First.class);
-                startActivity(i);
-            }
-        });
-
-        setting_about.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Person_setting.this, Person_about.class);
+                Intent i = new Intent(Person_setting.this, LoginActivity.class);
                 startActivity(i);
             }
         });
@@ -292,18 +304,33 @@ public class Person_setting extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onClick(View v) {
                 tempEdit = new EditText(Person_setting.this);
-                builder.setTitle("请输入用户名");
+                builder.setTitle("请输入昵称");
                 builder.setView(tempEdit);
                 builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        String UserName = tempEdit.getText().toString();
+                        final String UserName = tempEdit.getText().toString();
                         if( UserName.length()==0 ){
                             Toast.makeText(Person_setting.this,"用户名不能为空",Toast.LENGTH_SHORT).show();
                         }else{
                             Tv_UserName.setText(UserName);
+                            new Thread(){
+                                @Override
+                                public void run() {
+                                    httpUtil.setValue(httpUtil.SET_NA,HttpUtil.uac,UserName);
+                                    String end = httpUtil.HttpRequest_post(Utils.set_naUrl);
+                                    Message message = new Message();
+                                    if(end.equals("1")){
+                                        message.what = 1;
+                                        HttpUtil.una = UserName;
+                                    }else{
+                                        message.what = 0;
+                                    }
+                                    handler.sendMessage(message);
+                                    super.run();
+                                }
+                            }.start();
                         }
-
                     }
                 });
                 builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -319,7 +346,42 @@ public class Person_setting extends AppCompatActivity implements View.OnClickLis
         Llay_PassWord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                tempEdit = new EditText(Person_setting.this);
+                builder.setTitle("请输入密码");
+                builder.setView(tempEdit);
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        final String UserPwd = tempEdit.getText().toString();
+                        if( UserPwd.length()==0 ){
+                            Toast.makeText(Person_setting.this,"密码不能为空",Toast.LENGTH_SHORT).show();
+                        }else{
+                            Tv_UserName.setText(UserPwd);
+                            new Thread(){
+                                @Override
+                                public void run() {
+                                    httpUtil.setValue(httpUtil.SET_PW,HttpUtil.uac,UserPwd);
+                                    String end = httpUtil.HttpRequest_post(Utils.set_pwdUrl);
+                                    Message message = new Message();
+                                    if(end.equals("1")){
+                                        message.what = 2;
+                                    }else{
+                                        message.what = 0;
+                                    }
+                                    handler.sendMessage(message);
+                                    super.run();
+                                }
+                            }.start();
+                        }
+                    }
+                });
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.show();
             }
         });
 

@@ -7,20 +7,20 @@ import android.content.Context;
  */
 
 public class Name {
-  private long id;
     private String name;
+    private String avatarUrl;
 
-    public Name(long id, String name) {
-        this.id = id;
+    public Name(String avatarUrl, String name) {
         this.name = name;
+        this.avatarUrl = avatarUrl;
     }
 
-    public long getId() {
-        return id;
+    public String getAvatarUrl() {
+        return avatarUrl;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 
     public String getName() {

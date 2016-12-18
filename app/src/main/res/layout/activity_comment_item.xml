@@ -15,9 +15,9 @@
             android:orientation="horizontal"
             android:layout_margin="10dp">
             <!--用户头像-->
-            <de.hdodenhof.circleimageview.CircleImageView
+            <ruanjian.xin.xiaocaidao.domain.CircleNetworkImage
                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/cv_comment_user_pic"
+                android:id="@+id/cv_com_avater"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/user_pic"
@@ -29,6 +29,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:id="@+id/tv_com_name"
                 android:text="用户名"
                 android:textColor="#ff5722"
                 android:textSize="12dp"
@@ -38,6 +39,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/tv_com_content"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="50dp"
             android:text="不错"

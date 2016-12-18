@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:background="#000">
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -28,17 +30,17 @@
                 <!--android:background="#fff"-->
                 <!--android:layout_marginLeft="10dp"-->
                 <!--android:layout_marginRight="8dp"/>-->
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/cv_comment_user_pic"
+                <ruanjian.xin.xiaocaidao.domain.CircleNetworkImage
+                    android:id="@+id/cv_avatar"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/user_pic"
                     app:civ_border_width="1dp"
                     app:civ_border_color="#FF000000"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="8dp"/>
+
                 <TextView
+                    android:id="@+id/Tvaccount"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="用户名"
@@ -61,20 +63,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp">
                     <TextView
-                        android:id="@+id/Tvlv_commentMarker_01"
+                        android:id="@+id/Tv_Lab1"
                         android:layout_width="50dp"
                         android:layout_height="20dp"
-                        android:background="#D88183"
+                        android:background="#ffa726"
                         android:text="清淡"
                         android:textColor="#fff"
                         android:textSize="12sp"
                         android:gravity="center"
                         android:layout_marginRight="8dp"/>
                     <TextView
-                        android:id="@+id/Tvlv_commentMarker_02"
+                        android:id="@+id/Tv_Lab2"
                         android:layout_width="50dp"
                         android:layout_height="20dp"
-                        android:background="#D88183"
+                        android:background="#ffa726"
                         android:text="养生"
                         android:textSize="12sp"
                         android:textColor="#fff"
@@ -93,10 +95,10 @@
             android:layout_marginBottom="5dp"/>
 
         <!--晒图片-->
-        <ImageView
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/Iv_blogimg"
             android:layout_width="280dp"
             android:layout_height="150dp"
-            android:background="@drawable/img0"
             android:layout_marginLeft="5dp"/>
 
         <!--话题-->
@@ -104,10 +106,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="#自己闲暇时瞎做的，大家多多包涵（=。=|||）#"
+            android:ellipsize="end"
+            android:lines="1"
             android:textSize="15sp"
             android:textColor="#000"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="5dp"/>
+            android:layout_marginLeft="5dp"
+            android:id="@+id/Tv_content" />
 
         <!--底部信息-->
         <LinearLayout
@@ -155,7 +160,7 @@
                     android:gravity="center_vertical"
                     android:layout_marginRight="5dp"/>
                 <TextView
-                    android:id="@+id/Tvlv_commentPraise"
+                    android:id="@+id/Tv_thumb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -177,7 +182,7 @@
                     android:gravity="center_vertical"
                     android:layout_marginRight="5dp"/>
                 <TextView
-                    android:id="@+id/Tvlv_commentComment"
+                    android:id="@+id/Tvcomment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"

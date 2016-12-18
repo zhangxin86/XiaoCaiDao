@@ -121,19 +121,21 @@
                 android:text="用户名"/>
         </LinearLayout>
         <LinearLayout
+            android:orientation="vertical"
             android:layout_weight="3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center">
             <TextView
                 android:id="@+id/Tvlayout_settingUserName"
+                android:gravity="left"
                 android:text="飞翔的六毛"
                 android:textSize="18sp"
                 android:textColor="#707070"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/p1"
-                android:layout_marginLeft="55dp"/>
+                android:layout_marginLeft="40dp"/>
         </LinearLayout>
         <LinearLayout
             android:layout_weight="1"
@@ -172,22 +174,23 @@
                 android:text="密码" />
         </LinearLayout>
         <LinearLayout
+            android:orientation="vertical"
             android:layout_weight="3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center">
             <TextView
-                android:gravity="center"
+                android:gravity="left"
                 android:id="@+id/Tvlayout_settingPassWord"
                 android:password="true"
                 android:singleLine="true"
                 android:text="123456"
                 android:textSize="18sp"
                 android:textColor="#707070"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@null"
-                android:layout_marginLeft="55dp"/>
+                android:layout_marginLeft="40dp"/>
         </LinearLayout>
         <LinearLayout
             android:layout_weight="1"
@@ -200,6 +203,7 @@
                 android:src="@drawable/per5" />
         </LinearLayout>
     </LinearLayout>
+
     <ImageView
         android:background="#000"
         android:layout_width="match_parent"
@@ -251,7 +255,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
         android:background="@drawable/button_background_selector"
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="退    出"
         android:textSize="18sp"

@@ -4,7 +4,7 @@
     android:id="@+id/activity_friend_detail_item"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ruanjian.xin.xiaocaidao.ui.Friend.HotFriendDetail_Fragment"
+    tools:context="ruanjian.xin.xiaocaidao.ui.Friend.HotFriendDetailFragment"
     android:background="@color/back_color"
     android:overScrollMode="never">
     <LinearLayout
@@ -35,7 +35,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="5">
                     <!--头像-->
-                    <de.hdodenhof.circleimageview.CircleImageView
+                    <ruanjian.xin.xiaocaidao.domain.CircleNetworkImage
                         xmlns:app="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/cv_comment_user_pic"
                         android:layout_width="60dp"
@@ -52,6 +52,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:id="@+id/Tv_userName"
                             android:text="用户名"
                             android:textColor="#877F6C"
                             android:textSize="16dp"
@@ -67,6 +68,7 @@
 
                 <!--标签-->
                 <Button
+                    android:id="@+id/btn_focus"
                     android:layout_width="58dp"
                     android:layout_height="35dp"
                     android:text="+ 关注"
@@ -80,17 +82,29 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:textColor="@color/black"
-                    android:text="#自己闲暇时瞎做的，大家多多包涵（=。=|||）#"/>
-                <ImageView
-                    android:layout_width="300dp"
-                    android:layout_height="170dp"
+                    android:text="#自己闲暇时瞎做的，大家多多包涵（=。=|||）#"
+                    android:id="@+id/Tv_comment_title" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:layout_marginLeft="25dp"
+                    android:textColor="@color/black"
+                    android:text="#自己闲暇时瞎做的，大家多多包涵（=。=|||）#"
+                    android:id="@+id/Tv_comment_content" />
+
+                <com.android.volley.toolbox.NetworkImageView
+                    android:id="@+id/Iv_comment_blogimg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/img0"
-                    android:layout_marginLeft="20dp"
+                    android:layout_margin="20dp"
                     android:scaleType="fitXY"/>
             </LinearLayout>
 
@@ -117,6 +131,7 @@
                         android:src="@drawable/like_logo"/>
                     <TextView
                         android:layout_width="wrap_content"
+                        android:id="@+id/Tv_comment_thumb"
                         android:layout_height="18dp"
                         android:text="200人赞过"
                         android:layout_marginTop="19dp"
