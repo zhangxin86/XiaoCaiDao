@@ -50,6 +50,9 @@ public class HotFriend extends Activity {    //热门帖子
 
     private ProgressDialog pDialog;
 
+    private static String[] Labs = {"早餐","午餐","晚餐","热菜","凉菜","酱料","食材"};
+    private static String[] Ls = {"",""};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,7 +110,9 @@ public class HotFriend extends Activity {    //热门帖子
                     e.printStackTrace();
                 }
 
-                System.out.println("blog jsonArray:"+jsonArray.toString());
+                System.out.println("blog jsonArrayHOT:"+jsonArray.toString());
+
+
 
                 try {
                     for (int i = 0;i<jsonArray.length();i++){
@@ -117,15 +122,34 @@ public class HotFriend extends Activity {    //热门帖子
                         System.out.println("imgsrc");
                         int thumb = obj.getInt("thumb");            //点赞数
                         String content = obj.getString("content");      //内容
+                        String name = obj.getString("name");      //标题
                         String userName = obj.getString("userName");    //userName
                         String userImg = obj.getString("userImg");      //头像url
+
+                        String label = obj.getString("label");
+                        int count = 0;
+                        for (int j=0;j<label.length();j++){
+                            char tempChar = label.charAt(j);
+                            if (tempChar == '1'){
+                                System.out.println(Labs[j]);
+                                Ls[count] = Labs[j];
+                                count++;
+                            }
+                            if (count==2){
+                                break;
+                            }
+                            if(j==label.length()&&Labs[j].equals("0")){
+                                Ls[0]="";
+                                Ls[1]="";
+                            }
+                        }
 
                         int Id = obj.getInt("id");         //得到此id，不在显示，备于界面跳转到对应帖子的界面
 
                         /*用户名，头像url(没用上在适配器中处理了)，图片，评论数（没用上），内容文字，  id    ，标签1（待用），标签2（待用），点赞数
                         *String account, String avatarUrl, String blogImg, String comment, String countent, Long id, String lab1, String lab2, String thumb*/
-                        BlogItem blog = new BlogItem(userName,userImg,imgsrc,thumb,content,(long)Id,"清淡","养生",thumb);
-
+                        //BlogItem blog = new BlogItem(userName,userImg,imgsrc,thumb,content,(long)Id,"清淡","养生",thumb);
+                        BlogItem blog = new BlogItem(userName,userImg,imgsrc,thumb,name,(long)Id,Ls[0],Ls[1],thumb);
                         data.add(blog);
                     }
 

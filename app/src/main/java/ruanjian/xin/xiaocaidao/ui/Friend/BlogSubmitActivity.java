@@ -104,23 +104,12 @@ public class BlogSubmitActivity extends Activity implements View.OnClickListener
             public void onClick(View v) {
                 BlogName = et_blogname.getText().toString().trim();
                 BlogContent = et_blogcontent.getText().toString().trim();
-//                new Thread(){
-//                    @Override
-//                    public void run() {
-//                        httpUtil.setValue(httpUtil.SET_BL,BlogName,postLableMes(),HttpUtil.uac,BlogContent);
-//                        String end = httpUtil.HttpRequest_post(Utils.upload_blUrl);
-//                        Message message = new Message();
-//                        if(end.equals("1")){
-//                            message.what = 1;
-//                        }else{
-//                            message.what = 0;
-//                        }
-//                        handler.sendMessage(message);
-//                        super.run();
-//                    }
-//                }.start();
-                upLoadAvatar(picPath);
-                pd = ProgressDialog.show(mContext, null, "正在上传图片，请稍候...");
+                if (picPath.equals("")){
+                    Toast.makeText(getApplicationContext(),"别忘记添加图片哦！",Toast.LENGTH_SHORT).show();
+                }else {
+                    upLoadAvatar(picPath);
+                    pd = ProgressDialog.show(mContext, null, "正在上传图片，请稍候...");
+                }
             }
         });
         //标签相关
@@ -267,8 +256,7 @@ public class BlogSubmitActivity extends Activity implements View.OnClickListener
         }
 
         String[] pojo = { MediaStore.MediaColumns.DATA };
-        // The method managedQuery() from the type Activity is deprecated
-        //Cursor cursor = managedQuery(photoUri, pojo, null, null, null);
+
         Cursor cursor = mContext.getContentResolver().query(photoUri, pojo, null, null, null);
         if (cursor != null) {
             int columnIndex = cursor.getColumnIndexOrThrow(pojo[0]);

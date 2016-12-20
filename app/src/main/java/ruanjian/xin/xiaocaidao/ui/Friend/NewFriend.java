@@ -45,6 +45,9 @@ public class NewFriend extends Activity{    //最新贴
 
     private ProgressDialog pDialog;
 
+
+    private static String[] Labs = {"早餐","午餐","晚餐","热菜","凉菜","酱料","食材"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,46 +83,6 @@ public class NewFriend extends Activity{    //最新贴
         listView = (ListView)findViewById(R.id.hot_listView);
     }
 
-
-    public void getData() {
-        AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
-        asyncHttpClient.get(getApplicationContext(), Utils.URL+"blog/fetchHotBlogList",new JsonHttpResponseHandler(){
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                super.onSuccess(statusCode, headers, response);
-                System.out.println(response.toString());            //调试输出返回数组
-                try {
-                    for (int i = 0;i<response.length();i++){
-                        JSONObject obj = response.getJSONObject(i);     //取出每个对象
-                        String user = obj.getString("edit_user");       //取出用户名称，拿到适配器中处理后显示，由此找到 头像 和 昵称
-                        String imgsrc = obj.getString("img_src");       //取出图片url
-                        System.out.println("imgsrc");
-                        int thumb = obj.getInt("thumb");            //点赞数
-                        String content = obj.getString("content");      //内容
-
-                        int Id = obj.getInt("id");         //得到此id，不在显示，备于界面跳转到对应帖子的界面
-
-                        /*用户名，头像url(没用上在适配器中处理了)，图片，评论数（没用上），内容文字，  id    ，标签1（待用），标签2（待用），点赞数
-                        *String account, String avatarUrl, String blogImg, String comment, String countent, Long id, String lab1, String lab2, String thumb*/
-                        BlogItem blog = new BlogItem(user,"",imgsrc,thumb,content,(long)Id,"清淡","养生",thumb);
-
-                        data.add(blog);
-                    }
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                hotAdapter.notifyDataSetChanged();       //当内容更新时候，动态刷新ListView
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-                super.onFailure(statusCode, headers, throwable, errorResponse);
-            }
-        });
-    }
-
     public void getData2(){
         StringRequest req=new StringRequest(Request.Method.POST,Utils.URL+"blog/fetchNewlyBlogList", new Response.Listener<String>() {
 
@@ -140,8 +103,8 @@ public class NewFriend extends Activity{    //最新贴
                     e.printStackTrace();
                 }
 
-                System.out.println(jsonArray.toString());
-
+                System.out.println("blog jsonArray NEW:"+jsonArray.toString());
+                String[] Ls = {"",""};
                 try {
                     for (int i = 0;i<jsonArray.length();i++){
                         JSONObject obj = jsonArray.getJSONObject(i);     //取出每个对象
@@ -152,13 +115,30 @@ public class NewFriend extends Activity{    //最新贴
                         String content = obj.getString("content");      //内容
                         String userName = obj.getString("userName");    //userName
                         String userImg = obj.getString("userImg");      //头像url
+                        String label = obj.getString("label");
 
                         int Id = obj.getInt("id");         //得到此id，不在显示，备于界面跳转到对应帖子的界面
+                        int count = 0;
+                        for (int j=0;j<label.length();j++){
+                            char tempChar = label.charAt(j);
+                            if (tempChar == '1'){
+                                System.out.println(Labs[j]);
+                                Ls[count] = Labs[j];
+                                count++;
+                            }
+                            if (count==2){
+                                break;
+                            }
+                            if(j==label.length()&&Labs[j].equals("0")){
+                                Ls[0]="";
+                                Ls[1]="";
+                            }
+                        }
 
                         /*用户名，头像url(没用上在适配器中处理了)，图片，评论数（没用上），内容文字，  id    ，标签1（待用），标签2（待用），点赞数
                         *String account, String avatarUrl, String blogImg, String comment, String countent, Long id, String lab1, String lab2, String thumb*/
-                        BlogItem blog = new BlogItem(userName,userImg,imgsrc,thumb,content,(long)Id,"清淡","养生",thumb);
-
+                        //BlogItem blog = new BlogItem(userName,userImg,imgsrc,thumb,content,(long)Id,"清淡","养生",thumb);
+                        BlogItem blog = new BlogItem(userName,userImg,imgsrc,thumb,content,(long)Id,Ls[0],Ls[1],thumb);
                         data.add(blog);
                     }
 

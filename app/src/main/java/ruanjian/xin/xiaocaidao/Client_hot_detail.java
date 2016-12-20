@@ -31,7 +31,7 @@ public class Client_hot_detail extends AppCompatActivity {
     private HotFriendDetailFragment hotFriendDetail;
     private ImageView imageView;
     private Button Btn_Comment;
-    private EditText Et_Comment;
+    private EditText Et_Comment;//评论框
     private HttpUtil httpUtil = new HttpUtil();
 
     private long id = -1;
@@ -40,10 +40,11 @@ public class Client_hot_detail extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             if(msg.what==1){
-                Toast.makeText(Client_hot_detail.this,"发布成功",Toast.LENGTH_SHORT).show();
-
+                Et_Comment.setText("");
+                Toast.makeText(Client_hot_detail.this,"评论成功",Toast.LENGTH_SHORT).show();
+                hotFriendDetail.onResume();
             }else{
-                Toast.makeText(Client_hot_detail.this,"发布失败",Toast.LENGTH_SHORT).show();
+                Toast.makeText(Client_hot_detail.this,"评论失败",Toast.LENGTH_SHORT).show();
             }
             super.handleMessage(msg);
         }
@@ -102,21 +103,25 @@ public class Client_hot_detail extends AppCompatActivity {
                     finish();
                     break;
                 case R.id.Btn_Comment:
-                    final String comment = Et_Comment.getText().toString();
-                    new Thread(){
-                        @Override
-                        public void run() {
-                            httpUtil.setValue(httpUtil.SET_CO,HttpUtil.uac, tempId+"",comment);
-                            String end = httpUtil.HttpRequest_post(Utils.upload_coUrl);
-                            if(end.equals("1")){
-                                handler.sendEmptyMessage(1);
-                            }else{
-                                handler.sendEmptyMessage(0);
+                    if (Et_Comment.getText().toString().equals("")){
+                        Toast.makeText(getApplication(),"您还未进行任何评论！",Toast.LENGTH_SHORT).show();
+                    }else {
+                        final String comment = Et_Comment.getText().toString();
+                        new Thread(){
+                            @Override
+                            public void run() {
+                                httpUtil.setValue(httpUtil.SET_CO,HttpUtil.uac, tempId+"",comment);
+                                String end = httpUtil.HttpRequest_post(Utils.upload_coUrl);
+                                if(end.equals("1")){
+                                    handler.sendEmptyMessage(1);
+                                }else{
+                                    handler.sendEmptyMessage(0);
+                                }
+                                super.run();
                             }
-                            super.run();
-                        }
-                    }.start();
-                    break;
+                        }.start();
+                        break;
+                    }
             }
         }
     }

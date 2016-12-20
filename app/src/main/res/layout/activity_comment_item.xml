@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:background="@color/black">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_margin="10dp">
+            android:layout_marginTop="5dp">
             <!--用户头像-->
             <ruanjian.xin.xiaocaidao.domain.CircleNetworkImage
                 xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -42,34 +43,11 @@
             android:id="@+id/tv_com_content"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="10dp"
             android:text="不错"
             android:textColor="@color/black"
             android:textSize="16dp"/>
-        <!--底部信息-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="10dp"
-            android:gravity="center_vertical">
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-            </LinearLayout>
-            <ImageView
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_marginRight="5dp"
-                android:src="@drawable/like_logo"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="200人赞过"
-                android:layout_gravity="center_vertical"
-                android:gravity="center"/>
-        </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>

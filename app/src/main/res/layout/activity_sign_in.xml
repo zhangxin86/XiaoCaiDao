@@ -20,21 +20,26 @@
             android:layout_height="250dp">
 
         </FrameLayout>
+
         <EditText
             android:id="@+id/etaccount"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="手机号/邮箱/昵称"
+            android:hint="账户名(不得超过20位字符)"
+            android:singleLine="true"
             android:textSize="20sp"
             android:alpha="0.8"
             android:padding="15dp"
             android:background="@drawable/login_edit_style"/>
+
         <EditText
             android:id="@+id/etpwd"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="密码"
+            android:singleLine="true"
+            android:password="true"
             android:textSize="20sp"
             android:alpha="0.8"
             android:padding="15dp"
@@ -45,6 +50,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="确认密码"
+            android:singleLine="true"
+            android:password="true"
             android:textSize="20sp"
             android:alpha="0.8"
             android:padding="15dp"

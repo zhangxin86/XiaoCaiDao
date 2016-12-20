@@ -87,6 +87,7 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             httpUtil.setValue(httpUtil.LOGINORSIGN,useraccount,pwd);
+                            httpUtil.HttpRequest_post(Utils.check_ipUrl);
                             String end = httpUtil.HttpRequest_post(Utils.loginUrl);
                             Message message = new Message();
                             HttpUtil.uac = useraccount;

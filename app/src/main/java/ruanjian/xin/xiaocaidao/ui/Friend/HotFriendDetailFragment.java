@@ -166,7 +166,7 @@ public class HotFriendDetailFragment extends Fragment {    //热门帖子详情�
                     TvUserName.setText(userName);
                     TvTitle.setText(title);
                     TvContent.setText(content);
-                    TvThumb.setText(""+thumb);
+                    TvThumb.setText(""+thumb+"赞");
                     blogImg.setImageUrl(imgsrc,imageLoader);
 
 
@@ -233,7 +233,7 @@ public class HotFriendDetailFragment extends Fragment {    //热门帖子详情�
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                Log.e("CaipuMenuPge","error:"+volleyError.getMessage());
+                Log.e("HotFriendDetailFragment","error:"+volleyError.getMessage());
                 //hidePDialog();
             }
         }){
