@@ -13,7 +13,6 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONArray;
@@ -29,7 +28,6 @@ import ruanjian.xin.xiaocaidao.Controller.ApplicationController;
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.adapter.BaiDuRefreshListView;
 import ruanjian.xin.xiaocaidao.adapter.Adapter_focus_fans;
-import ruanjian.xin.xiaocaidao.domain.CommentItem;
 import ruanjian.xin.xiaocaidao.domain.Name;
 import ruanjian.xin.xiaocaidao.utils.Calculator;
 import ruanjian.xin.xiaocaidao.utils.HttpUtil;

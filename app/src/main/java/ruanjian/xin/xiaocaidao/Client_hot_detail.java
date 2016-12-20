@@ -2,7 +2,6 @@ package ruanjian.xin.xiaocaidao;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -16,9 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import ruanjian.xin.xiaocaidao.domain.BlogItem;
 import ruanjian.xin.xiaocaidao.ui.Friend.HotFriendDetailFragment;
-import ruanjian.xin.xiaocaidao.ui.Login.LoginActivity;
 import ruanjian.xin.xiaocaidao.utils.HttpUtil;
 import ruanjian.xin.xiaocaidao.utils.Utils;
 

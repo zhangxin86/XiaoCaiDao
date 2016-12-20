@@ -2,7 +2,6 @@ package ruanjian.xin.xiaocaidao.ui.personal;
 
 
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
