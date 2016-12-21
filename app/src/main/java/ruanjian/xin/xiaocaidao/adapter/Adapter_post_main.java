@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ruanjian.xin.xiaocaidao.R;
+import ruanjian.xin.xiaocaidao.domain.BlogItem;
 import ruanjian.xin.xiaocaidao.domain.Name2;
 
 
@@ -20,9 +21,15 @@ import ruanjian.xin.xiaocaidao.domain.Name2;
 
 public class Adapter_post_main extends BaseAdapter {
     private Context context;
-    private List<Name2> list = new ArrayList<>();
+    private List<BlogItem> list = new ArrayList<>();
 
-    public Adapter_post_main(Context context, List<Name2> list) {
+    private TextView TvTitle;
+    private TextView TvContent;
+    private TextView TvThumb;
+    private TextView TvLab1;
+    private TextView TvLab2;
+
+    public Adapter_post_main(Context context, List<BlogItem> list) {
         this.context = context;
         this.list = list;
     }
@@ -39,7 +46,7 @@ public class Adapter_post_main extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return list.get(position).getId();
+        return position;
     }
 
     @Override
@@ -47,12 +54,19 @@ public class Adapter_post_main extends BaseAdapter {
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.fragment_post_main_item, null);
         }
-        TextView textView=(TextView)convertView.findViewById(R.id.fragment_one_list_tv5);
-        textView.setText(list.get(position).getName1());
-        TextView textView1=(TextView)convertView.findViewById(R.id.fragment_one_list_tv5_1);
-        textView1.setText(list.get(position).getName2());
-        TextView textView2=(TextView)convertView.findViewById(R.id.fragment_one_list_tv5_2);
-        textView2.setText(list.get(position).getName3());
+
+        TvTitle=(TextView)convertView.findViewById(R.id.tv_blogtitle);
+        TvContent = (TextView)convertView.findViewById(R.id.tv_blogcontent);
+        TvThumb = (TextView)convertView.findViewById(R.id.tv_blogthumb);
+        TvLab1 = (TextView)convertView.findViewById(R.id.tv_lab1);
+        TvLab2 = (TextView)convertView.findViewById(R.id.tv_lab2);
+
+        TvTitle.setText(list.get(position).getTitle());
+        TvContent.setText(list.get(position).getCountent());
+        TvLab1.setText(list.get(position).getLab1());
+        TvLab2.setText(list.get(position).getLab2());
+        TvThumb.setText(list.get(position).getThumb()+"");
+
         return convertView;
     }
 }

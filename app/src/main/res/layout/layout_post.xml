@@ -13,21 +13,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btn1"
-        android:text="主贴" />
-    <Button
-        android:background="@null"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/btn2"
-    android:text="回帖"/>
+        android:text="我的帖子" />
     </LinearLayout>
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <FrameLayout
-        android:id="@+id/f1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    </FrameLayout>
-</LinearLayout>
+    <!--<FrameLayout-->
+        <!--android:id="@+id/f1"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content">-->
+    <!--</FrameLayout>-->
+        <ListView
+            android:id="@+id/Lv_myBlog"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:divider="#f7f7f7"
+            android:dividerHeight="5dp"
+            android:scrollbars="none"/>
+    </LinearLayout>
 </LinearLayout>

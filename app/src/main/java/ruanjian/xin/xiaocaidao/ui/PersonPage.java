@@ -96,6 +96,7 @@ public class PersonPage extends Fragment {
                     case R.id.Ll_Post:
                         Intent intent2 = new Intent();
                         intent2.setClass(getActivity(), Person_post.class);
+                        intent2.putExtra("userName",Tvactivity_person_pageUserName.getText().toString());
                         startActivity(intent2);
                         break;
                     case R.id.Ll_Setting:

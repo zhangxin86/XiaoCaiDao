@@ -82,15 +82,5 @@ public class Fragment_post_repost extends Fragment implements BaiDuRefreshListVi
         }).start();
     }
     private void getData(){
-        list.add(new Name2(0,"楼主好人啊","keyi试试","55"));
-        list.add(new Name2(0,"楼主好人啊","keyi试试","55"));
-        list.add(new Name2(0,"楼主好人啊","keyi试试","55"));
-        list.add(new Name2(0,"楼主好人啊","keyi试试","55"));
-        list.add(new Name2(0,"楼主好人啊","keyi试试","55"));
-        list.add(new Name2(0,"楼主好人啊","keyi试试","55"));
-        list.add(new Name2(0,"楼主好人啊","keyi试试","55"));
-        list.add(new Name2(0,"楼主好人啊","keyi试试","55"));
-        list.add(new Name2(0,"楼主好人啊","keyi试试","55"));
-        list.add(new Name2(0,"楼主好人啊","keyi试试","55"));
     }
 }

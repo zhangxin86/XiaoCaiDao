@@ -13,17 +13,17 @@ public class BlogItem {
     private String blogImg;//帖子图片
     private String countent;//帖子内容
     private int thumb;//点赞数目
-    private int comment;//评论数
+    private String title;//题目
 
     public BlogItem(){
 
     };
 
-    public BlogItem(String account, String avatarUrl, String blogImg, int comment, String countent, long id, String lab1, String lab2, int thumb) {
+    public BlogItem(String account, String avatarUrl, String blogImg, String title, String countent, long id, String lab1, String lab2, int thumb) {
         this.account = account;
         this.avatarUrl = avatarUrl;
         this.blogImg = blogImg;
-        this.comment = comment;
+        this.title= title;
         this.countent = countent;
         Id = id;
         this.lab1 = lab1;
@@ -56,12 +56,12 @@ public class BlogItem {
         this.blogImg = blogImg;
     }
 
-    public int getComment() {
-        return comment;
+    public String getTitle() {
+        return title;
     }
 
-    public void setComment(int comment) {
-        this.comment = comment;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getCountent() {

@@ -138,7 +138,7 @@ public class NewFriend extends Activity{    //最新贴
                         /*用户名，头像url(没用上在适配器中处理了)，图片，评论数（没用上），内容文字，  id    ，标签1（待用），标签2（待用），点赞数
                         *String account, String avatarUrl, String blogImg, String comment, String countent, Long id, String lab1, String lab2, String thumb*/
                         //BlogItem blog = new BlogItem(userName,userImg,imgsrc,thumb,content,(long)Id,"清淡","养生",thumb);
-                        BlogItem blog = new BlogItem(userName,userImg,imgsrc,thumb,content,(long)Id,Ls[0],Ls[1],thumb);
+                        BlogItem blog = new BlogItem(userName,userImg,imgsrc,"",content,(long)Id,Ls[0],Ls[1],thumb);
                         data.add(blog);
                     }
 
