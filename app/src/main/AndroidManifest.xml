@@ -62,8 +62,6 @@
             android:value="@integer/google_play_services_version" />
 
         <activity android:name=".ui.ThreeMeals" />
-        <activity android:name=".ui.Main.Lunch" />
-        <activity android:name=".ui.Main.Dinner"></activity>
     </application>
 
 </manifest>
