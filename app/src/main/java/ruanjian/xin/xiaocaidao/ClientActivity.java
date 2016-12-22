@@ -82,7 +82,13 @@ public class ClientActivity extends AppCompatActivity {
                 break;
         }
     }
-
+    @Override
+    public void onBackPressed() {
+        Intent home = new Intent(Intent.ACTION_MAIN);
+        home.addCategory(Intent.CATEGORY_HOME);
+        startActivity(home);
+        super.onBackPressed();
+    }
 
     /*辅助函数*/
     private void findView(){

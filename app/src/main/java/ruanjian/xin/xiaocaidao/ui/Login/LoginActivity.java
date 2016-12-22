@@ -62,10 +62,13 @@ public class LoginActivity extends AppCompatActivity {
 
         findView();
     }
+
     @Override
-    protected void onStop() {
-        this.finish();
-        super.onStop();
+    public void onBackPressed() {
+        Intent home = new Intent(Intent.ACTION_MAIN);
+        home.addCategory(Intent.CATEGORY_HOME);
+        startActivity(home);
+        super.onBackPressed();
     }
 
     @Override
