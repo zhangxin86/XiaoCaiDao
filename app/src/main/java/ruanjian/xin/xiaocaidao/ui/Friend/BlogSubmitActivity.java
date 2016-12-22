@@ -104,7 +104,9 @@ public class BlogSubmitActivity extends Activity implements View.OnClickListener
             public void onClick(View v) {
                 BlogName = et_blogname.getText().toString().trim();
                 BlogContent = et_blogcontent.getText().toString().trim();
-                if (picPath.equals("")){
+                if(selectlablenum!=2){
+                    Toast.makeText(getApplicationContext(),"请为您的帖子选择两个标签！",Toast.LENGTH_SHORT).show();
+                } else if (picPath.equals("")){
                     Toast.makeText(getApplicationContext(),"别忘记添加图片哦！",Toast.LENGTH_SHORT).show();
                 }else {
                     upLoadAvatar(picPath);

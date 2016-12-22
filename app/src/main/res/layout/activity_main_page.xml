@@ -155,7 +155,6 @@
 
                     </LinearLayout>
 
-
                     <!--推荐酱料、经典菜跟我做-->
                     <LinearLayout
                         android:orientation="horizontal"
@@ -168,19 +167,17 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="#ff3824"
+                            android:background="#ccff3824"
                             android:gravity="center"
                             android:layout_marginRight="2dp">
-
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="酱料食材"
+                                android:text="推荐酱料"
                                 android:textSize="20sp"
                                 android:textColor="#fff"
                                 android:layout_gravity="center"
-                                android:gravity="center"
-                                android:id="@+id/textView" />
+                                android:gravity="center"/>
                         </LinearLayout>
                         <!--教你做菜彩块-->
                         <LinearLayout
@@ -188,7 +185,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="#20b320"
+                            android:background="#cc20b320"
                             android:gravity="center">
                             <TextView
                                 android:layout_width="wrap_content"
@@ -216,7 +213,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="#28da28"
+                        android:background="#cc5ddc5d"
                         android:gravity="center"
                         android:layout_marginBottom="1dp">
                         <ImageView
@@ -262,7 +259,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="#7652b4"
+                        android:background="#cc7652b4"
                         android:gravity="center">
                         <ImageView
                             android:layout_width="35dp"

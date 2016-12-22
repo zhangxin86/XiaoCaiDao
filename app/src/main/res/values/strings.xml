@@ -10,7 +10,7 @@
     <string name="add_friend_hint_text">说点什么吧。。。</string>
     <string name="new_item_text">冬瓜，南瓜，黄瓜，西瓜都能吃，哪种瓜不能吃？</string>
     <string name="hot_item_text">#自己闲暇时瞎做的，大家多多包涵（=。=|||）#</string>
-    <string name="add_tag">添加标签</string>
+    <string name="add_tag">添加两个标签</string>
     <string name="tag01">早餐</string>
     <string name="tag02">午餐</string>
     <string name="tag03">晚餐</string>

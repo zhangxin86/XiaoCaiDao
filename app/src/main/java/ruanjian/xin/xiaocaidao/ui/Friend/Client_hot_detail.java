@@ -37,6 +37,7 @@ public class Client_hot_detail extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             if(msg.what==1){
+                Et_Comment.setText("");
                 Toast.makeText(Client_hot_detail.this,"评论成功",Toast.LENGTH_SHORT).show();
                 hotFriendDetail.getCommentData();
                 hotFriendDetail.setComment();
