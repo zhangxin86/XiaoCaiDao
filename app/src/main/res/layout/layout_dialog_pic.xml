@@ -10,7 +10,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#312E3F"
+        android:background="#2e3d3f"
         android:gravity="center_horizontal"
         android:orientation="vertical" >
 

@@ -141,7 +141,7 @@ public class Fragment_focus_fans extends Fragment implements BaiDuRefreshListVie
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                Log.e("CaipuMenuPge","error:"+volleyError.getMessage());
+                Log.e("fans","error:"+volleyError.getMessage());
                 //hidePDialog();
             }
         }){

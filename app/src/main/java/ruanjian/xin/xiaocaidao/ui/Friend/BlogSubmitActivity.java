@@ -412,6 +412,7 @@ public class BlogSubmitActivity extends Activity implements View.OnClickListener
                     if(lable[4].equals("1")) {
                         Tag05.setSelected(false);
                         lable[4] = "0";
+                        selectlablenum--;
                     }
                     else{
                         Tag05.setSelected(true);
@@ -423,6 +424,7 @@ public class BlogSubmitActivity extends Activity implements View.OnClickListener
                     if(lable[5].equals("1")) {
                         Tag06.setSelected(false);
                         lable[5] = "0";
+                        selectlablenum--;
                     }
                     else{
                         Tag06.setSelected(true);
@@ -434,6 +436,7 @@ public class BlogSubmitActivity extends Activity implements View.OnClickListener
                     if(lable[6].equals("1")) {
                         Tag07.setSelected(false);
                         lable[6] = "0";
+                        selectlablenum--;
                     }
                     else{
                         Tag07.setSelected(true);

@@ -144,7 +144,7 @@ public class Fragment_focus_focus extends Fragment implements BaiDuRefreshListVi
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                Log.e("CaipuMenuPge", "error:" + volleyError.getMessage());
+                Log.e("focusPge", "error:" + volleyError.getMessage());
                 //hidePDialog();
             }
         }) {
