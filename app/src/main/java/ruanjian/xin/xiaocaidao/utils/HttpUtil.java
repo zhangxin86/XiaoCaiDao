@@ -31,6 +31,7 @@ public class HttpUtil {
     public final static int SET_PW = 4;
     public final static int SET_BL = 5;
     public final static int SET_FO = 6;
+    public final static int SET_TH = 7;
     private String urlContent = null;
     ArrayList<NameValuePair> pairs = new ArrayList<NameValuePair>();
     URI u;
@@ -94,6 +95,11 @@ public class HttpUtil {
                 pair2 = new BasicNameValuePair("follows",(String)args[1]);//被关注的账号名
                 pairs.add(pair1);
                 pairs.add(pair2);
+                break;
+            case SET_TH:
+                pairs.clear();
+                pair1 = new BasicNameValuePair("blog_id", (String) args[0]);//点击关注用户账号
+                pairs.add(pair1);;
                 break;
         }
     }

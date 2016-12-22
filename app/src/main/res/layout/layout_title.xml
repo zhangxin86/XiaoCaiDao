@@ -3,7 +3,7 @@
     android:id="@+id/titleXiangqing"
     android:layout_width="match_parent"
     android:layout_height="60dp"
-    android:background="#4431b3" >
+    android:background="#cc0099cc" >
     <TextView
         android:id="@+id/text_title"
         android:layout_width="match_parent"

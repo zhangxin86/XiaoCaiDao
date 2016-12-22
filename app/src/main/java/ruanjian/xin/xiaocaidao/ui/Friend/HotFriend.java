@@ -3,8 +3,6 @@ package ruanjian.xin.xiaocaidao.ui.Friend;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -16,27 +14,19 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
 
-import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-import ruanjian.xin.xiaocaidao.Client_hot_detail;
 import ruanjian.xin.xiaocaidao.Controller.ApplicationController;
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.adapter.CommentAdapter;
 import ruanjian.xin.xiaocaidao.domain.BlogItem;
 import ruanjian.xin.xiaocaidao.utils.Utils;
-
-import static ruanjian.xin.xiaocaidao.utils.Utils.JUHE_KEY;
 
 /**
  * Created by lhm on 2016/11/22.

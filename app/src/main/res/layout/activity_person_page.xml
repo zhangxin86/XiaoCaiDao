@@ -9,7 +9,7 @@
     <!--橘黄色部分-->
     <RelativeLayout
         android:id="@+id/yi"
-        android:background="#3d55b6"
+        android:background="#cc0099cc"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:gravity="center_horizontal">

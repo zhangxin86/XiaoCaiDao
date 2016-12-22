@@ -24,7 +24,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import ruanjian.xin.xiaocaidao.Client_hot_detail;
+import ruanjian.xin.xiaocaidao.ui.Friend.Client_hot_detail;
 import ruanjian.xin.xiaocaidao.Controller.ApplicationController;
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.adapter.CommentAdapter;

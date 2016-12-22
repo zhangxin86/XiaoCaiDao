@@ -145,7 +145,7 @@ public class ClientActivity extends AppCompatActivity {
         if( mainPage==null ){ mainPage = new MainPage(); }
         ColorSquareListener listener = new ColorSquareListener();
         Tv_MainPage.setTextColor(getResources().getColor(R.color.tab_select));
-        Iv_MainPage.setImageResource(R.drawable.iv_main_sel);
+        Iv_MainPage.setBackgroundResource(R.drawable.iv_main_sel);
         pre_select = 0;
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
@@ -158,7 +158,7 @@ public class ClientActivity extends AppCompatActivity {
         Llay_ClientHead.setVisibility(View.VISIBLE);
         menuPage = new MenuPage();
         Tv_MenuPage.setTextColor(getResources().getColor(R.color.tab_select));
-        Iv_MenuPage.setImageResource(R.drawable.iv_menu_sel);
+        Iv_MenuPage.setBackgroundResource(R.drawable.iv_menu_sel);
         pre_select = 1;
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
@@ -170,7 +170,7 @@ public class ClientActivity extends AppCompatActivity {
         Llay_ClientHead.setVisibility(View.GONE);
         if( friendPage==null ){ friendPage = new FriendPage(); }
         Tv_FriendPage.setTextColor(getResources().getColor(R.color.tab_select));
-        Iv_FriendPage.setImageResource(R.drawable.iv_friend_sel);
+        Iv_FriendPage.setBackgroundResource(R.drawable.iv_friend_sel);
         pre_select = 2;
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
@@ -182,7 +182,7 @@ public class ClientActivity extends AppCompatActivity {
         Llay_ClientHead.setVisibility(View.GONE);
         if( personPage==null ){ personPage = new PersonPage(); }
         Tv_PersonPage.setTextColor(getResources().getColor(R.color.tab_select));
-        Iv_PersonPage.setImageResource(R.drawable.iv_person_sel);
+        Iv_PersonPage.setBackgroundResource(R.drawable.iv_person_sel);
         pre_select = 3;
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
@@ -196,19 +196,19 @@ public class ClientActivity extends AppCompatActivity {
         switch (pre_select){
             case 0:
                 Tv_MainPage.setTextColor(getResources().getColor(R.color.tab_default));
-                Iv_MainPage.setImageResource(R.drawable.iv_main);
+                Iv_MainPage.setBackgroundResource(R.drawable.iv_main);
                 break;
             case 1:
                 Tv_MenuPage.setTextColor(getResources().getColor(R.color.tab_default));
-                Iv_MenuPage.setImageResource(R.drawable.iv_menu);
+                Iv_MenuPage.setBackgroundResource(R.drawable.iv_menu);
                 break;
             case 2:
                 Tv_FriendPage.setTextColor(getResources().getColor(R.color.tab_default));
-                Iv_FriendPage.setImageResource(R.drawable.iv_friend);
+                Iv_FriendPage.setBackgroundResource(R.drawable.iv_friend);
                 break;
             case 3:
                 Tv_PersonPage.setTextColor(getResources().getColor(R.color.tab_default));
-                Iv_PersonPage.setImageResource(R.drawable.iv_person);
+                Iv_PersonPage.setBackgroundResource(R.drawable.iv_person);
                 break;
         }
     }
@@ -239,26 +239,20 @@ public class ClientActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent i = new Intent();
-            LayoutInflater inflater = getLayoutInflater();
-            View tt = inflater.inflate(R.layout.activity_three_meals,null);
-            RelativeLayout RlayHead = (RelativeLayout)tt.findViewById(R.id.Rlaylayout_aboutHead);
-            TextView Tv_ThreeMeals = (TextView)tt.findViewById(R.id.Tvactivity_three_mealsThreeMeals);
             switch (v.getId()){
                 case R.id.Llayactivity_main_page_SeasonFood:
                     i.setClass(ClientActivity.this, ThreeMeals.class);
                     i.putExtra("推荐","冬    季");
                     startActivity(i);
-
                     break;
                 case R.id.Llayactivity_main_page_Spicy:
-
+                    mainPage.scrollToSpicy();
                     break;
                 case R.id.Llayactivity_main_page_Follow:
                     clearPreTab();
                     setMenuPage();
                     break;
                 case R.id.Llayactivity_main_pageBreakFast:
-
                     i.setClass(ClientActivity.this, ThreeMeals.class);
                     i.putExtra("推荐","早    餐");
                     startActivity(i);

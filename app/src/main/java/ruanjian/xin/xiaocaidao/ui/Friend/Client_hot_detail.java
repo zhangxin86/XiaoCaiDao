@@ -1,4 +1,4 @@
-package ruanjian.xin.xiaocaidao;
+package ruanjian.xin.xiaocaidao.ui.Friend;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import ruanjian.xin.xiaocaidao.ui.Friend.HotFriendDetailFragment;
+import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.utils.HttpUtil;
 import ruanjian.xin.xiaocaidao.utils.Utils;
 
@@ -37,9 +37,9 @@ public class Client_hot_detail extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             if(msg.what==1){
-                Et_Comment.setText("");
                 Toast.makeText(Client_hot_detail.this,"评论成功",Toast.LENGTH_SHORT).show();
-                hotFriendDetail.onResume();
+                hotFriendDetail.getCommentData();
+                hotFriendDetail.setComment();
             }else{
                 Toast.makeText(Client_hot_detail.this,"评论失败",Toast.LENGTH_SHORT).show();
             }

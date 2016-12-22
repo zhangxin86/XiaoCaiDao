@@ -14,10 +14,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
 
-import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,13 +22,10 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import ruanjian.xin.xiaocaidao.Client_hot_detail;
 import ruanjian.xin.xiaocaidao.Controller.ApplicationController;
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.adapter.CommentAdapter;
-import ruanjian.xin.xiaocaidao.adapter.NewAdapter;
 import ruanjian.xin.xiaocaidao.domain.BlogItem;
-import ruanjian.xin.xiaocaidao.domain.Parts;
 import ruanjian.xin.xiaocaidao.utils.Utils;
 
 /**

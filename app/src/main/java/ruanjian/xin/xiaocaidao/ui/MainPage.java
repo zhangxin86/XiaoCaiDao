@@ -32,7 +32,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import ruanjian.xin.xiaocaidao.Client_hot_detail;
+import ruanjian.xin.xiaocaidao.ui.Friend.Client_hot_detail;
 import ruanjian.xin.xiaocaidao.Controller.ApplicationController;
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.adapter.CommentAdapter;
@@ -149,8 +149,10 @@ public class MainPage extends Fragment implements RefreshView.RefrshListener{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //跳转到食材详情
                 Intent intent = new Intent();
+                intent.putExtra("type",position+1);
                 intent.setClass(getActivity(),SpiceActivity.class);
                 startActivity(intent);
+
             }
         });
 
@@ -253,6 +255,9 @@ public class MainPage extends Fragment implements RefreshView.RefrshListener{
         commentAdapter = new CommentAdapter(getActivity(),dataComment);
         Lv_Comment.setAdapter(commentAdapter);
         Calculator.setListViewHeightBasedOnChildren(Lv_Comment,0);
+    }
+    public void scrollToSpicy(){
+        refreshView.scrollTo(0,2550);
     }
 
     /*

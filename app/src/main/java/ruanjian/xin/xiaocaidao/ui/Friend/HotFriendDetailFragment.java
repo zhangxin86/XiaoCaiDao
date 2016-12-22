@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,6 +52,7 @@ public class HotFriendDetailFragment extends Fragment {    //热门帖子详情�
     private Button btn_focus;
     private static String follows;
     private static String blogId;
+    private boolean flag_praise = false;
 
     private CircleNetworkImage avatarImg;       //头像Img控件
     private TextView TvUserName;           //作者用户名称
@@ -58,6 +60,7 @@ public class HotFriendDetailFragment extends Fragment {    //热门帖子详情�
     private TextView TvTitle;           //帖子题目
     private TextView TvThumb;           //点赞数目
     private NetworkImageView blogImg;   //帖子图片
+    private ImageView img_praise;
 
     private FriendCommentAdapter commentAdapter;
     private ListView Lv_comment;
@@ -79,7 +82,21 @@ public class HotFriendDetailFragment extends Fragment {    //热门帖子详情�
             super.handleMessage(msg);
         }
     };
-
+    private Handler praise = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            if(msg.what==-1){
+                Toast.makeText(getActivity(),"连接超时",Toast.LENGTH_SHORT).show();
+            }else{
+                if(!flag_praise){
+                    img_praise.setImageResource(R.drawable.like_logo_sel);
+                    flag_praise = true;
+                }
+                TvThumb.setText(msg.what+"人赞过");
+            }
+            super.handleMessage(msg);
+        }
+    };
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_hot_item_detail,container,false);
@@ -97,29 +114,51 @@ public class HotFriendDetailFragment extends Fragment {    //热门帖子详情�
     }
 
     private void getView(View v) {
-        btn_focus = (Button)v.findViewById(R.id.btn_focus);
+        btn_focus = (Button) v.findViewById(R.id.btn_focus);
         commentListener listener = new commentListener();
         btn_focus.setOnClickListener(listener);
-        avatarImg = (CircleNetworkImage)v.findViewById(R.id.cv_comment_user_pic) ;
-        TvUserName = (TextView)v.findViewById(R.id.Tv_userName);
-        TvContent = (TextView)v.findViewById(R.id.Tv_comment_content);
-        TvTitle = (TextView)v.findViewById(R.id.Tv_comment_title);
-        TvThumb = (TextView)v.findViewById(R.id.Tv_comment_thumb);
-        blogImg = (NetworkImageView)v.findViewById(R.id.Iv_comment_blogimg);
+        avatarImg = (CircleNetworkImage) v.findViewById(R.id.cv_comment_user_pic);
+        TvUserName = (TextView) v.findViewById(R.id.Tv_userName);
+        TvContent = (TextView) v.findViewById(R.id.Tv_comment_content);
+        TvTitle = (TextView) v.findViewById(R.id.Tv_comment_title);
+        TvThumb = (TextView) v.findViewById(R.id.Tv_comment_thumb);
+        blogImg = (NetworkImageView) v.findViewById(R.id.Iv_comment_blogimg);
         if (imageLoader == null)
             imageLoader = ApplicationController.getInstance().getImageLoader();
 
+        Lv_comment = (ListView) v.findViewById(R.id.comment_listView);
+        img_praise = (ImageView) v.findViewById(R.id.img_praise);
+        img_praise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread() {
+                    @Override
+                    public void run() {
+                        httpUtil.setValue(HttpUtil.SET_TH, blogId);
+                        Log.i("blogid", blogId);
+                        if (!flag_praise) {
+                            String end = httpUtil.HttpRequest_post(Utils.set_thUrl);
+                            if (end == null) {
+                                praise.sendEmptyMessage(-1);
+                            }
+                            //Log.i("blogid",end);
+                            praise.sendEmptyMessage(Integer.parseInt(end));
+                        }
+                        super.run();
+                    }
+                }.start();
+            }
+        });
+        if(imageLoader == null)
+            imageLoader = ApplicationController.getInstance().getImageLoader();
         Lv_comment = (ListView)v.findViewById(R.id.comment_listView);
-
-
     }
-
     private void setView(){
         getBlogData();
         getCommentData();
     }
 
-    private void setComment() {
+    public void setComment() {
         commentAdapter = new FriendCommentAdapter(getActivity(),ComData);
         Lv_comment.setAdapter(commentAdapter);
     }
@@ -166,7 +205,7 @@ public class HotFriendDetailFragment extends Fragment {    //热门帖子详情�
                     TvUserName.setText(userName);
                     TvTitle.setText(title);
                     TvContent.setText(content);
-                    TvThumb.setText(""+thumb+"赞");
+                    TvThumb.setText(""+thumb+"人赞过");
                     blogImg.setImageUrl(imgsrc,imageLoader);
 
 
@@ -192,6 +231,7 @@ public class HotFriendDetailFragment extends Fragment {    //热门帖子详情�
     }
 
     public void getCommentData(){
+        ComData.clear();
         StringRequest req=new StringRequest(Request.Method.POST, Utils.URL+"comment/findCommentList",new Response.Listener<String>() {
 
             @Override

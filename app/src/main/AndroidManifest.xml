@@ -28,21 +28,14 @@
         </activity>
         <!-- 登陆注册相关页 -->
         <activity android:name=".ui.Login.SignActivity" />
-        <activity android:name=".ui.Login.Login" />
         <!-- Client主框架 -->
         <activity android:name=".ClientActivity" />
-        <!-- Tab相关页 -->
-        <activity android:name=".ui.MainPage" />
-        <activity android:name=".ui.MenuPage" />
-        <activity android:name=".ui.FriendPage" />
-        <activity android:name=".ui.PersonPage" />
         <!-- 厨友交流相关 -->
         <activity android:name=".ui.Friend.HotFriend" />
         <activity android:name=".ui.Friend.NewFriend" />
         <activity android:name=".ui.Friend.BlogSubmitActivity" />
-        <activity android:name=".ui.Friend.HotFriendDetailFragment" />
         <activity android:name=".ui.Friend.NewFriendDetail" />
-        <activity android:name=".Client_hot_detail" />
+        <activity android:name=".ui.Friend.Client_hot_detail" />
         <!-- 个人中心 -->
         <activity android:name=".ui.personal.Person_fouse" />
         <activity android:name=".ui.personal.Person_collect" />

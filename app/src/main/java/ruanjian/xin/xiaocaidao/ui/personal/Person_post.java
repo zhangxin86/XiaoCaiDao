@@ -28,7 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import ruanjian.xin.xiaocaidao.Client_hot_detail;
+import ruanjian.xin.xiaocaidao.ui.Friend.Client_hot_detail;
 import ruanjian.xin.xiaocaidao.Controller.ApplicationController;
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.adapter.Adapter_post_main;
