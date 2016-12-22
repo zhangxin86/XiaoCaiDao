@@ -16,6 +16,15 @@ import ruanjian.xin.xiaocaidao.ui.Friend.BlogSubmitActivity;
 import ruanjian.xin.xiaocaidao.ui.Friend.HotFriend;
 import ruanjian.xin.xiaocaidao.ui.Friend.NewFriend;
 
+/**
+ * All rights Reserved, Designed By lianghangming
+ * @Title: 	SelectPicPopupWindow.java
+ * @Package sun.geoffery.uploadpic
+ * @Description:FriendPage
+ * @author:	lianghangming
+ * @date:	2016年12月12日 上午1:21:01
+ * @version	V1.0
+ */
 public class FriendPage extends Fragment {
     private View v;
     private LocalActivityManager manager;

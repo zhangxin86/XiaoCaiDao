@@ -75,6 +75,13 @@ public class SignActivity extends Activity {
             }
         });
     }
+
+    @Override
+    protected void onStop() {
+        this.finish();
+        super.onStop();
+    }
+
     //确认按钮的监听事件
     public void register_check(){
         if(isUserNameAndPwdValid()){

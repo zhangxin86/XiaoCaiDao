@@ -15,12 +15,12 @@ import android.widget.PopupWindow;
 import ruanjian.xin.xiaocaidao.R;
 
 /**
- * All rights Reserved, Designed By GeofferySun
+ * All rights Reserved, Designed By liyuxuna
  * @Title: 	SelectPicPopupWindow.java
  * @Package sun.geoffery.uploadpic
  * @Description:从底部弹出或滑出选择菜单或窗口
- * @author:	GeofferySun
- * @date:	201年月12日 上午1:21:01
+ * @author:	liyuxuan
+ * @date:	2016年12月12日 上午1:21:01
  * @version	V1.0
  */
 public class SelectPicPopupWindow extends PopupWindow {

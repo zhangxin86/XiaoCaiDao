@@ -34,6 +34,16 @@ import ruanjian.xin.xiaocaidao.ui.personal.Person_setting;
 import ruanjian.xin.xiaocaidao.utils.HttpUtil;
 import ruanjian.xin.xiaocaidao.utils.Utils;
 
+/**
+ * All rights Reserved, Designed By liyuxuna
+ * @Title: 	SelectPicPopupWindow.java
+ * @Package sun.geoffery.uploadpic
+ * @Description:个人中心
+ * @author:	liyuxuan
+ * @date:	2016年12月12日 上午1:21:01
+ * @version	V1.0
+ */
+
 public class PersonPage extends Fragment {
     private XCRoundImageView person1;
     private HttpURLConnection urlcon;

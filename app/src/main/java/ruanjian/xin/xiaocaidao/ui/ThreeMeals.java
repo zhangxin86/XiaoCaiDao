@@ -184,7 +184,7 @@ public class ThreeMeals extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                Log.e("CaipuMenuPge","error:"+volleyError.getMessage());
+                Log.e("ThreeMealsPage","error:"+volleyError.getMessage());
 
             }
         }){

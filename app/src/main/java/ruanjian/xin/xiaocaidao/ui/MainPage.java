@@ -46,7 +46,7 @@ import ruanjian.xin.xiaocaidao.utils.RefreshView;
 import ruanjian.xin.xiaocaidao.utils.Utils;
 
 /**
- * Created by xin on 2016/11/17.
+ * Created by zhangxin on 2016/11/17.
  */
 
 public class MainPage extends Fragment implements RefreshView.RefrshListener{

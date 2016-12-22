@@ -35,7 +35,15 @@ import ruanjian.xin.xiaocaidao.domain.Caipu;
 
 import static ruanjian.xin.xiaocaidao.utils.Utils.JUHE_KEY;
 import static ruanjian.xin.xiaocaidao.utils.Utils.JUHE_URL;
-
+/**
+ * All rights Reserved, Designed By liyuxuna
+ * @Title: 	SelectPicPopupWindow.java
+ * @Package sun.geoffery.uploadpic
+ * @Description:MenuPage
+ * @author:	liyuxuan
+ * @date:	2016年12月12日 上午1:21:01
+ * @version	V1.0
+ */
 public class MenuPage extends Fragment implements BaiDuRefreshListView.OnBaiduRefreshListener{
 
     public String temp = "菜";//第一次要显示listview的菜名内容

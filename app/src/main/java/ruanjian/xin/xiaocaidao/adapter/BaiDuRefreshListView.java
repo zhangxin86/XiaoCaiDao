@@ -16,7 +16,15 @@ import android.widget.RelativeLayout;
 
 import ruanjian.xin.xiaocaidao.R;
 
-
+/**
+ * All rights Reserved, Designed By liuchangling
+ * @Title: 	BaiDuRefreshListView.java
+ * @Package sun.geoffery.uploadpic
+ * @Description:BaiDuRefreshListView
+ * @author:	liuchangling
+ * @date:	2016年12月12日 上午1:21:01
+ * @version	V1.0
+ */
 public class BaiDuRefreshListView extends ListView implements AbsListView.OnScrollListener{
     private static final int DONE = 0;      //刷新完毕状态
     private static final int PULL_TO_REFRESH = 1;   //下拉刷新状态

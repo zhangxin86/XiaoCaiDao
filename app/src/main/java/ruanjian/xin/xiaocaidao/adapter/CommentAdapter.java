@@ -32,7 +32,7 @@ import ruanjian.xin.xiaocaidao.domain.CircleNetworkImage;
 import ruanjian.xin.xiaocaidao.domain.Parts;
 
 /**
- * Created by xin on 2016/11/17.
+ * Created by zhangxin on 2016/11/17.
  */
 
 public class CommentAdapter extends BaseAdapter {

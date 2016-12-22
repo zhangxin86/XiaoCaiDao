@@ -62,6 +62,11 @@ public class LoginActivity extends AppCompatActivity {
 
         findView();
     }
+    @Override
+    protected void onStop() {
+        this.finish();
+        super.onStop();
+    }
 
     @Override
     protected void onResume() {

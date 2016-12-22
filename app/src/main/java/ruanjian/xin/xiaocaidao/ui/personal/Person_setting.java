@@ -111,6 +111,11 @@ public class Person_setting extends AppCompatActivity implements View.OnClickLis
         setMessage();
         setListener();
     }
+    @Override
+    protected void onStop() {
+        this.finish();
+        super.onStop();
+    }
     private void initViews(){
         avatarImg = (XCRoundImageView)findViewById(R.id.avatarImg);
         avater = (LinearLayout)findViewById(R.id.avatar);
