@@ -6,7 +6,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ededed">
+        android:background="#fafafa">
         <RelativeLayout
             android:id="@+id/Rlaylayout_aboutHead"
             android:layout_width="match_parent"
@@ -37,9 +37,9 @@
             android:layout_centerHorizontal="true">
             <ImageView
                 android:id="@+id/logo"
-                android:layout_width="80dp"
+                android:layout_width="70dp"
                 android:layout_height="80dp"
-                android:src="@drawable/p1"
+                android:src="@drawable/about"
                 android:layout_centerHorizontal="true" />
             <TextView
                 android:id="@+id/app_name"
