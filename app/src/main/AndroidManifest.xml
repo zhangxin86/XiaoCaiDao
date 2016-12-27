@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.Login.LoginActivity"
+            android:name=".WelcomeActivity"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,15 +26,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>    
         </activity>
+
         <!-- 登陆注册相关页 -->
         <activity android:name=".ui.Login.SignActivity" />
+        <activity android:name=".ui.Login.LoginActivity"/>
         <!-- Client主框架 -->
         <activity android:name=".ClientActivity" />
         <!-- 厨友交流相关 -->
         <activity android:name=".ui.Friend.HotFriend" />
         <activity android:name=".ui.Friend.NewFriend" />
         <activity android:name=".ui.Friend.BlogSubmitActivity" />
-        <activity android:name=".ui.Friend.Client_hot_detail" />
+        <activity android:name=".ui.Friend.ClientDetailActivity" />
         <!-- 个人中心 -->
         <activity android:name=".ui.personal.Person_fouse" />
         <activity android:name=".ui.personal.Person_collect" />

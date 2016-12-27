@@ -13,12 +13,21 @@
         android:background="@drawable/first_back"
         android:gravity="center_horizontal">
 
-        <!--放置logo位置-->
-        <FrameLayout
+        <!--如果须要logo，此处为放置logo位置-->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp">
-
-        </FrameLayout>
+            android:layout_height="300dp"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:src="@drawable/xiaocaidao"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
 
         <!--用户名，密码，登陆-->
         <LinearLayout

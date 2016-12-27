@@ -59,10 +59,8 @@ public class HttpUtil {
                 pairs.clear();
                 pair1 = new BasicNameValuePair("account", (String) args[0]);
                 pair2 = new BasicNameValuePair("blog_id", (String) args[1]);
-                pair3 = new BasicNameValuePair("content", (String) args[2]);
                 pairs.add(pair1);
                 pairs.add(pair2);
-                pairs.add(pair3);
                 break;
             case SET_NA:
                 pairs.clear();

@@ -32,7 +32,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import ruanjian.xin.xiaocaidao.ui.Friend.Client_hot_detail;
+import ruanjian.xin.xiaocaidao.ui.Friend.ClientDetailActivity;
 import ruanjian.xin.xiaocaidao.Controller.ApplicationController;
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.adapter.CommentAdapter;
@@ -165,7 +165,7 @@ public class MainPage extends Fragment implements RefreshView.RefrshListener{
 
                 Intent intent = new Intent();
                 intent.putExtra("blog_id",""+dataComment.get(position).getId());
-                intent.setClass(getActivity(), Client_hot_detail.class);
+                intent.setClass(getActivity(), ClientDetailActivity.class);
                 startActivity(intent);
             }
         });

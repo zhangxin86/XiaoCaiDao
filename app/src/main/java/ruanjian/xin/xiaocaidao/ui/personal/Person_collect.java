@@ -10,8 +10,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -22,13 +25,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import ruanjian.xin.xiaocaidao.ui.Friend.Client_hot_detail;
+import ruanjian.xin.xiaocaidao.adapter.CommentAdTwo;
+import ruanjian.xin.xiaocaidao.ui.Friend.ClientDetailActivity;
 import ruanjian.xin.xiaocaidao.Controller.ApplicationController;
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.adapter.CommentAdapter;
 import ruanjian.xin.xiaocaidao.domain.BlogItem;
+import ruanjian.xin.xiaocaidao.utils.HttpUtil;
 import ruanjian.xin.xiaocaidao.utils.Utils;
 
 /**
@@ -39,9 +46,11 @@ import ruanjian.xin.xiaocaidao.utils.Utils;
 
 public class Person_collect extends AppCompatActivity {
 
-    private CommentAdapter hotAdapter;
+    private CommentAdTwo hotAdapter;
     private ListView listView;
     private List<BlogItem> data = new ArrayList<>();
+    private RelativeLayout titleBar;
+    private Button titleBack;
 
     private ProgressDialog pDialog;
 
@@ -68,25 +77,27 @@ public class Person_collect extends AppCompatActivity {
 
                 Intent intent = new Intent();
                 intent.putExtra("blog_id",""+data.get(position).getId());
-                intent.setClass(getApplicationContext(), Client_hot_detail.class);
+                intent.setClass(getApplicationContext(), ClientDetailActivity.class);
                 startActivity(intent);
             }
         });
     }
 
     private void setAdapter() {
-        hotAdapter = new CommentAdapter(this,data);
+        hotAdapter = new CommentAdTwo(this,data);
         listView.setAdapter(hotAdapter);
     }
 
     private void findView() {
         listView = (ListView)findViewById(R.id.hot_listView);
+        titleBar = (RelativeLayout)findViewById(R.id.coltitle);
+        titleBack = (Button)titleBar.findViewById(R.id.button_backward);
+        titleBack.setVisibility(View.GONE);
     }
 
 
-
     public void getSaveBlogListData(){
-        StringRequest req=new StringRequest(Request.Method.POST, Utils.URL+"blog/fetchHotBlogList", new Response.Listener<String>() {
+        StringRequest req=new StringRequest(Request.Method.POST, Utils.URL+"collection/fetchCollectionList", new Response.Listener<String>() {
 
             @Override
             public void onResponse(String s) {
@@ -105,7 +116,7 @@ public class Person_collect extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                System.out.println("blog jsonArray:"+jsonArray.toString());
+                System.out.println("fetchCollectionList jsonArray:"+jsonArray.toString());
 
 
 
@@ -116,7 +127,7 @@ public class Person_collect extends AppCompatActivity {
                         String imgsrc = obj.getString("img_src");       //取出图片url
                         System.out.println("imgsrc");
                         int thumb = obj.getInt("thumb");            //点赞数
-                        String content = obj.getString("content");      //内容
+                        String content = obj.getString("name");      //内容
                         String userName = obj.getString("userName");    //userName
                         String userImg = obj.getString("userImg");      //头像url
 
@@ -155,10 +166,17 @@ public class Person_collect extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                Log.e("CaipuMenuPge","error:"+volleyError.getMessage());
+                Log.e("CollectPge","error:"+volleyError.getMessage());
                 hidePDialog();
             }
-        });
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map = new HashMap<>();
+                map.put("account", "jiazixuan");
+                return map;
+            }
+        };
         ApplicationController.getInstance().addToRequestQueue(req);
     }
 

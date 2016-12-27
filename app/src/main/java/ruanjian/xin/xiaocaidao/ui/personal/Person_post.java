@@ -28,7 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import ruanjian.xin.xiaocaidao.ui.Friend.Client_hot_detail;
+import ruanjian.xin.xiaocaidao.ui.Friend.ClientDetailActivity;
 import ruanjian.xin.xiaocaidao.Controller.ApplicationController;
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.adapter.Adapter_post_main;
@@ -64,7 +64,7 @@ public class Person_post extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_post);
 
-        userName = getIntent().getStringExtra("userName");//得到用户名称
+        userName = getIntent().getStringExtra("userName");//得到用户名称（没用到）
 
         initview();
         setListViewListener();//为listView设置监听事件
@@ -88,7 +88,7 @@ public class Person_post extends AppCompatActivity {
 
                 Intent intent = new Intent();
                 intent.putExtra("blog_id",""+data.get(position).getId());
-                intent.setClass(getApplicationContext(), Client_hot_detail.class);
+                intent.setClass(getApplicationContext(), ClientDetailActivity.class);
                 startActivity(intent);
             }
         });

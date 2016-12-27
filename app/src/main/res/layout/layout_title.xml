@@ -11,7 +11,7 @@
         android:ellipsize="marquee"
         android:gravity="center_horizontal|center"
         android:singleLine="true"
-        android:text="标题栏"
+        android:text="收藏"
         android:textColor="#fff"
         android:textSize="20sp" />
     <!--返回按钮-->

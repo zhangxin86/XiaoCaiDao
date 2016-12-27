@@ -12,7 +12,6 @@ import java.util.List;
 
 import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.domain.BlogItem;
-import ruanjian.xin.xiaocaidao.domain.Name2;
 
 
 /**

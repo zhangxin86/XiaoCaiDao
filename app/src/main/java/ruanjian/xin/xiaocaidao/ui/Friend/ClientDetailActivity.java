@@ -19,7 +19,7 @@ import ruanjian.xin.xiaocaidao.R;
 import ruanjian.xin.xiaocaidao.utils.HttpUtil;
 import ruanjian.xin.xiaocaidao.utils.Utils;
 
-public class Client_hot_detail extends AppCompatActivity {
+public class ClientDetailActivity extends AppCompatActivity {
 
     private static String tempId;
     private FrameLayout HotFlay_Page;
@@ -38,11 +38,11 @@ public class Client_hot_detail extends AppCompatActivity {
         public void handleMessage(Message msg) {
             if(msg.what==1){
                 Et_Comment.setText("");
-                Toast.makeText(Client_hot_detail.this,"评论成功",Toast.LENGTH_SHORT).show();
+                Toast.makeText(ClientDetailActivity.this,"评论成功",Toast.LENGTH_SHORT).show();
                 hotFriendDetail.getCommentData();
                 hotFriendDetail.setComment();
             }else{
-                Toast.makeText(Client_hot_detail.this,"评论失败",Toast.LENGTH_SHORT).show();
+                Toast.makeText(ClientDetailActivity.this,"评论失败",Toast.LENGTH_SHORT).show();
             }
             super.handleMessage(msg);
         }

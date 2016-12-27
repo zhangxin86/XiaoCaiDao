@@ -133,9 +133,9 @@
                         android:id="@+id/img_praise"
                         android:layout_width="18dp"
                         android:layout_height="18dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="19dp"
                         android:layout_marginRight="5dp"
-                        android:src="@drawable/like_logo"/>
+                        android:src="@drawable/like"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:id="@+id/Tv_comment_thumb"
@@ -144,16 +144,18 @@
                         android:layout_marginTop="19dp"
                         />
                     <ImageView
+                        android:id="@+id/img_collect"
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginRight="5dp"
                         android:layout_marginLeft="20dp"
-                        android:src="@drawable/comment_logo"/>
+                        android:src="@drawable/collect_logo"/>
                     <TextView
+                        android:id="@+id/tv_collect"
                         android:layout_width="wrap_content"
                         android:layout_height="18dp"
-                        android:text="评论"
+                        android:text="收藏一下"
                         android:layout_marginTop="20dp"
                         android:layout_marginRight="10dp"/>
                 </LinearLayout>

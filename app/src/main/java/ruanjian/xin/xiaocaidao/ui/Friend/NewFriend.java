@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -36,6 +37,7 @@ public class NewFriend extends Activity{    //最新贴
     private CommentAdapter hotAdapter;
     private ListView listView;
     private List<BlogItem> data = new ArrayList<>();
+    private RelativeLayout titlebar;
 
     private ProgressDialog pDialog;
 
@@ -62,7 +64,7 @@ public class NewFriend extends Activity{    //最新贴
 
                 Intent intent = new Intent();
                 intent.putExtra("blog_id",""+data.get(position).getId());
-                intent.setClass(getApplicationContext(), Client_hot_detail.class);
+                intent.setClass(getApplicationContext(), ClientDetailActivity.class);
                 startActivity(intent);
             }
         });
@@ -75,6 +77,9 @@ public class NewFriend extends Activity{    //最新贴
 
     private void findView() {
         listView = (ListView)findViewById(R.id.hot_listView);
+        titlebar = (RelativeLayout)findViewById(R.id.coltitle);
+
+        titlebar.setVisibility(View.GONE);
     }
 
     public void getData2(){
@@ -145,7 +150,7 @@ public class NewFriend extends Activity{    //最新贴
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                Log.e("CaipuMenuPge","error:"+volleyError.getMessage());
+                Log.e("NewfriendPge","error:"+volleyError.getMessage());
                 hidePDialog();
             }
         });
