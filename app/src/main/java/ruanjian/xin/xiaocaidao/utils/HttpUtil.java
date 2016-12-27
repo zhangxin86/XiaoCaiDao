@@ -55,7 +55,7 @@ public class HttpUtil {
                 pair1 = new BasicNameValuePair("account", (String) args[0]);
                 pairs.add(pair1);
                 break;
-            case SET_CO://未完成
+            case SET_CO://收藏和检查收藏
                 pairs.clear();
                 pair1 = new BasicNameValuePair("account", (String) args[0]);
                 pair2 = new BasicNameValuePair("blog_id", (String) args[1]);

@@ -215,7 +215,7 @@ public class HotFriendDetailFragment extends Fragment {    //热门帖子详情�
         new Thread(){
             @Override
             public void run() {
-                httpUtil.setValue(HttpUtil.SET_TH,blogId);
+                httpUtil.setValue(HttpUtil.SET_CO,httpUtil.uac,blogId);
                 Log.i("blogid",blogId);
                 String end = httpUtil.HttpRequest_post(Utils.check_coUrl);
                 if (end.equals("1")) {

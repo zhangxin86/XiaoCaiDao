@@ -173,7 +173,7 @@ public class Person_collect extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> map = new HashMap<>();
-                map.put("account", "jiazixuan");
+                map.put("account", HttpUtil.uac);
                 return map;
             }
         };
