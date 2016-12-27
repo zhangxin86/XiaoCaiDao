@@ -32,6 +32,7 @@ public class HttpUtil {
     public final static int SET_BL = 5;
     public final static int SET_FO = 6;
     public final static int SET_TH = 7;
+    public final static int SET_COM = 8;
     private String urlContent = null;
     ArrayList<NameValuePair> pairs = new ArrayList<NameValuePair>();
     URI u;
@@ -61,6 +62,15 @@ public class HttpUtil {
                 pair2 = new BasicNameValuePair("blog_id", (String) args[1]);
                 pairs.add(pair1);
                 pairs.add(pair2);
+                break;
+            case SET_COM://未完成
+                pairs.clear();
+                pair1 = new BasicNameValuePair("account", (String) args[0]);
+                pair2 = new BasicNameValuePair("blog_id", (String) args[1]);
+                pair3 = new BasicNameValuePair("content", (String) args[2]);
+                pairs.add(pair1);
+                pairs.add(pair2);
+                pairs.add(pair3);
                 break;
             case SET_NA:
                 pairs.clear();

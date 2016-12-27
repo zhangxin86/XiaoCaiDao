@@ -5,7 +5,7 @@ package ruanjian.xin.xiaocaidao.utils;
  */
 
 public class Utils {
-    public static final String URL = "http://10.7.88.57:8008/";
+    public static final String URL = "http://10.7.88.144:8089/";
     public static int flag = 0;
     public static String timeFloder;
 

@@ -70,7 +70,7 @@ public class PersonPage extends Fragment {
             String filePath = Environment.getExternalStorageDirectory() + "/JiaXT/" + "myHead" + "/";
             person1.setImageURI(Uri.fromFile(new File(filePath, PicName)));
             Bundle b = msg.getData();
-            PicName = PicPath.substring(29);
+            PicName = PicPath.substring(32);
             Tvactivity_person_pageFans.setText(b.getString("fans"));
             Tvactivity_person_pageFocus.setText(b.getString("follows"));
             super.handleMessage(msg);
@@ -187,7 +187,7 @@ public class PersonPage extends Fragment {
             public void run() {
                 httpUtil.setValue(httpUtil.FINDORCHECK_AC, HttpUtil.uac);
                 PicPath = httpUtil.HttpRequest_post(Utils.find_imUrl);
-                PicName = PicPath.substring(29);
+                PicName = PicPath.substring(32);
                 httpUtil.setValue(httpUtil.FINDORCHECK_AC, httpUtil.uac);
                 String fans = httpUtil.HttpRequest_post(Utils.find_faUrl);
                 String follows = httpUtil.HttpRequest_post(Utils.find_foUrl);

@@ -108,7 +108,7 @@ public class ClientDetailActivity extends AppCompatActivity {
                         new Thread(){
                             @Override
                             public void run() {
-                                httpUtil.setValue(httpUtil.SET_CO,HttpUtil.uac, tempId+"",comment);
+                                httpUtil.setValue(httpUtil.SET_COM,HttpUtil.uac, tempId+"",comment);
                                 String end = httpUtil.HttpRequest_post(Utils.upload_coUrl);
                                 if(end.equals("1")){
                                     handler.sendEmptyMessage(1);
