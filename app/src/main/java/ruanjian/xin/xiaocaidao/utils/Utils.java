@@ -5,7 +5,7 @@ package ruanjian.xin.xiaocaidao.utils;
  */
 
 public class Utils {
-    public static final String URL = "http://10.7.88.144:8089/";
+    public static final String URL = "http://172.27.35.1:8008/";
     public static int flag = 0;
     public static String timeFloder;
 
@@ -30,7 +30,7 @@ public class Utils {
 
 
     public static final String JUHE_URL="http://apis.juhe.cn/cook/query.php";
-    public static final String JUHE_KEY="8a638a095bc4142a169f2b76acafbbcd";
+    public static final String JUHE_KEY="7e9e4f6575ebf1859111d364c36b3f47";
 
     public static final String JIFINAL_UPLOAD = "http://192.168.52.1:8080/blog/upload";
 }

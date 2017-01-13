@@ -18,11 +18,6 @@
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:gravity="center">
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:src="@drawable/xiaocaidao"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,7 +58,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="登录"
+                android:text="登  录"
                 android:textSize="22dp"
                 android:textColor="#ffffff"
                 android:background="@drawable/button_style"/>

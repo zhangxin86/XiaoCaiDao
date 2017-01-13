@@ -1,89 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
-        android:orientation="vertical"
+    <RelativeLayout
+        android:id="@+id/titleXiangqing"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#84cc31" >
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:singleLine="true"
+            android:text="标题栏"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+        <!--返回按钮-->
+        <Button
+            android:id="@+id/button_backward"
+            android:layout_centerVertical="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:drawablePadding="6dp"
+            android:background="@drawable/back_icon_white"
+            android:layout_marginLeft="15dp" />
+    </RelativeLayout>
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <RelativeLayout
-            android:id="@+id/titleXiangqing"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="#84cc31" >
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/NetSpiceImg"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
             <TextView
-                android:id="@+id/text_title"
+                android:id="@+id/Tv_spiceName"
+                android:text="大白菜"
+                android:textSize="23dp"
+                android:textColor="#67bf00"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/Tv_spiceDes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ellipsize="marquee"
-                android:gravity="center"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:singleLine="true"
-                android:text="标题栏"
-                android:textColor="#fff"
-                android:textSize="20sp" />
-            <!--返回按钮-->
-            <Button
-                android:id="@+id/button_backward"
-                android:layout_centerVertical="true"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:drawablePadding="6dp"
-                android:background="@drawable/back_icon_white"
-                android:layout_marginLeft="15dp" />
-        </RelativeLayout>
-        <ImageView
-            android:id="@+id/NetSpiceImg"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"/>
-        <TextView
-            android:id="@+id/Tv_spiceName"
-            android:text="大白菜"
-            android:textSize="23dp"
-            android:textColor="#67bf00"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/Tv_spiceDes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_marginLeft="15dp"
-            android:textSize="15dp"
-            android:text="" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="10dp">
-            <ImageView
+                android:layout_margin="10dp"
                 android:layout_marginLeft="15dp"
-                android:layout_marginRight="5dp"
-                android:background="@drawable/greenfork"
-                android:layout_width="25dp"
-                android:layout_height="25dp" />
+                android:textSize="15dp"
+                android:text="" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="10dp">
+                <ImageView
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/greenfork"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp" />
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:text="营养价值"
+                    android:textSize="18dp"
+                    android:textColor="#67bf00"
+                    android:gravity="center" />
+            </LinearLayout>
             <TextView
-                android:layout_marginLeft="5dp"
-                android:layout_gravity="center"
+                android:id="@+id/Tv_spiceNutrition"
                 android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:text="营养价值"
-                android:textSize="18dp"
-                android:textColor="#67bf00"
-                android:gravity="center" />
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text=""
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="50dp"/>
         </LinearLayout>
-        <TextView
-            android:id="@+id/Tv_spiceNutrition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:text=""
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="50dp"/>
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+
+</LinearLayout>
